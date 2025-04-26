@@ -1,0 +1,3427 @@
+#pragma once
+
+#include "daScript/misc/platform.h"
+#include "daScript/ast/ast.h"
+#include "daScript/ast/ast_interop.h"
+#include "daScript/ast/ast_handle.h"
+#include "daScript/ast/ast_typefactory_bind.h"
+#include "daScript/simulate/bind_enum.h"
+
+// #ifdef _WIN32
+// #define VK_USE_PLATFORM_WIN32_KHR
+// #define WIN32_LEAN_AND_MEAN
+// #include <windows.h>
+// #endif
+
+#include <volk/volk.h>
+
+// #ifdef VK_KHR_win32_surface
+// MAKE_TYPE_FACTORY(HMONITOR, HMONITOR)
+// MAKE_TYPE_FACTORY(HINSTANCE, HINSTANCE)
+// MAKE_TYPE_FACTORY(HWND, HWND)
+// #endif
+
+// #if defined(VK_KHR_external_fence_win32)
+// MAKE_TYPE_FACTORY(SECURITY_ATTRIBUTES, SECURITY_ATTRIBUTES)
+// #endif
+
+/* VOLK_GENERATE_TYPE_FACTORY */
+MAKE_TYPE_FACTORY(StdVideoAV1Level, StdVideoAV1Level)
+MAKE_TYPE_FACTORY(StdVideoAV1Profile, StdVideoAV1Profile)
+MAKE_TYPE_FACTORY(StdVideoAV1SequenceHeader, StdVideoAV1SequenceHeader)
+MAKE_TYPE_FACTORY(StdVideoDecodeAV1PictureInfo, StdVideoDecodeAV1PictureInfo)
+MAKE_TYPE_FACTORY(StdVideoDecodeAV1ReferenceInfo, StdVideoDecodeAV1ReferenceInfo)
+MAKE_TYPE_FACTORY(StdVideoDecodeH264PictureInfo, StdVideoDecodeH264PictureInfo)
+MAKE_TYPE_FACTORY(StdVideoDecodeH264ReferenceInfo, StdVideoDecodeH264ReferenceInfo)
+MAKE_TYPE_FACTORY(StdVideoDecodeH265PictureInfo, StdVideoDecodeH265PictureInfo)
+MAKE_TYPE_FACTORY(StdVideoDecodeH265ReferenceInfo, StdVideoDecodeH265ReferenceInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeAV1DecoderModelInfo, StdVideoEncodeAV1DecoderModelInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeAV1ExtensionHeader, StdVideoEncodeAV1ExtensionHeader)
+MAKE_TYPE_FACTORY(StdVideoEncodeAV1OperatingPointInfo, StdVideoEncodeAV1OperatingPointInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeAV1PictureInfo, StdVideoEncodeAV1PictureInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeAV1ReferenceInfo, StdVideoEncodeAV1ReferenceInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeH264PictureInfo, StdVideoEncodeH264PictureInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeH264ReferenceInfo, StdVideoEncodeH264ReferenceInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeH264SliceHeader, StdVideoEncodeH264SliceHeader)
+MAKE_TYPE_FACTORY(StdVideoEncodeH265PictureInfo, StdVideoEncodeH265PictureInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeH265ReferenceInfo, StdVideoEncodeH265ReferenceInfo)
+MAKE_TYPE_FACTORY(StdVideoEncodeH265SliceSegmentHeader, StdVideoEncodeH265SliceSegmentHeader)
+MAKE_TYPE_FACTORY(StdVideoH264LevelIdc, StdVideoH264LevelIdc)
+MAKE_TYPE_FACTORY(StdVideoH264PictureParameterSet, StdVideoH264PictureParameterSet)
+MAKE_TYPE_FACTORY(StdVideoH264ProfileIdc, StdVideoH264ProfileIdc)
+MAKE_TYPE_FACTORY(StdVideoH264SequenceParameterSet, StdVideoH264SequenceParameterSet)
+MAKE_TYPE_FACTORY(StdVideoH265LevelIdc, StdVideoH265LevelIdc)
+MAKE_TYPE_FACTORY(StdVideoH265PictureParameterSet, StdVideoH265PictureParameterSet)
+MAKE_TYPE_FACTORY(StdVideoH265ProfileIdc, StdVideoH265ProfileIdc)
+MAKE_TYPE_FACTORY(StdVideoH265SequenceParameterSet, StdVideoH265SequenceParameterSet)
+MAKE_TYPE_FACTORY(StdVideoH265VideoParameterSet, StdVideoH265VideoParameterSet)
+#if defined(VK_VERSION_1_0)
+DAS_BIND_ENUM_CAST(VkAccessFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkAccessFlagBits, "VkAccessFlagBits")
+DAS_BIND_ENUM_CAST(VkAttachmentDescriptionFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkAttachmentDescriptionFlagBits, "VkAttachmentDescriptionFlagBits")
+DAS_BIND_ENUM_CAST(VkAttachmentLoadOp)
+DAS_BASE_BIND_ENUM_FACTORY(VkAttachmentLoadOp, "VkAttachmentLoadOp")
+DAS_BIND_ENUM_CAST(VkAttachmentStoreOp)
+DAS_BASE_BIND_ENUM_FACTORY(VkAttachmentStoreOp, "VkAttachmentStoreOp")
+DAS_BIND_ENUM_CAST(VkBlendFactor)
+DAS_BASE_BIND_ENUM_FACTORY(VkBlendFactor, "VkBlendFactor")
+DAS_BIND_ENUM_CAST(VkBlendOp)
+DAS_BASE_BIND_ENUM_FACTORY(VkBlendOp, "VkBlendOp")
+DAS_BIND_ENUM_CAST(VkBorderColor)
+DAS_BASE_BIND_ENUM_FACTORY(VkBorderColor, "VkBorderColor")
+MAKE_TYPE_FACTORY(VkBuffer_T, VkBuffer_T)
+DAS_BIND_ENUM_CAST(VkBufferCreateFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkBufferCreateFlagBits, "VkBufferCreateFlagBits")
+DAS_BIND_ENUM_CAST(VkBufferUsageFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkBufferUsageFlagBits, "VkBufferUsageFlagBits")
+MAKE_TYPE_FACTORY(VkBufferView_T, VkBufferView_T)
+DAS_BIND_ENUM_CAST(VkColorComponentFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkColorComponentFlagBits, "VkColorComponentFlagBits")
+MAKE_TYPE_FACTORY(VkCommandBuffer_T, VkCommandBuffer_T)
+DAS_BIND_ENUM_CAST(VkCommandBufferLevel)
+DAS_BASE_BIND_ENUM_FACTORY(VkCommandBufferLevel, "VkCommandBufferLevel")
+DAS_BIND_ENUM_CAST(VkCommandBufferResetFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkCommandBufferResetFlagBits, "VkCommandBufferResetFlagBits")
+DAS_BIND_ENUM_CAST(VkCommandBufferUsageFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkCommandBufferUsageFlagBits, "VkCommandBufferUsageFlagBits")
+MAKE_TYPE_FACTORY(VkCommandPool_T, VkCommandPool_T)
+DAS_BIND_ENUM_CAST(VkCommandPoolCreateFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkCommandPoolCreateFlagBits, "VkCommandPoolCreateFlagBits")
+DAS_BIND_ENUM_CAST(VkCommandPoolResetFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkCommandPoolResetFlagBits, "VkCommandPoolResetFlagBits")
+DAS_BIND_ENUM_CAST(VkCompareOp)
+DAS_BASE_BIND_ENUM_FACTORY(VkCompareOp, "VkCompareOp")
+DAS_BIND_ENUM_CAST(VkComponentSwizzle)
+DAS_BASE_BIND_ENUM_FACTORY(VkComponentSwizzle, "VkComponentSwizzle")
+DAS_BIND_ENUM_CAST(VkCullModeFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkCullModeFlagBits, "VkCullModeFlagBits")
+DAS_BIND_ENUM_CAST(VkDependencyFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkDependencyFlagBits, "VkDependencyFlagBits")
+MAKE_TYPE_FACTORY(VkDescriptorPool_T, VkDescriptorPool_T)
+DAS_BIND_ENUM_CAST(VkDescriptorPoolCreateFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkDescriptorPoolCreateFlagBits, "VkDescriptorPoolCreateFlagBits")
+MAKE_TYPE_FACTORY(VkDescriptorSet_T, VkDescriptorSet_T)
+MAKE_TYPE_FACTORY(VkDescriptorSetLayout_T, VkDescriptorSetLayout_T)
+DAS_BIND_ENUM_CAST(VkDescriptorType)
+DAS_BASE_BIND_ENUM_FACTORY(VkDescriptorType, "VkDescriptorType")
+MAKE_TYPE_FACTORY(VkDevice_T, VkDevice_T)
+MAKE_TYPE_FACTORY(VkDeviceMemory_T, VkDeviceMemory_T)
+DAS_BIND_ENUM_CAST(VkDynamicState)
+DAS_BASE_BIND_ENUM_FACTORY(VkDynamicState, "VkDynamicState")
+MAKE_TYPE_FACTORY(VkEvent_T, VkEvent_T)
+MAKE_TYPE_FACTORY(VkFence_T, VkFence_T)
+DAS_BIND_ENUM_CAST(VkFenceCreateFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkFenceCreateFlagBits, "VkFenceCreateFlagBits")
+DAS_BIND_ENUM_CAST(VkFilter)
+DAS_BASE_BIND_ENUM_FACTORY(VkFilter, "VkFilter")
+DAS_BIND_ENUM_CAST(VkFormat)
+DAS_BASE_BIND_ENUM_FACTORY(VkFormat, "VkFormat")
+DAS_BIND_ENUM_CAST(VkFormatFeatureFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkFormatFeatureFlagBits, "VkFormatFeatureFlagBits")
+MAKE_TYPE_FACTORY(VkFramebuffer_T, VkFramebuffer_T)
+DAS_BIND_ENUM_CAST(VkFrontFace)
+DAS_BASE_BIND_ENUM_FACTORY(VkFrontFace, "VkFrontFace")
+MAKE_TYPE_FACTORY(VkImage_T, VkImage_T)
+DAS_BIND_ENUM_CAST(VkImageAspectFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageAspectFlagBits, "VkImageAspectFlagBits")
+DAS_BIND_ENUM_CAST(VkImageCreateFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageCreateFlagBits, "VkImageCreateFlagBits")
+DAS_BIND_ENUM_CAST(VkImageLayout)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageLayout, "VkImageLayout")
+DAS_BIND_ENUM_CAST(VkImageTiling)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageTiling, "VkImageTiling")
+DAS_BIND_ENUM_CAST(VkImageType)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageType, "VkImageType")
+DAS_BIND_ENUM_CAST(VkImageUsageFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageUsageFlagBits, "VkImageUsageFlagBits")
+MAKE_TYPE_FACTORY(VkImageView_T, VkImageView_T)
+DAS_BIND_ENUM_CAST(VkImageViewType)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageViewType, "VkImageViewType")
+DAS_BIND_ENUM_CAST(VkIndexType)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndexType, "VkIndexType")
+MAKE_TYPE_FACTORY(VkInstance_T, VkInstance_T)
+DAS_BIND_ENUM_CAST(VkInternalAllocationType)
+DAS_BASE_BIND_ENUM_FACTORY(VkInternalAllocationType, "VkInternalAllocationType")
+DAS_BIND_ENUM_CAST(VkLogicOp)
+DAS_BASE_BIND_ENUM_FACTORY(VkLogicOp, "VkLogicOp")
+DAS_BIND_ENUM_CAST(VkMemoryHeapFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkMemoryHeapFlagBits, "VkMemoryHeapFlagBits")
+DAS_BIND_ENUM_CAST(VkMemoryPropertyFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkMemoryPropertyFlagBits, "VkMemoryPropertyFlagBits")
+DAS_BIND_ENUM_CAST(VkObjectType)
+DAS_BASE_BIND_ENUM_FACTORY(VkObjectType, "VkObjectType")
+MAKE_TYPE_FACTORY(VkPhysicalDevice_T, VkPhysicalDevice_T)
+DAS_BIND_ENUM_CAST(VkPhysicalDeviceType)
+DAS_BASE_BIND_ENUM_FACTORY(VkPhysicalDeviceType, "VkPhysicalDeviceType")
+MAKE_TYPE_FACTORY(VkPipeline_T, VkPipeline_T)
+DAS_BIND_ENUM_CAST(VkPipelineBindPoint)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineBindPoint, "VkPipelineBindPoint")
+MAKE_TYPE_FACTORY(VkPipelineCache_T, VkPipelineCache_T)
+DAS_BIND_ENUM_CAST(VkPipelineCacheHeaderVersion)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineCacheHeaderVersion, "VkPipelineCacheHeaderVersion")
+DAS_BIND_ENUM_CAST(VkPipelineCreateFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineCreateFlagBits, "VkPipelineCreateFlagBits")
+MAKE_TYPE_FACTORY(VkPipelineLayout_T, VkPipelineLayout_T)
+DAS_BIND_ENUM_CAST(VkPipelineStageFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineStageFlagBits, "VkPipelineStageFlagBits")
+DAS_BIND_ENUM_CAST(VkPolygonMode)
+DAS_BASE_BIND_ENUM_FACTORY(VkPolygonMode, "VkPolygonMode")
+DAS_BIND_ENUM_CAST(VkPrimitiveTopology)
+DAS_BASE_BIND_ENUM_FACTORY(VkPrimitiveTopology, "VkPrimitiveTopology")
+DAS_BIND_ENUM_CAST(VkQueryControlFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueryControlFlagBits, "VkQueryControlFlagBits")
+DAS_BIND_ENUM_CAST(VkQueryPipelineStatisticFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueryPipelineStatisticFlagBits, "VkQueryPipelineStatisticFlagBits")
+MAKE_TYPE_FACTORY(VkQueryPool_T, VkQueryPool_T)
+DAS_BIND_ENUM_CAST(VkQueryResultFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueryResultFlagBits, "VkQueryResultFlagBits")
+DAS_BIND_ENUM_CAST(VkQueryType)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueryType, "VkQueryType")
+MAKE_TYPE_FACTORY(VkQueue_T, VkQueue_T)
+DAS_BIND_ENUM_CAST(VkQueueFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueueFlagBits, "VkQueueFlagBits")
+MAKE_TYPE_FACTORY(VkRenderPass_T, VkRenderPass_T)
+DAS_BIND_ENUM_CAST(VkResult)
+DAS_BASE_BIND_ENUM_FACTORY(VkResult, "VkResult")
+DAS_BIND_ENUM_CAST(VkSampleCountFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkSampleCountFlagBits, "VkSampleCountFlagBits")
+MAKE_TYPE_FACTORY(VkSampler_T, VkSampler_T)
+DAS_BIND_ENUM_CAST(VkSamplerAddressMode)
+DAS_BASE_BIND_ENUM_FACTORY(VkSamplerAddressMode, "VkSamplerAddressMode")
+DAS_BIND_ENUM_CAST(VkSamplerMipmapMode)
+DAS_BASE_BIND_ENUM_FACTORY(VkSamplerMipmapMode, "VkSamplerMipmapMode")
+MAKE_TYPE_FACTORY(VkSemaphore_T, VkSemaphore_T)
+MAKE_TYPE_FACTORY(VkShaderModule_T, VkShaderModule_T)
+DAS_BIND_ENUM_CAST(VkShaderStageFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkShaderStageFlagBits, "VkShaderStageFlagBits")
+DAS_BIND_ENUM_CAST(VkSharingMode)
+DAS_BASE_BIND_ENUM_FACTORY(VkSharingMode, "VkSharingMode")
+DAS_BIND_ENUM_CAST(VkSparseImageFormatFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkSparseImageFormatFlagBits, "VkSparseImageFormatFlagBits")
+DAS_BIND_ENUM_CAST(VkSparseMemoryBindFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkSparseMemoryBindFlagBits, "VkSparseMemoryBindFlagBits")
+DAS_BIND_ENUM_CAST(VkStencilFaceFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkStencilFaceFlagBits, "VkStencilFaceFlagBits")
+DAS_BIND_ENUM_CAST(VkStencilOp)
+DAS_BASE_BIND_ENUM_FACTORY(VkStencilOp, "VkStencilOp")
+DAS_BIND_ENUM_CAST(VkStructureType)
+DAS_BASE_BIND_ENUM_FACTORY(VkStructureType, "VkStructureType")
+DAS_BIND_ENUM_CAST(VkSubpassContents)
+DAS_BASE_BIND_ENUM_FACTORY(VkSubpassContents, "VkSubpassContents")
+DAS_BIND_ENUM_CAST(VkSystemAllocationScope)
+DAS_BASE_BIND_ENUM_FACTORY(VkSystemAllocationScope, "VkSystemAllocationScope")
+DAS_BIND_ENUM_CAST(VkVendorId)
+DAS_BASE_BIND_ENUM_FACTORY(VkVendorId, "VkVendorId")
+DAS_BIND_ENUM_CAST(VkVertexInputRate)
+DAS_BASE_BIND_ENUM_FACTORY(VkVertexInputRate, "VkVertexInputRate")
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+DAS_BIND_ENUM_CAST(VkChromaLocation)
+DAS_BASE_BIND_ENUM_FACTORY(VkChromaLocation, "VkChromaLocation")
+MAKE_TYPE_FACTORY(VkDescriptorUpdateTemplate_T, VkDescriptorUpdateTemplate_T)
+DAS_BIND_ENUM_CAST(VkDescriptorUpdateTemplateType)
+DAS_BASE_BIND_ENUM_FACTORY(VkDescriptorUpdateTemplateType, "VkDescriptorUpdateTemplateType")
+DAS_BIND_ENUM_CAST(VkExternalFenceFeatureFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalFenceFeatureFlagBits, "VkExternalFenceFeatureFlagBits")
+DAS_BIND_ENUM_CAST(VkExternalFenceHandleTypeFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalFenceHandleTypeFlagBits, "VkExternalFenceHandleTypeFlagBits")
+DAS_BIND_ENUM_CAST(VkExternalMemoryFeatureFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalMemoryFeatureFlagBits, "VkExternalMemoryFeatureFlagBits")
+DAS_BIND_ENUM_CAST(VkExternalMemoryHandleTypeFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalMemoryHandleTypeFlagBits, "VkExternalMemoryHandleTypeFlagBits")
+DAS_BIND_ENUM_CAST(VkExternalSemaphoreFeatureFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalSemaphoreFeatureFlagBits, "VkExternalSemaphoreFeatureFlagBits")
+DAS_BIND_ENUM_CAST(VkExternalSemaphoreHandleTypeFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalSemaphoreHandleTypeFlagBits, "VkExternalSemaphoreHandleTypeFlagBits")
+DAS_BIND_ENUM_CAST(VkFenceImportFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkFenceImportFlagBits, "VkFenceImportFlagBits")
+DAS_BIND_ENUM_CAST(VkMemoryAllocateFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkMemoryAllocateFlagBits, "VkMemoryAllocateFlagBits")
+DAS_BIND_ENUM_CAST(VkPeerMemoryFeatureFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkPeerMemoryFeatureFlagBits, "VkPeerMemoryFeatureFlagBits")
+DAS_BIND_ENUM_CAST(VkPointClippingBehavior)
+DAS_BASE_BIND_ENUM_FACTORY(VkPointClippingBehavior, "VkPointClippingBehavior")
+MAKE_TYPE_FACTORY(VkSamplerYcbcrConversion_T, VkSamplerYcbcrConversion_T)
+DAS_BIND_ENUM_CAST(VkSamplerYcbcrModelConversion)
+DAS_BASE_BIND_ENUM_FACTORY(VkSamplerYcbcrModelConversion, "VkSamplerYcbcrModelConversion")
+DAS_BIND_ENUM_CAST(VkSamplerYcbcrRange)
+DAS_BASE_BIND_ENUM_FACTORY(VkSamplerYcbcrRange, "VkSamplerYcbcrRange")
+DAS_BIND_ENUM_CAST(VkSemaphoreImportFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkSemaphoreImportFlagBits, "VkSemaphoreImportFlagBits")
+DAS_BIND_ENUM_CAST(VkSubgroupFeatureFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkSubgroupFeatureFlagBits, "VkSubgroupFeatureFlagBits")
+DAS_BIND_ENUM_CAST(VkTessellationDomainOrigin)
+DAS_BASE_BIND_ENUM_FACTORY(VkTessellationDomainOrigin, "VkTessellationDomainOrigin")
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_2)
+DAS_BIND_ENUM_CAST(VkDescriptorBindingFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkDescriptorBindingFlagBits, "VkDescriptorBindingFlagBits")
+DAS_BIND_ENUM_CAST(VkDriverId)
+DAS_BASE_BIND_ENUM_FACTORY(VkDriverId, "VkDriverId")
+DAS_BIND_ENUM_CAST(VkResolveModeFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkResolveModeFlagBits, "VkResolveModeFlagBits")
+DAS_BIND_ENUM_CAST(VkSamplerReductionMode)
+DAS_BASE_BIND_ENUM_FACTORY(VkSamplerReductionMode, "VkSamplerReductionMode")
+DAS_BIND_ENUM_CAST(VkSemaphoreType)
+DAS_BASE_BIND_ENUM_FACTORY(VkSemaphoreType, "VkSemaphoreType")
+DAS_BIND_ENUM_CAST(VkSemaphoreWaitFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkSemaphoreWaitFlagBits, "VkSemaphoreWaitFlagBits")
+DAS_BIND_ENUM_CAST(VkShaderFloatControlsIndependence)
+DAS_BASE_BIND_ENUM_FACTORY(VkShaderFloatControlsIndependence, "VkShaderFloatControlsIndependence")
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_3)
+DAS_BIND_ENUM_CAST(VkPipelineCreationFeedbackFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineCreationFeedbackFlagBits, "VkPipelineCreationFeedbackFlagBits")
+MAKE_TYPE_FACTORY(VkPrivateDataSlot_T, VkPrivateDataSlot_T)
+DAS_BIND_ENUM_CAST(VkRenderingFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkRenderingFlagBits, "VkRenderingFlagBits")
+DAS_BIND_ENUM_CAST(VkSubmitFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkSubmitFlagBits, "VkSubmitFlagBits")
+DAS_BIND_ENUM_CAST(VkToolPurposeFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkToolPurposeFlagBits, "VkToolPurposeFlagBits")
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+DAS_BIND_ENUM_CAST(VkHostImageCopyFlagBits)
+DAS_BASE_BIND_ENUM_FACTORY(VkHostImageCopyFlagBits, "VkHostImageCopyFlagBits")
+DAS_BIND_ENUM_CAST(VkLineRasterizationMode)
+DAS_BASE_BIND_ENUM_FACTORY(VkLineRasterizationMode, "VkLineRasterizationMode")
+DAS_BIND_ENUM_CAST(VkPipelineRobustnessBufferBehavior)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineRobustnessBufferBehavior, "VkPipelineRobustnessBufferBehavior")
+DAS_BIND_ENUM_CAST(VkPipelineRobustnessImageBehavior)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineRobustnessImageBehavior, "VkPipelineRobustnessImageBehavior")
+DAS_BIND_ENUM_CAST(VkQueueGlobalPriority)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueueGlobalPriority, "VkQueueGlobalPriority")
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_AMD_anti_lag)
+DAS_BIND_ENUM_CAST(VkAntiLagModeAMD)
+DAS_BASE_BIND_ENUM_FACTORY(VkAntiLagModeAMD, "VkAntiLagModeAMD")
+DAS_BIND_ENUM_CAST(VkAntiLagStageAMD)
+DAS_BASE_BIND_ENUM_FACTORY(VkAntiLagStageAMD, "VkAntiLagStageAMD")
+#endif /* defined(VK_AMD_anti_lag) */
+#if defined(VK_AMD_memory_overallocation_behavior)
+DAS_BIND_ENUM_CAST(VkMemoryOverallocationBehaviorAMD)
+DAS_BASE_BIND_ENUM_FACTORY(VkMemoryOverallocationBehaviorAMD, "VkMemoryOverallocationBehaviorAMD")
+#endif /* defined(VK_AMD_memory_overallocation_behavior) */
+#if defined(VK_AMD_rasterization_order)
+DAS_BIND_ENUM_CAST(VkRasterizationOrderAMD)
+DAS_BASE_BIND_ENUM_FACTORY(VkRasterizationOrderAMD, "VkRasterizationOrderAMD")
+#endif /* defined(VK_AMD_rasterization_order) */
+#if defined(VK_AMD_shader_info)
+DAS_BIND_ENUM_CAST(VkShaderInfoTypeAMD)
+DAS_BASE_BIND_ENUM_FACTORY(VkShaderInfoTypeAMD, "VkShaderInfoTypeAMD")
+#endif /* defined(VK_AMD_shader_info) */
+#if defined(VK_EXT_blend_operation_advanced)
+DAS_BIND_ENUM_CAST(VkBlendOverlapEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkBlendOverlapEXT, "VkBlendOverlapEXT")
+#endif /* defined(VK_EXT_blend_operation_advanced) */
+#if defined(VK_EXT_conditional_rendering)
+DAS_BIND_ENUM_CAST(VkConditionalRenderingFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkConditionalRenderingFlagBitsEXT, "VkConditionalRenderingFlagBitsEXT")
+#endif /* defined(VK_EXT_conditional_rendering) */
+#if defined(VK_EXT_conservative_rasterization)
+DAS_BIND_ENUM_CAST(VkConservativeRasterizationModeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkConservativeRasterizationModeEXT, "VkConservativeRasterizationModeEXT")
+#endif /* defined(VK_EXT_conservative_rasterization) */
+#if defined(VK_EXT_debug_report)
+MAKE_TYPE_FACTORY(VkDebugReportCallbackEXT_T, VkDebugReportCallbackEXT_T)
+DAS_BIND_ENUM_CAST(VkDebugReportFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDebugReportFlagBitsEXT, "VkDebugReportFlagBitsEXT")
+#endif /* defined(VK_EXT_debug_report) */
+#if defined(VK_EXT_debug_utils)
+DAS_BIND_ENUM_CAST(VkDebugUtilsMessageSeverityFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDebugUtilsMessageSeverityFlagBitsEXT, "VkDebugUtilsMessageSeverityFlagBitsEXT")
+DAS_BIND_ENUM_CAST(VkDebugUtilsMessageTypeFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDebugUtilsMessageTypeFlagBitsEXT, "VkDebugUtilsMessageTypeFlagBitsEXT")
+MAKE_TYPE_FACTORY(VkDebugUtilsMessengerEXT_T, VkDebugUtilsMessengerEXT_T)
+#endif /* defined(VK_EXT_debug_utils) */
+#if defined(VK_EXT_depth_bias_control)
+DAS_BIND_ENUM_CAST(VkDepthBiasRepresentationEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDepthBiasRepresentationEXT, "VkDepthBiasRepresentationEXT")
+#endif /* defined(VK_EXT_depth_bias_control) */
+#if defined(VK_EXT_depth_clamp_control)
+DAS_BIND_ENUM_CAST(VkDepthClampModeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDepthClampModeEXT, "VkDepthClampModeEXT")
+#endif /* defined(VK_EXT_depth_clamp_control) */
+#if defined(VK_EXT_device_address_binding_report)
+DAS_BIND_ENUM_CAST(VkDeviceAddressBindingFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceAddressBindingFlagBitsEXT, "VkDeviceAddressBindingFlagBitsEXT")
+DAS_BIND_ENUM_CAST(VkDeviceAddressBindingTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceAddressBindingTypeEXT, "VkDeviceAddressBindingTypeEXT")
+#endif /* defined(VK_EXT_device_address_binding_report) */
+#if defined(VK_EXT_device_fault)
+DAS_BIND_ENUM_CAST(VkDeviceFaultAddressTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceFaultAddressTypeEXT, "VkDeviceFaultAddressTypeEXT")
+DAS_BIND_ENUM_CAST(VkDeviceFaultVendorBinaryHeaderVersionEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceFaultVendorBinaryHeaderVersionEXT, "VkDeviceFaultVendorBinaryHeaderVersionEXT")
+#endif /* defined(VK_EXT_device_fault) */
+#if defined(VK_EXT_device_generated_commands)
+DAS_BIND_ENUM_CAST(VkIndirectCommandsInputModeFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndirectCommandsInputModeFlagBitsEXT, "VkIndirectCommandsInputModeFlagBitsEXT")
+MAKE_TYPE_FACTORY(VkIndirectCommandsLayoutEXT_T, VkIndirectCommandsLayoutEXT_T)
+DAS_BIND_ENUM_CAST(VkIndirectCommandsLayoutUsageFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndirectCommandsLayoutUsageFlagBitsEXT, "VkIndirectCommandsLayoutUsageFlagBitsEXT")
+DAS_BIND_ENUM_CAST(VkIndirectCommandsTokenTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndirectCommandsTokenTypeEXT, "VkIndirectCommandsTokenTypeEXT")
+MAKE_TYPE_FACTORY(VkIndirectExecutionSetEXT_T, VkIndirectExecutionSetEXT_T)
+DAS_BIND_ENUM_CAST(VkIndirectExecutionSetInfoTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndirectExecutionSetInfoTypeEXT, "VkIndirectExecutionSetInfoTypeEXT")
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_EXT_device_memory_report)
+DAS_BIND_ENUM_CAST(VkDeviceMemoryReportEventTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceMemoryReportEventTypeEXT, "VkDeviceMemoryReportEventTypeEXT")
+#endif /* defined(VK_EXT_device_memory_report) */
+#if defined(VK_EXT_discard_rectangles)
+DAS_BIND_ENUM_CAST(VkDiscardRectangleModeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDiscardRectangleModeEXT, "VkDiscardRectangleModeEXT")
+#endif /* defined(VK_EXT_discard_rectangles) */
+#if defined(VK_EXT_display_control)
+DAS_BIND_ENUM_CAST(VkDeviceEventTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceEventTypeEXT, "VkDeviceEventTypeEXT")
+DAS_BIND_ENUM_CAST(VkDisplayEventTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDisplayEventTypeEXT, "VkDisplayEventTypeEXT")
+DAS_BIND_ENUM_CAST(VkDisplayPowerStateEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDisplayPowerStateEXT, "VkDisplayPowerStateEXT")
+#endif /* defined(VK_EXT_display_control) */
+#if defined(VK_EXT_display_surface_counter)
+DAS_BIND_ENUM_CAST(VkSurfaceCounterFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkSurfaceCounterFlagBitsEXT, "VkSurfaceCounterFlagBitsEXT")
+#endif /* defined(VK_EXT_display_surface_counter) */
+#if defined(VK_EXT_frame_boundary)
+DAS_BIND_ENUM_CAST(VkFrameBoundaryFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkFrameBoundaryFlagBitsEXT, "VkFrameBoundaryFlagBitsEXT")
+#endif /* defined(VK_EXT_frame_boundary) */
+#if defined(VK_EXT_full_screen_exclusive)
+DAS_BIND_ENUM_CAST(VkFullScreenExclusiveEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkFullScreenExclusiveEXT, "VkFullScreenExclusiveEXT")
+#endif /* defined(VK_EXT_full_screen_exclusive) */
+#if defined(VK_EXT_graphics_pipeline_library)
+DAS_BIND_ENUM_CAST(VkGraphicsPipelineLibraryFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkGraphicsPipelineLibraryFlagBitsEXT, "VkGraphicsPipelineLibraryFlagBitsEXT")
+#endif /* defined(VK_EXT_graphics_pipeline_library) */
+#if defined(VK_EXT_image_compression_control)
+DAS_BIND_ENUM_CAST(VkImageCompressionFixedRateFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageCompressionFixedRateFlagBitsEXT, "VkImageCompressionFixedRateFlagBitsEXT")
+DAS_BIND_ENUM_CAST(VkImageCompressionFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageCompressionFlagBitsEXT, "VkImageCompressionFlagBitsEXT")
+#endif /* defined(VK_EXT_image_compression_control) */
+#if defined(VK_EXT_layer_settings)
+DAS_BIND_ENUM_CAST(VkLayerSettingTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkLayerSettingTypeEXT, "VkLayerSettingTypeEXT")
+#endif /* defined(VK_EXT_layer_settings) */
+#if defined(VK_EXT_metal_objects)
+DAS_BIND_ENUM_CAST(VkExportMetalObjectTypeFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkExportMetalObjectTypeFlagBitsEXT, "VkExportMetalObjectTypeFlagBitsEXT")
+#endif /* defined(VK_EXT_metal_objects) */
+#if defined(VK_EXT_opacity_micromap)
+DAS_BIND_ENUM_CAST(VkBuildMicromapFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkBuildMicromapFlagBitsEXT, "VkBuildMicromapFlagBitsEXT")
+DAS_BIND_ENUM_CAST(VkBuildMicromapModeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkBuildMicromapModeEXT, "VkBuildMicromapModeEXT")
+DAS_BIND_ENUM_CAST(VkCopyMicromapModeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkCopyMicromapModeEXT, "VkCopyMicromapModeEXT")
+DAS_BIND_ENUM_CAST(VkMicromapCreateFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkMicromapCreateFlagBitsEXT, "VkMicromapCreateFlagBitsEXT")
+MAKE_TYPE_FACTORY(VkMicromapEXT_T, VkMicromapEXT_T)
+DAS_BIND_ENUM_CAST(VkMicromapTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkMicromapTypeEXT, "VkMicromapTypeEXT")
+DAS_BIND_ENUM_CAST(VkOpacityMicromapFormatEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpacityMicromapFormatEXT, "VkOpacityMicromapFormatEXT")
+DAS_BIND_ENUM_CAST(VkOpacityMicromapSpecialIndexEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpacityMicromapSpecialIndexEXT, "VkOpacityMicromapSpecialIndexEXT")
+#endif /* defined(VK_EXT_opacity_micromap) */
+#if defined(VK_EXT_provoking_vertex)
+DAS_BIND_ENUM_CAST(VkProvokingVertexModeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkProvokingVertexModeEXT, "VkProvokingVertexModeEXT")
+#endif /* defined(VK_EXT_provoking_vertex) */
+#if defined(VK_EXT_shader_object)
+DAS_BIND_ENUM_CAST(VkShaderCodeTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkShaderCodeTypeEXT, "VkShaderCodeTypeEXT")
+DAS_BIND_ENUM_CAST(VkShaderCreateFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkShaderCreateFlagBitsEXT, "VkShaderCreateFlagBitsEXT")
+MAKE_TYPE_FACTORY(VkShaderEXT_T, VkShaderEXT_T)
+#endif /* defined(VK_EXT_shader_object) */
+#if defined(VK_EXT_subpass_merge_feedback)
+DAS_BIND_ENUM_CAST(VkSubpassMergeStatusEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkSubpassMergeStatusEXT, "VkSubpassMergeStatusEXT")
+#endif /* defined(VK_EXT_subpass_merge_feedback) */
+#if defined(VK_EXT_surface_maintenance1)
+DAS_BIND_ENUM_CAST(VkPresentGravityFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkPresentGravityFlagBitsEXT, "VkPresentGravityFlagBitsEXT")
+DAS_BIND_ENUM_CAST(VkPresentScalingFlagBitsEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkPresentScalingFlagBitsEXT, "VkPresentScalingFlagBitsEXT")
+#endif /* defined(VK_EXT_surface_maintenance1) */
+#if defined(VK_EXT_validation_cache)
+MAKE_TYPE_FACTORY(VkValidationCacheEXT_T, VkValidationCacheEXT_T)
+DAS_BIND_ENUM_CAST(VkValidationCacheHeaderVersionEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkValidationCacheHeaderVersionEXT, "VkValidationCacheHeaderVersionEXT")
+#endif /* defined(VK_EXT_validation_cache) */
+#if defined(VK_EXT_validation_features)
+DAS_BIND_ENUM_CAST(VkValidationFeatureDisableEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkValidationFeatureDisableEXT, "VkValidationFeatureDisableEXT")
+DAS_BIND_ENUM_CAST(VkValidationFeatureEnableEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkValidationFeatureEnableEXT, "VkValidationFeatureEnableEXT")
+#endif /* defined(VK_EXT_validation_features) */
+#if defined(VK_EXT_validation_flags)
+DAS_BIND_ENUM_CAST(VkValidationCheckEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkValidationCheckEXT, "VkValidationCheckEXT")
+#endif /* defined(VK_EXT_validation_flags) */
+#if defined(VK_FUCHSIA_buffer_collection)
+MAKE_TYPE_FACTORY(VkBufferCollectionFUCHSIA_T, VkBufferCollectionFUCHSIA_T)
+DAS_BIND_ENUM_CAST(VkImageConstraintsInfoFlagBitsFUCHSIA)
+DAS_BASE_BIND_ENUM_FACTORY(VkImageConstraintsInfoFlagBitsFUCHSIA, "VkImageConstraintsInfoFlagBitsFUCHSIA")
+#endif /* defined(VK_FUCHSIA_buffer_collection) */
+#if defined(VK_INTEL_performance_query)
+MAKE_TYPE_FACTORY(VkPerformanceConfigurationINTEL_T, VkPerformanceConfigurationINTEL_T)
+DAS_BIND_ENUM_CAST(VkPerformanceConfigurationTypeINTEL)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceConfigurationTypeINTEL, "VkPerformanceConfigurationTypeINTEL")
+DAS_BIND_ENUM_CAST(VkPerformanceOverrideTypeINTEL)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceOverrideTypeINTEL, "VkPerformanceOverrideTypeINTEL")
+DAS_BIND_ENUM_CAST(VkPerformanceParameterTypeINTEL)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceParameterTypeINTEL, "VkPerformanceParameterTypeINTEL")
+DAS_BIND_ENUM_CAST(VkPerformanceValueTypeINTEL)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceValueTypeINTEL, "VkPerformanceValueTypeINTEL")
+DAS_BIND_ENUM_CAST(VkQueryPoolSamplingModeINTEL)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueryPoolSamplingModeINTEL, "VkQueryPoolSamplingModeINTEL")
+#endif /* defined(VK_INTEL_performance_query) */
+#if defined(VK_KHR_acceleration_structure)
+DAS_BIND_ENUM_CAST(VkAccelerationStructureBuildTypeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkAccelerationStructureBuildTypeKHR, "VkAccelerationStructureBuildTypeKHR")
+DAS_BIND_ENUM_CAST(VkAccelerationStructureCompatibilityKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkAccelerationStructureCompatibilityKHR, "VkAccelerationStructureCompatibilityKHR")
+DAS_BIND_ENUM_CAST(VkAccelerationStructureCreateFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkAccelerationStructureCreateFlagBitsKHR, "VkAccelerationStructureCreateFlagBitsKHR")
+MAKE_TYPE_FACTORY(VkAccelerationStructureKHR_T, VkAccelerationStructureKHR_T)
+DAS_BIND_ENUM_CAST(VkAccelerationStructureTypeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkAccelerationStructureTypeKHR, "VkAccelerationStructureTypeKHR")
+DAS_BIND_ENUM_CAST(VkBuildAccelerationStructureFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkBuildAccelerationStructureFlagBitsKHR, "VkBuildAccelerationStructureFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkBuildAccelerationStructureModeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkBuildAccelerationStructureModeKHR, "VkBuildAccelerationStructureModeKHR")
+DAS_BIND_ENUM_CAST(VkCopyAccelerationStructureModeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkCopyAccelerationStructureModeKHR, "VkCopyAccelerationStructureModeKHR")
+DAS_BIND_ENUM_CAST(VkGeometryFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkGeometryFlagBitsKHR, "VkGeometryFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkGeometryInstanceFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkGeometryInstanceFlagBitsKHR, "VkGeometryInstanceFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkGeometryTypeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkGeometryTypeKHR, "VkGeometryTypeKHR")
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_KHR_calibrated_timestamps)
+DAS_BIND_ENUM_CAST(VkTimeDomainKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkTimeDomainKHR, "VkTimeDomainKHR")
+#endif /* defined(VK_KHR_calibrated_timestamps) */
+#if defined(VK_KHR_cooperative_matrix)
+DAS_BIND_ENUM_CAST(VkComponentTypeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkComponentTypeKHR, "VkComponentTypeKHR")
+DAS_BIND_ENUM_CAST(VkScopeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkScopeKHR, "VkScopeKHR")
+#endif /* defined(VK_KHR_cooperative_matrix) */
+#if defined(VK_KHR_deferred_host_operations)
+MAKE_TYPE_FACTORY(VkDeferredOperationKHR_T, VkDeferredOperationKHR_T)
+#endif /* defined(VK_KHR_deferred_host_operations) */
+#if defined(VK_KHR_display)
+MAKE_TYPE_FACTORY(VkDisplayKHR_T, VkDisplayKHR_T)
+MAKE_TYPE_FACTORY(VkDisplayModeKHR_T, VkDisplayModeKHR_T)
+DAS_BIND_ENUM_CAST(VkDisplayPlaneAlphaFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkDisplayPlaneAlphaFlagBitsKHR, "VkDisplayPlaneAlphaFlagBitsKHR")
+#endif /* defined(VK_KHR_display) */
+#if defined(VK_KHR_fragment_shading_rate)
+DAS_BIND_ENUM_CAST(VkFragmentShadingRateCombinerOpKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkFragmentShadingRateCombinerOpKHR, "VkFragmentShadingRateCombinerOpKHR")
+#endif /* defined(VK_KHR_fragment_shading_rate) */
+#if defined(VK_KHR_maintenance7)
+DAS_BIND_ENUM_CAST(VkPhysicalDeviceLayeredApiKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkPhysicalDeviceLayeredApiKHR, "VkPhysicalDeviceLayeredApiKHR")
+#endif /* defined(VK_KHR_maintenance7) */
+#if defined(VK_KHR_performance_query)
+DAS_BIND_ENUM_CAST(VkPerformanceCounterDescriptionFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceCounterDescriptionFlagBitsKHR, "VkPerformanceCounterDescriptionFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkPerformanceCounterScopeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceCounterScopeKHR, "VkPerformanceCounterScopeKHR")
+DAS_BIND_ENUM_CAST(VkPerformanceCounterStorageKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceCounterStorageKHR, "VkPerformanceCounterStorageKHR")
+DAS_BIND_ENUM_CAST(VkPerformanceCounterUnitKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkPerformanceCounterUnitKHR, "VkPerformanceCounterUnitKHR")
+#endif /* defined(VK_KHR_performance_query) */
+#if defined(VK_KHR_pipeline_binary)
+MAKE_TYPE_FACTORY(VkPipelineBinaryKHR_T, VkPipelineBinaryKHR_T)
+#endif /* defined(VK_KHR_pipeline_binary) */
+#if defined(VK_KHR_pipeline_executable_properties)
+DAS_BIND_ENUM_CAST(VkPipelineExecutableStatisticFormatKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkPipelineExecutableStatisticFormatKHR, "VkPipelineExecutableStatisticFormatKHR")
+#endif /* defined(VK_KHR_pipeline_executable_properties) */
+#if defined(VK_KHR_ray_tracing_pipeline)
+DAS_BIND_ENUM_CAST(VkRayTracingShaderGroupTypeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkRayTracingShaderGroupTypeKHR, "VkRayTracingShaderGroupTypeKHR")
+DAS_BIND_ENUM_CAST(VkShaderGroupShaderKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkShaderGroupShaderKHR, "VkShaderGroupShaderKHR")
+#endif /* defined(VK_KHR_ray_tracing_pipeline) */
+#if defined(VK_KHR_surface)
+DAS_BIND_ENUM_CAST(VkColorSpaceKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkColorSpaceKHR, "VkColorSpaceKHR")
+DAS_BIND_ENUM_CAST(VkCompositeAlphaFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkCompositeAlphaFlagBitsKHR, "VkCompositeAlphaFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkPresentModeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkPresentModeKHR, "VkPresentModeKHR")
+MAKE_TYPE_FACTORY(VkSurfaceKHR_T, VkSurfaceKHR_T)
+DAS_BIND_ENUM_CAST(VkSurfaceTransformFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkSurfaceTransformFlagBitsKHR, "VkSurfaceTransformFlagBitsKHR")
+#endif /* defined(VK_KHR_surface) */
+#if defined(VK_KHR_swapchain)
+MAKE_TYPE_FACTORY(VkSwapchainKHR_T, VkSwapchainKHR_T)
+#endif /* defined(VK_KHR_swapchain) */
+#if defined(VK_KHR_video_decode_h264)
+DAS_BIND_ENUM_CAST(VkVideoDecodeH264PictureLayoutFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoDecodeH264PictureLayoutFlagBitsKHR, "VkVideoDecodeH264PictureLayoutFlagBitsKHR")
+#endif /* defined(VK_KHR_video_decode_h264) */
+#if defined(VK_KHR_video_decode_queue)
+DAS_BIND_ENUM_CAST(VkVideoDecodeCapabilityFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoDecodeCapabilityFlagBitsKHR, "VkVideoDecodeCapabilityFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoDecodeUsageFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoDecodeUsageFlagBitsKHR, "VkVideoDecodeUsageFlagBitsKHR")
+#endif /* defined(VK_KHR_video_decode_queue) */
+#if defined(VK_KHR_video_encode_av1)
+DAS_BIND_ENUM_CAST(VkVideoEncodeAV1CapabilityFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeAV1CapabilityFlagBitsKHR, "VkVideoEncodeAV1CapabilityFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeAV1PredictionModeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeAV1PredictionModeKHR, "VkVideoEncodeAV1PredictionModeKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeAV1RateControlFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeAV1RateControlFlagBitsKHR, "VkVideoEncodeAV1RateControlFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeAV1RateControlGroupKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeAV1RateControlGroupKHR, "VkVideoEncodeAV1RateControlGroupKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeAV1StdFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeAV1StdFlagBitsKHR, "VkVideoEncodeAV1StdFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeAV1SuperblockSizeFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeAV1SuperblockSizeFlagBitsKHR, "VkVideoEncodeAV1SuperblockSizeFlagBitsKHR")
+#endif /* defined(VK_KHR_video_encode_av1) */
+#if defined(VK_KHR_video_encode_h264)
+DAS_BIND_ENUM_CAST(VkVideoEncodeH264CapabilityFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH264CapabilityFlagBitsKHR, "VkVideoEncodeH264CapabilityFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeH264RateControlFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH264RateControlFlagBitsKHR, "VkVideoEncodeH264RateControlFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeH264StdFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH264StdFlagBitsKHR, "VkVideoEncodeH264StdFlagBitsKHR")
+#endif /* defined(VK_KHR_video_encode_h264) */
+#if defined(VK_KHR_video_encode_h265)
+DAS_BIND_ENUM_CAST(VkVideoEncodeH265CapabilityFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH265CapabilityFlagBitsKHR, "VkVideoEncodeH265CapabilityFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeH265CtbSizeFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH265CtbSizeFlagBitsKHR, "VkVideoEncodeH265CtbSizeFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeH265RateControlFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH265RateControlFlagBitsKHR, "VkVideoEncodeH265RateControlFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeH265StdFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH265StdFlagBitsKHR, "VkVideoEncodeH265StdFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeH265TransformBlockSizeFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeH265TransformBlockSizeFlagBitsKHR, "VkVideoEncodeH265TransformBlockSizeFlagBitsKHR")
+#endif /* defined(VK_KHR_video_encode_h265) */
+#if defined(VK_KHR_video_encode_queue)
+DAS_BIND_ENUM_CAST(VkVideoEncodeCapabilityFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeCapabilityFlagBitsKHR, "VkVideoEncodeCapabilityFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeContentFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeContentFlagBitsKHR, "VkVideoEncodeContentFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeFeedbackFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeFeedbackFlagBitsKHR, "VkVideoEncodeFeedbackFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeRateControlModeFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeRateControlModeFlagBitsKHR, "VkVideoEncodeRateControlModeFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeTuningModeKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeTuningModeKHR, "VkVideoEncodeTuningModeKHR")
+DAS_BIND_ENUM_CAST(VkVideoEncodeUsageFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoEncodeUsageFlagBitsKHR, "VkVideoEncodeUsageFlagBitsKHR")
+#endif /* defined(VK_KHR_video_encode_queue) */
+#if defined(VK_KHR_video_queue)
+DAS_BIND_ENUM_CAST(VkQueryResultStatusKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkQueryResultStatusKHR, "VkQueryResultStatusKHR")
+DAS_BIND_ENUM_CAST(VkVideoCapabilityFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoCapabilityFlagBitsKHR, "VkVideoCapabilityFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoChromaSubsamplingFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoChromaSubsamplingFlagBitsKHR, "VkVideoChromaSubsamplingFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoCodecOperationFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoCodecOperationFlagBitsKHR, "VkVideoCodecOperationFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoCodingControlFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoCodingControlFlagBitsKHR, "VkVideoCodingControlFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoComponentBitDepthFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoComponentBitDepthFlagBitsKHR, "VkVideoComponentBitDepthFlagBitsKHR")
+DAS_BIND_ENUM_CAST(VkVideoSessionCreateFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkVideoSessionCreateFlagBitsKHR, "VkVideoSessionCreateFlagBitsKHR")
+MAKE_TYPE_FACTORY(VkVideoSessionKHR_T, VkVideoSessionKHR_T)
+MAKE_TYPE_FACTORY(VkVideoSessionParametersKHR_T, VkVideoSessionParametersKHR_T)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_LUNARG_direct_driver_loading)
+DAS_BIND_ENUM_CAST(VkDirectDriverLoadingModeLUNARG)
+DAS_BASE_BIND_ENUM_FACTORY(VkDirectDriverLoadingModeLUNARG, "VkDirectDriverLoadingModeLUNARG")
+#endif /* defined(VK_LUNARG_direct_driver_loading) */
+#if defined(VK_MSFT_layered_driver)
+DAS_BIND_ENUM_CAST(VkLayeredDriverUnderlyingApiMSFT)
+DAS_BASE_BIND_ENUM_FACTORY(VkLayeredDriverUnderlyingApiMSFT, "VkLayeredDriverUnderlyingApiMSFT")
+#endif /* defined(VK_MSFT_layered_driver) */
+#if defined(VK_NVX_binary_import)
+MAKE_TYPE_FACTORY(VkCuFunctionNVX_T, VkCuFunctionNVX_T)
+MAKE_TYPE_FACTORY(VkCuModuleNVX_T, VkCuModuleNVX_T)
+#endif /* defined(VK_NVX_binary_import) */
+#if defined(VK_NV_coverage_reduction_mode)
+DAS_BIND_ENUM_CAST(VkCoverageReductionModeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkCoverageReductionModeNV, "VkCoverageReductionModeNV")
+#endif /* defined(VK_NV_coverage_reduction_mode) */
+#if defined(VK_NV_cuda_kernel_launch)
+MAKE_TYPE_FACTORY(VkCudaFunctionNV_T, VkCudaFunctionNV_T)
+MAKE_TYPE_FACTORY(VkCudaModuleNV_T, VkCudaModuleNV_T)
+#endif /* defined(VK_NV_cuda_kernel_launch) */
+#if defined(VK_NV_device_diagnostics_config)
+DAS_BIND_ENUM_CAST(VkDeviceDiagnosticsConfigFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceDiagnosticsConfigFlagBitsNV, "VkDeviceDiagnosticsConfigFlagBitsNV")
+#endif /* defined(VK_NV_device_diagnostics_config) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkIndirectCommandsLayoutNV_T, VkIndirectCommandsLayoutNV_T)
+DAS_BIND_ENUM_CAST(VkIndirectCommandsLayoutUsageFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndirectCommandsLayoutUsageFlagBitsNV, "VkIndirectCommandsLayoutUsageFlagBitsNV")
+DAS_BIND_ENUM_CAST(VkIndirectCommandsTokenTypeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndirectCommandsTokenTypeNV, "VkIndirectCommandsTokenTypeNV")
+DAS_BIND_ENUM_CAST(VkIndirectStateFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkIndirectStateFlagBitsNV, "VkIndirectStateFlagBitsNV")
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_NV_displacement_micromap)
+DAS_BIND_ENUM_CAST(VkDisplacementMicromapFormatNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkDisplacementMicromapFormatNV, "VkDisplacementMicromapFormatNV")
+#endif /* defined(VK_NV_displacement_micromap) */
+#if defined(VK_NV_display_stereo)
+DAS_BIND_ENUM_CAST(VkDisplaySurfaceStereoTypeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkDisplaySurfaceStereoTypeNV, "VkDisplaySurfaceStereoTypeNV")
+#endif /* defined(VK_NV_display_stereo) */
+#if defined(VK_NV_external_memory_capabilities)
+DAS_BIND_ENUM_CAST(VkExternalMemoryFeatureFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalMemoryFeatureFlagBitsNV, "VkExternalMemoryFeatureFlagBitsNV")
+DAS_BIND_ENUM_CAST(VkExternalMemoryHandleTypeFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkExternalMemoryHandleTypeFlagBitsNV, "VkExternalMemoryHandleTypeFlagBitsNV")
+#endif /* defined(VK_NV_external_memory_capabilities) */
+#if defined(VK_NV_fragment_shading_rate_enums)
+DAS_BIND_ENUM_CAST(VkFragmentShadingRateNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkFragmentShadingRateNV, "VkFragmentShadingRateNV")
+DAS_BIND_ENUM_CAST(VkFragmentShadingRateTypeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkFragmentShadingRateTypeNV, "VkFragmentShadingRateTypeNV")
+#endif /* defined(VK_NV_fragment_shading_rate_enums) */
+#if defined(VK_NV_framebuffer_mixed_samples)
+DAS_BIND_ENUM_CAST(VkCoverageModulationModeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkCoverageModulationModeNV, "VkCoverageModulationModeNV")
+#endif /* defined(VK_NV_framebuffer_mixed_samples) */
+#if defined(VK_NV_low_latency2)
+DAS_BIND_ENUM_CAST(VkLatencyMarkerNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkLatencyMarkerNV, "VkLatencyMarkerNV")
+DAS_BIND_ENUM_CAST(VkOutOfBandQueueTypeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkOutOfBandQueueTypeNV, "VkOutOfBandQueueTypeNV")
+#endif /* defined(VK_NV_low_latency2) */
+#if defined(VK_NV_optical_flow)
+DAS_BIND_ENUM_CAST(VkOpticalFlowExecuteFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpticalFlowExecuteFlagBitsNV, "VkOpticalFlowExecuteFlagBitsNV")
+DAS_BIND_ENUM_CAST(VkOpticalFlowGridSizeFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpticalFlowGridSizeFlagBitsNV, "VkOpticalFlowGridSizeFlagBitsNV")
+DAS_BIND_ENUM_CAST(VkOpticalFlowPerformanceLevelNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpticalFlowPerformanceLevelNV, "VkOpticalFlowPerformanceLevelNV")
+DAS_BIND_ENUM_CAST(VkOpticalFlowSessionBindingPointNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpticalFlowSessionBindingPointNV, "VkOpticalFlowSessionBindingPointNV")
+DAS_BIND_ENUM_CAST(VkOpticalFlowSessionCreateFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpticalFlowSessionCreateFlagBitsNV, "VkOpticalFlowSessionCreateFlagBitsNV")
+MAKE_TYPE_FACTORY(VkOpticalFlowSessionNV_T, VkOpticalFlowSessionNV_T)
+DAS_BIND_ENUM_CAST(VkOpticalFlowUsageFlagBitsNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkOpticalFlowUsageFlagBitsNV, "VkOpticalFlowUsageFlagBitsNV")
+#endif /* defined(VK_NV_optical_flow) */
+#if defined(VK_NV_ray_tracing)
+DAS_BIND_ENUM_CAST(VkAccelerationStructureMemoryRequirementsTypeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkAccelerationStructureMemoryRequirementsTypeNV, "VkAccelerationStructureMemoryRequirementsTypeNV")
+MAKE_TYPE_FACTORY(VkAccelerationStructureNV_T, VkAccelerationStructureNV_T)
+#endif /* defined(VK_NV_ray_tracing) */
+#if defined(VK_NV_ray_tracing_invocation_reorder)
+DAS_BIND_ENUM_CAST(VkRayTracingInvocationReorderModeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkRayTracingInvocationReorderModeNV, "VkRayTracingInvocationReorderModeNV")
+#endif /* defined(VK_NV_ray_tracing_invocation_reorder) */
+#if defined(VK_NV_ray_tracing_motion_blur)
+DAS_BIND_ENUM_CAST(VkAccelerationStructureMotionInstanceTypeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkAccelerationStructureMotionInstanceTypeNV, "VkAccelerationStructureMotionInstanceTypeNV")
+#endif /* defined(VK_NV_ray_tracing_motion_blur) */
+#if defined(VK_NV_shading_rate_image)
+DAS_BIND_ENUM_CAST(VkCoarseSampleOrderTypeNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkCoarseSampleOrderTypeNV, "VkCoarseSampleOrderTypeNV")
+DAS_BIND_ENUM_CAST(VkShadingRatePaletteEntryNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkShadingRatePaletteEntryNV, "VkShadingRatePaletteEntryNV")
+#endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_NV_viewport_swizzle)
+DAS_BIND_ENUM_CAST(VkViewportCoordinateSwizzleNV)
+DAS_BASE_BIND_ENUM_FACTORY(VkViewportCoordinateSwizzleNV, "VkViewportCoordinateSwizzleNV")
+#endif /* defined(VK_NV_viewport_swizzle) */
+#if defined(VK_QCOM_filter_cubic_weights)
+DAS_BIND_ENUM_CAST(VkCubicFilterWeightsQCOM)
+DAS_BASE_BIND_ENUM_FACTORY(VkCubicFilterWeightsQCOM, "VkCubicFilterWeightsQCOM")
+#endif /* defined(VK_QCOM_filter_cubic_weights) */
+#if defined(VK_QCOM_image_processing2)
+DAS_BIND_ENUM_CAST(VkBlockMatchWindowCompareModeQCOM)
+DAS_BASE_BIND_ENUM_FACTORY(VkBlockMatchWindowCompareModeQCOM, "VkBlockMatchWindowCompareModeQCOM")
+#endif /* defined(VK_QCOM_image_processing2) */
+#if (defined(VK_EXT_debug_marker)) || (defined(VK_EXT_debug_report))
+DAS_BIND_ENUM_CAST(VkDebugReportObjectTypeEXT)
+DAS_BASE_BIND_ENUM_FACTORY(VkDebugReportObjectTypeEXT, "VkDebugReportObjectTypeEXT")
+#endif /* (defined(VK_EXT_debug_marker)) || (defined(VK_EXT_debug_report)) */
+#if (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
+DAS_BIND_ENUM_CAST(VkDeviceGroupPresentModeFlagBitsKHR)
+DAS_BASE_BIND_ENUM_FACTORY(VkDeviceGroupPresentModeFlagBitsKHR, "VkDeviceGroupPresentModeFlagBitsKHR")
+#endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkAabbPositionsKHR, VkAabbPositionsKHR)
+MAKE_TYPE_FACTORY(VkDeviceOrHostAddressConstKHR, VkDeviceOrHostAddressConstKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureGeometryAabbsDataKHR, VkAccelerationStructureGeometryAabbsDataKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureGeometryInstancesDataKHR, VkAccelerationStructureGeometryInstancesDataKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureGeometryTrianglesDataKHR, VkAccelerationStructureGeometryTrianglesDataKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureGeometryDataKHR, VkAccelerationStructureGeometryDataKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureGeometryKHR, VkAccelerationStructureGeometryKHR)
+MAKE_TYPE_FACTORY(VkDeviceOrHostAddressKHR, VkDeviceOrHostAddressKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureBuildGeometryInfoKHR, VkAccelerationStructureBuildGeometryInfoKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureBuildRangeInfoKHR, VkAccelerationStructureBuildRangeInfoKHR)
+MAKE_TYPE_FACTORY(VkAccelerationStructureBuildSizesInfoKHR, VkAccelerationStructureBuildSizesInfoKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_EXT_descriptor_buffer) && (defined(VK_KHR_acceleration_structure) || defined(VK_NV_ray_tracing))
+MAKE_TYPE_FACTORY(VkAccelerationStructureCaptureDescriptorDataInfoEXT, VkAccelerationStructureCaptureDescriptorDataInfoEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) && (defined(VK_KHR_acceleration_structure) || defined(VK_NV_ray_tracing)) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkAccelerationStructureCreateInfoKHR, VkAccelerationStructureCreateInfoKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_NV_ray_tracing)
+MAKE_TYPE_FACTORY(VkGeometryAABBNV, VkGeometryAABBNV)
+MAKE_TYPE_FACTORY(VkGeometryTrianglesNV, VkGeometryTrianglesNV)
+MAKE_TYPE_FACTORY(VkGeometryDataNV, VkGeometryDataNV)
+MAKE_TYPE_FACTORY(VkGeometryNV, VkGeometryNV)
+MAKE_TYPE_FACTORY(VkAccelerationStructureInfoNV, VkAccelerationStructureInfoNV)
+MAKE_TYPE_FACTORY(VkAccelerationStructureCreateInfoNV, VkAccelerationStructureCreateInfoNV)
+#endif /* defined(VK_NV_ray_tracing) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkAccelerationStructureDeviceAddressInfoKHR, VkAccelerationStructureDeviceAddressInfoKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_NV_ray_tracing_motion_blur)
+MAKE_TYPE_FACTORY(VkAccelerationStructureGeometryMotionTrianglesDataNV, VkAccelerationStructureGeometryMotionTrianglesDataNV)
+#endif /* defined(VK_NV_ray_tracing_motion_blur) */
+#if defined(VK_NV_ray_tracing)
+MAKE_TYPE_FACTORY(VkAccelerationStructureMemoryRequirementsInfoNV, VkAccelerationStructureMemoryRequirementsInfoNV)
+#endif /* defined(VK_NV_ray_tracing) */
+#if defined(VK_NV_ray_tracing_motion_blur)
+MAKE_TYPE_FACTORY(VkAccelerationStructureMotionInfoNV, VkAccelerationStructureMotionInfoNV)
+MAKE_TYPE_FACTORY(VkAccelerationStructureMotionInstanceDataNV, VkAccelerationStructureMotionInstanceDataNV)
+MAKE_TYPE_FACTORY(VkAccelerationStructureMotionInstanceNV, VkAccelerationStructureMotionInstanceNV)
+#endif /* defined(VK_NV_ray_tracing_motion_blur) */
+#if defined(VK_EXT_opacity_micromap)
+MAKE_TYPE_FACTORY(VkMicromapUsageEXT, VkMicromapUsageEXT)
+#endif /* defined(VK_EXT_opacity_micromap) */
+#if defined(VK_NV_displacement_micromap)
+MAKE_TYPE_FACTORY(VkAccelerationStructureTrianglesDisplacementMicromapNV, VkAccelerationStructureTrianglesDisplacementMicromapNV)
+#endif /* defined(VK_NV_displacement_micromap) */
+#if defined(VK_EXT_opacity_micromap)
+MAKE_TYPE_FACTORY(VkAccelerationStructureTrianglesOpacityMicromapEXT, VkAccelerationStructureTrianglesOpacityMicromapEXT)
+#endif /* defined(VK_EXT_opacity_micromap) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkAccelerationStructureVersionInfoKHR, VkAccelerationStructureVersionInfoKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
+MAKE_TYPE_FACTORY(VkAcquireNextImageInfoKHR, VkAcquireNextImageInfoKHR)
+#endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
+#if defined(VK_KHR_performance_query)
+MAKE_TYPE_FACTORY(VkAcquireProfilingLockInfoKHR, VkAcquireProfilingLockInfoKHR)
+#endif /* defined(VK_KHR_performance_query) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkAllocationCallbacks, VkAllocationCallbacks)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_SEC_amigo_profiling)
+MAKE_TYPE_FACTORY(VkAmigoProfilingSubmitInfoSEC, VkAmigoProfilingSubmitInfoSEC)
+#endif /* defined(VK_SEC_amigo_profiling) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkComponentMapping, VkComponentMapping)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_ANDROID_external_memory_android_hardware_buffer) && (defined(VK_KHR_format_feature_flags2) || defined(VK_VERSION_1_3))
+MAKE_TYPE_FACTORY(VkAndroidHardwareBufferFormatProperties2ANDROID, VkAndroidHardwareBufferFormatProperties2ANDROID)
+#endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) && (defined(VK_KHR_format_feature_flags2) || defined(VK_VERSION_1_3)) */
+#if defined(VK_ANDROID_external_memory_android_hardware_buffer)
+MAKE_TYPE_FACTORY(VkAndroidHardwareBufferFormatPropertiesANDROID, VkAndroidHardwareBufferFormatPropertiesANDROID)
+#endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
+#if defined(VK_ANDROID_external_format_resolve)
+MAKE_TYPE_FACTORY(VkAndroidHardwareBufferFormatResolvePropertiesANDROID, VkAndroidHardwareBufferFormatResolvePropertiesANDROID)
+#endif /* defined(VK_ANDROID_external_format_resolve) */
+#if defined(VK_ANDROID_external_memory_android_hardware_buffer)
+MAKE_TYPE_FACTORY(VkAndroidHardwareBufferPropertiesANDROID, VkAndroidHardwareBufferPropertiesANDROID)
+MAKE_TYPE_FACTORY(VkAndroidHardwareBufferUsageANDROID, VkAndroidHardwareBufferUsageANDROID)
+#endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
+#if defined(VK_KHR_android_surface)
+MAKE_TYPE_FACTORY(VkAndroidSurfaceCreateInfoKHR, VkAndroidSurfaceCreateInfoKHR)
+#endif /* defined(VK_KHR_android_surface) */
+#if defined(VK_AMD_anti_lag)
+MAKE_TYPE_FACTORY(VkAntiLagPresentationInfoAMD, VkAntiLagPresentationInfoAMD)
+MAKE_TYPE_FACTORY(VkAntiLagDataAMD, VkAntiLagDataAMD)
+#endif /* defined(VK_AMD_anti_lag) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkApplicationInfo, VkApplicationInfo)
+MAKE_TYPE_FACTORY(VkAttachmentDescription, VkAttachmentDescription)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkAttachmentDescription2, VkAttachmentDescription2)
+MAKE_TYPE_FACTORY(VkAttachmentDescriptionStencilLayout, VkAttachmentDescriptionStencilLayout)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkAttachmentReference, VkAttachmentReference)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkAttachmentReference2, VkAttachmentReference2)
+MAKE_TYPE_FACTORY(VkAttachmentReferenceStencilLayout, VkAttachmentReferenceStencilLayout)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_AMD_mixed_attachment_samples) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering))
+MAKE_TYPE_FACTORY(VkAttachmentSampleCountInfoAMD, VkAttachmentSampleCountInfoAMD)
+#endif /* defined(VK_AMD_mixed_attachment_samples) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering)) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkExtent2D, VkExtent2D)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_sample_locations)
+MAKE_TYPE_FACTORY(VkSampleLocationEXT, VkSampleLocationEXT)
+MAKE_TYPE_FACTORY(VkSampleLocationsInfoEXT, VkSampleLocationsInfoEXT)
+MAKE_TYPE_FACTORY(VkAttachmentSampleLocationsEXT, VkAttachmentSampleLocationsEXT)
+#endif /* defined(VK_EXT_sample_locations) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkBaseInStructure, VkBaseInStructure)
+MAKE_TYPE_FACTORY(VkBaseOutStructure, VkBaseOutStructure)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NV_ray_tracing)
+MAKE_TYPE_FACTORY(VkBindAccelerationStructureMemoryInfoNV, VkBindAccelerationStructureMemoryInfoNV)
+#endif /* defined(VK_NV_ray_tracing) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkBindBufferMemoryDeviceGroupInfo, VkBindBufferMemoryDeviceGroupInfo)
+MAKE_TYPE_FACTORY(VkBindBufferMemoryInfo, VkBindBufferMemoryInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_KHR_maintenance6) && defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkBindDescriptorBufferEmbeddedSamplersInfoEXT, VkBindDescriptorBufferEmbeddedSamplersInfoEXT)
+#endif /* defined(VK_KHR_maintenance6) && defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkBindDescriptorSetsInfo, VkBindDescriptorSetsInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkOffset2D, VkOffset2D)
+MAKE_TYPE_FACTORY(VkRect2D, VkRect2D)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkBindImageMemoryDeviceGroupInfo, VkBindImageMemoryDeviceGroupInfo)
+MAKE_TYPE_FACTORY(VkBindImageMemoryInfo, VkBindImageMemoryInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
+MAKE_TYPE_FACTORY(VkBindImageMemorySwapchainInfoKHR, VkBindImageMemorySwapchainInfoKHR)
+#endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkBindImagePlaneMemoryInfo, VkBindImagePlaneMemoryInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkBindIndexBufferIndirectCommandEXT, VkBindIndexBufferIndirectCommandEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkBindIndexBufferIndirectCommandNV, VkBindIndexBufferIndirectCommandNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkBindMemoryStatus, VkBindMemoryStatus)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_NV_device_generated_commands_compute)
+MAKE_TYPE_FACTORY(VkBindPipelineIndirectCommandNV, VkBindPipelineIndirectCommandNV)
+#endif /* defined(VK_NV_device_generated_commands_compute) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkBindShaderGroupIndirectCommandNV, VkBindShaderGroupIndirectCommandNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkSparseMemoryBind, VkSparseMemoryBind)
+MAKE_TYPE_FACTORY(VkSparseBufferMemoryBindInfo, VkSparseBufferMemoryBindInfo)
+MAKE_TYPE_FACTORY(VkOffset3D, VkOffset3D)
+MAKE_TYPE_FACTORY(VkExtent3D, VkExtent3D)
+MAKE_TYPE_FACTORY(VkImageSubresource, VkImageSubresource)
+MAKE_TYPE_FACTORY(VkSparseImageMemoryBind, VkSparseImageMemoryBind)
+MAKE_TYPE_FACTORY(VkSparseImageMemoryBindInfo, VkSparseImageMemoryBindInfo)
+MAKE_TYPE_FACTORY(VkSparseImageOpaqueMemoryBindInfo, VkSparseImageOpaqueMemoryBindInfo)
+MAKE_TYPE_FACTORY(VkBindSparseInfo, VkBindSparseInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkBindVertexBufferIndirectCommandEXT, VkBindVertexBufferIndirectCommandEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkBindVertexBufferIndirectCommandNV, VkBindVertexBufferIndirectCommandNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkBindVideoSessionMemoryInfoKHR, VkBindVideoSessionMemoryInfoKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_QCOM_filter_cubic_weights)
+MAKE_TYPE_FACTORY(VkBlitImageCubicWeightsInfoQCOM, VkBlitImageCubicWeightsInfoQCOM)
+#endif /* defined(VK_QCOM_filter_cubic_weights) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageSubresourceLayers, VkImageSubresourceLayers)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkImageBlit2, VkImageBlit2)
+MAKE_TYPE_FACTORY(VkBlitImageInfo2, VkBlitImageInfo2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkBufferCaptureDescriptorDataInfoEXT, VkBufferCaptureDescriptorDataInfoEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_FUCHSIA_buffer_collection)
+MAKE_TYPE_FACTORY(VkBufferCollectionBufferCreateInfoFUCHSIA, VkBufferCollectionBufferCreateInfoFUCHSIA)
+MAKE_TYPE_FACTORY(VkBufferCollectionConstraintsInfoFUCHSIA, VkBufferCollectionConstraintsInfoFUCHSIA)
+MAKE_TYPE_FACTORY(VkBufferCollectionCreateInfoFUCHSIA, VkBufferCollectionCreateInfoFUCHSIA)
+MAKE_TYPE_FACTORY(VkBufferCollectionImageCreateInfoFUCHSIA, VkBufferCollectionImageCreateInfoFUCHSIA)
+MAKE_TYPE_FACTORY(VkSysmemColorSpaceFUCHSIA, VkSysmemColorSpaceFUCHSIA)
+MAKE_TYPE_FACTORY(VkBufferCollectionPropertiesFUCHSIA, VkBufferCollectionPropertiesFUCHSIA)
+#endif /* defined(VK_FUCHSIA_buffer_collection) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkBufferCreateInfo, VkBufferCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_FUCHSIA_buffer_collection)
+MAKE_TYPE_FACTORY(VkBufferConstraintsInfoFUCHSIA, VkBufferConstraintsInfoFUCHSIA)
+#endif /* defined(VK_FUCHSIA_buffer_collection) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkBufferCopy, VkBufferCopy)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkBufferCopy2, VkBufferCopy2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_buffer_device_address)
+MAKE_TYPE_FACTORY(VkBufferDeviceAddressCreateInfoEXT, VkBufferDeviceAddressCreateInfoEXT)
+#endif /* defined(VK_EXT_buffer_device_address) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkBufferDeviceAddressInfo, VkBufferDeviceAddressInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkBufferImageCopy, VkBufferImageCopy)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkBufferImageCopy2, VkBufferImageCopy2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkBufferMemoryBarrier, VkBufferMemoryBarrier)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkBufferMemoryBarrier2, VkBufferMemoryBarrier2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkBufferMemoryRequirementsInfo2, VkBufferMemoryRequirementsInfo2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkBufferOpaqueCaptureAddressCreateInfo, VkBufferOpaqueCaptureAddressCreateInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkBufferUsageFlags2CreateInfo, VkBufferUsageFlags2CreateInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkBufferViewCreateInfo, VkBufferViewCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_KHR_calibrated_timestamps)
+MAKE_TYPE_FACTORY(VkCalibratedTimestampInfoKHR, VkCalibratedTimestampInfoKHR)
+#endif /* defined(VK_KHR_calibrated_timestamps) */
+#if defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2))
+MAKE_TYPE_FACTORY(VkCheckpointData2NV, VkCheckpointData2NV)
+#endif /* defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2)) */
+#if defined(VK_NV_device_diagnostic_checkpoints)
+MAKE_TYPE_FACTORY(VkCheckpointDataNV, VkCheckpointDataNV)
+#endif /* defined(VK_NV_device_diagnostic_checkpoints) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkClearColorValue, VkClearColorValue)
+MAKE_TYPE_FACTORY(VkClearDepthStencilValue, VkClearDepthStencilValue)
+MAKE_TYPE_FACTORY(VkClearValue, VkClearValue)
+MAKE_TYPE_FACTORY(VkClearAttachment, VkClearAttachment)
+MAKE_TYPE_FACTORY(VkClearRect, VkClearRect)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NV_shading_rate_image)
+MAKE_TYPE_FACTORY(VkCoarseSampleLocationNV, VkCoarseSampleLocationNV)
+MAKE_TYPE_FACTORY(VkCoarseSampleOrderCustomNV, VkCoarseSampleOrderCustomNV)
+#endif /* defined(VK_NV_shading_rate_image) */
+#if (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object))
+MAKE_TYPE_FACTORY(VkColorBlendAdvancedEXT, VkColorBlendAdvancedEXT)
+MAKE_TYPE_FACTORY(VkColorBlendEquationEXT, VkColorBlendEquationEXT)
+#endif /* (defined(VK_EXT_extended_dynamic_state3)) || (defined(VK_EXT_shader_object)) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkCommandBufferAllocateInfo, VkCommandBufferAllocateInfo)
+MAKE_TYPE_FACTORY(VkCommandBufferInheritanceInfo, VkCommandBufferInheritanceInfo)
+MAKE_TYPE_FACTORY(VkCommandBufferBeginInfo, VkCommandBufferBeginInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_conditional_rendering)
+MAKE_TYPE_FACTORY(VkCommandBufferInheritanceConditionalRenderingInfoEXT, VkCommandBufferInheritanceConditionalRenderingInfoEXT)
+#endif /* defined(VK_EXT_conditional_rendering) */
+#if defined(VK_QCOM_render_pass_transform)
+MAKE_TYPE_FACTORY(VkCommandBufferInheritanceRenderPassTransformInfoQCOM, VkCommandBufferInheritanceRenderPassTransformInfoQCOM)
+#endif /* defined(VK_QCOM_render_pass_transform) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkCommandBufferInheritanceRenderingInfo, VkCommandBufferInheritanceRenderingInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkViewport, VkViewport)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NV_inherited_viewport_scissor)
+MAKE_TYPE_FACTORY(VkCommandBufferInheritanceViewportScissorInfoNV, VkCommandBufferInheritanceViewportScissorInfoNV)
+#endif /* defined(VK_NV_inherited_viewport_scissor) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkCommandBufferSubmitInfo, VkCommandBufferSubmitInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkCommandPoolCreateInfo, VkCommandPoolCreateInfo)
+MAKE_TYPE_FACTORY(VkSpecializationMapEntry, VkSpecializationMapEntry)
+MAKE_TYPE_FACTORY(VkSpecializationInfo, VkSpecializationInfo)
+MAKE_TYPE_FACTORY(VkPipelineShaderStageCreateInfo, VkPipelineShaderStageCreateInfo)
+MAKE_TYPE_FACTORY(VkComputePipelineCreateInfo, VkComputePipelineCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NV_device_generated_commands_compute)
+MAKE_TYPE_FACTORY(VkComputePipelineIndirectBufferInfoNV, VkComputePipelineIndirectBufferInfoNV)
+#endif /* defined(VK_NV_device_generated_commands_compute) */
+#if defined(VK_EXT_conditional_rendering)
+MAKE_TYPE_FACTORY(VkConditionalRenderingBeginInfoEXT, VkConditionalRenderingBeginInfoEXT)
+#endif /* defined(VK_EXT_conditional_rendering) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkConformanceVersion, VkConformanceVersion)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_NV_cooperative_matrix2)
+MAKE_TYPE_FACTORY(VkCooperativeMatrixFlexibleDimensionsPropertiesNV, VkCooperativeMatrixFlexibleDimensionsPropertiesNV)
+#endif /* defined(VK_NV_cooperative_matrix2) */
+#if defined(VK_KHR_cooperative_matrix)
+MAKE_TYPE_FACTORY(VkCooperativeMatrixPropertiesKHR, VkCooperativeMatrixPropertiesKHR)
+#endif /* defined(VK_KHR_cooperative_matrix) */
+#if defined(VK_NV_cooperative_matrix)
+MAKE_TYPE_FACTORY(VkCooperativeMatrixPropertiesNV, VkCooperativeMatrixPropertiesNV)
+#endif /* defined(VK_NV_cooperative_matrix) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkCopyAccelerationStructureInfoKHR, VkCopyAccelerationStructureInfoKHR)
+MAKE_TYPE_FACTORY(VkCopyAccelerationStructureToMemoryInfoKHR, VkCopyAccelerationStructureToMemoryInfoKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkCopyBufferInfo2, VkCopyBufferInfo2)
+MAKE_TYPE_FACTORY(VkCopyBufferToImageInfo2, VkCopyBufferToImageInfo2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_QCOM_rotated_copy_commands)
+MAKE_TYPE_FACTORY(VkCopyCommandTransformInfoQCOM, VkCopyCommandTransformInfoQCOM)
+#endif /* defined(VK_QCOM_rotated_copy_commands) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkCopyDescriptorSet, VkCopyDescriptorSet)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkImageCopy2, VkImageCopy2)
+MAKE_TYPE_FACTORY(VkCopyImageInfo2, VkCopyImageInfo2)
+MAKE_TYPE_FACTORY(VkCopyImageToBufferInfo2, VkCopyImageToBufferInfo2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkCopyImageToImageInfo, VkCopyImageToImageInfo)
+MAKE_TYPE_FACTORY(VkImageToMemoryCopy, VkImageToMemoryCopy)
+MAKE_TYPE_FACTORY(VkCopyImageToMemoryInfo, VkCopyImageToMemoryInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_NV_copy_memory_indirect)
+MAKE_TYPE_FACTORY(VkCopyMemoryIndirectCommandNV, VkCopyMemoryIndirectCommandNV)
+#endif /* defined(VK_NV_copy_memory_indirect) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkCopyMemoryToAccelerationStructureInfoKHR, VkCopyMemoryToAccelerationStructureInfoKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_NV_copy_memory_indirect)
+MAKE_TYPE_FACTORY(VkCopyMemoryToImageIndirectCommandNV, VkCopyMemoryToImageIndirectCommandNV)
+#endif /* defined(VK_NV_copy_memory_indirect) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkMemoryToImageCopy, VkMemoryToImageCopy)
+MAKE_TYPE_FACTORY(VkCopyMemoryToImageInfo, VkCopyMemoryToImageInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_opacity_micromap)
+MAKE_TYPE_FACTORY(VkCopyMemoryToMicromapInfoEXT, VkCopyMemoryToMicromapInfoEXT)
+MAKE_TYPE_FACTORY(VkCopyMicromapInfoEXT, VkCopyMicromapInfoEXT)
+MAKE_TYPE_FACTORY(VkCopyMicromapToMemoryInfoEXT, VkCopyMicromapToMemoryInfoEXT)
+#endif /* defined(VK_EXT_opacity_micromap) */
+#if defined(VK_NVX_binary_import)
+MAKE_TYPE_FACTORY(VkCuFunctionCreateInfoNVX, VkCuFunctionCreateInfoNVX)
+MAKE_TYPE_FACTORY(VkCuLaunchInfoNVX, VkCuLaunchInfoNVX)
+MAKE_TYPE_FACTORY(VkCuModuleCreateInfoNVX, VkCuModuleCreateInfoNVX)
+MAKE_TYPE_FACTORY(VkCuModuleTexturingModeCreateInfoNVX, VkCuModuleTexturingModeCreateInfoNVX)
+#endif /* defined(VK_NVX_binary_import) */
+#if defined(VK_NV_cuda_kernel_launch)
+MAKE_TYPE_FACTORY(VkCudaFunctionCreateInfoNV, VkCudaFunctionCreateInfoNV)
+MAKE_TYPE_FACTORY(VkCudaLaunchInfoNV, VkCudaLaunchInfoNV)
+MAKE_TYPE_FACTORY(VkCudaModuleCreateInfoNV, VkCudaModuleCreateInfoNV)
+#endif /* defined(VK_NV_cuda_kernel_launch) */
+#if defined(VK_KHR_external_semaphore_win32)
+MAKE_TYPE_FACTORY(VkD3D12FenceSubmitInfoKHR, VkD3D12FenceSubmitInfoKHR)
+#endif /* defined(VK_KHR_external_semaphore_win32) */
+#if defined(VK_EXT_debug_marker)
+MAKE_TYPE_FACTORY(VkDebugMarkerMarkerInfoEXT, VkDebugMarkerMarkerInfoEXT)
+MAKE_TYPE_FACTORY(VkDebugMarkerObjectNameInfoEXT, VkDebugMarkerObjectNameInfoEXT)
+MAKE_TYPE_FACTORY(VkDebugMarkerObjectTagInfoEXT, VkDebugMarkerObjectTagInfoEXT)
+#endif /* defined(VK_EXT_debug_marker) */
+#if defined(VK_EXT_debug_report)
+MAKE_TYPE_FACTORY(VkDebugReportCallbackCreateInfoEXT, VkDebugReportCallbackCreateInfoEXT)
+#endif /* defined(VK_EXT_debug_report) */
+#if defined(VK_EXT_debug_utils)
+MAKE_TYPE_FACTORY(VkDebugUtilsLabelEXT, VkDebugUtilsLabelEXT)
+MAKE_TYPE_FACTORY(VkDebugUtilsObjectNameInfoEXT, VkDebugUtilsObjectNameInfoEXT)
+MAKE_TYPE_FACTORY(VkDebugUtilsMessengerCallbackDataEXT, VkDebugUtilsMessengerCallbackDataEXT)
+MAKE_TYPE_FACTORY(VkDebugUtilsMessengerCreateInfoEXT, VkDebugUtilsMessengerCreateInfoEXT)
+MAKE_TYPE_FACTORY(VkDebugUtilsObjectTagInfoEXT, VkDebugUtilsObjectTagInfoEXT)
+#endif /* defined(VK_EXT_debug_utils) */
+#if defined(VK_NV_memory_decompression)
+MAKE_TYPE_FACTORY(VkDecompressMemoryRegionNV, VkDecompressMemoryRegionNV)
+#endif /* defined(VK_NV_memory_decompression) */
+#if defined(VK_NV_dedicated_allocation)
+MAKE_TYPE_FACTORY(VkDedicatedAllocationBufferCreateInfoNV, VkDedicatedAllocationBufferCreateInfoNV)
+MAKE_TYPE_FACTORY(VkDedicatedAllocationImageCreateInfoNV, VkDedicatedAllocationImageCreateInfoNV)
+MAKE_TYPE_FACTORY(VkDedicatedAllocationMemoryAllocateInfoNV, VkDedicatedAllocationMemoryAllocateInfoNV)
+#endif /* defined(VK_NV_dedicated_allocation) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageSubresourceRange, VkImageSubresourceRange)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkImageMemoryBarrier2, VkImageMemoryBarrier2)
+MAKE_TYPE_FACTORY(VkMemoryBarrier2, VkMemoryBarrier2)
+MAKE_TYPE_FACTORY(VkDependencyInfo, VkDependencyInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_depth_bias_control)
+MAKE_TYPE_FACTORY(VkDepthBiasInfoEXT, VkDepthBiasInfoEXT)
+MAKE_TYPE_FACTORY(VkDepthBiasRepresentationInfoEXT, VkDepthBiasRepresentationInfoEXT)
+#endif /* defined(VK_EXT_depth_bias_control) */
+#if defined(VK_EXT_depth_clamp_control)
+MAKE_TYPE_FACTORY(VkDepthClampRangeEXT, VkDepthClampRangeEXT)
+#endif /* defined(VK_EXT_depth_clamp_control) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkDescriptorAddressInfoEXT, VkDescriptorAddressInfoEXT)
+MAKE_TYPE_FACTORY(VkDescriptorBufferBindingInfoEXT, VkDescriptorBufferBindingInfoEXT)
+MAKE_TYPE_FACTORY(VkDescriptorBufferBindingPushDescriptorBufferHandleEXT, VkDescriptorBufferBindingPushDescriptorBufferHandleEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDescriptorBufferInfo, VkDescriptorBufferInfo)
+MAKE_TYPE_FACTORY(VkDescriptorImageInfo, VkDescriptorImageInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkDescriptorDataEXT, VkDescriptorDataEXT)
+MAKE_TYPE_FACTORY(VkDescriptorGetInfoEXT, VkDescriptorGetInfoEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDescriptorPoolSize, VkDescriptorPoolSize)
+MAKE_TYPE_FACTORY(VkDescriptorPoolCreateInfo, VkDescriptorPoolCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkDescriptorPoolInlineUniformBlockCreateInfo, VkDescriptorPoolInlineUniformBlockCreateInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDescriptorSetAllocateInfo, VkDescriptorSetAllocateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VALVE_descriptor_set_host_mapping)
+MAKE_TYPE_FACTORY(VkDescriptorSetBindingReferenceVALVE, VkDescriptorSetBindingReferenceVALVE)
+#endif /* defined(VK_VALVE_descriptor_set_host_mapping) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDescriptorSetLayoutBinding, VkDescriptorSetLayoutBinding)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkDescriptorSetLayoutBindingFlagsCreateInfo, VkDescriptorSetLayoutBindingFlagsCreateInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDescriptorSetLayoutCreateInfo, VkDescriptorSetLayoutCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VALVE_descriptor_set_host_mapping)
+MAKE_TYPE_FACTORY(VkDescriptorSetLayoutHostMappingInfoVALVE, VkDescriptorSetLayoutHostMappingInfoVALVE)
+#endif /* defined(VK_VALVE_descriptor_set_host_mapping) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkDescriptorSetLayoutSupport, VkDescriptorSetLayoutSupport)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkDescriptorSetVariableDescriptorCountAllocateInfo, VkDescriptorSetVariableDescriptorCountAllocateInfo)
+MAKE_TYPE_FACTORY(VkDescriptorSetVariableDescriptorCountLayoutSupport, VkDescriptorSetVariableDescriptorCountLayoutSupport)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkDescriptorUpdateTemplateEntry, VkDescriptorUpdateTemplateEntry)
+MAKE_TYPE_FACTORY(VkDescriptorUpdateTemplateCreateInfo, VkDescriptorUpdateTemplateCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_device_address_binding_report)
+MAKE_TYPE_FACTORY(VkDeviceAddressBindingCallbackDataEXT, VkDeviceAddressBindingCallbackDataEXT)
+#endif /* defined(VK_EXT_device_address_binding_report) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkDeviceBufferMemoryRequirements, VkDeviceBufferMemoryRequirements)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDeviceQueueCreateInfo, VkDeviceQueueCreateInfo)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFeatures, VkPhysicalDeviceFeatures)
+MAKE_TYPE_FACTORY(VkDeviceCreateInfo, VkDeviceCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_device_memory_report)
+MAKE_TYPE_FACTORY(VkDeviceDeviceMemoryReportCreateInfoEXT, VkDeviceDeviceMemoryReportCreateInfoEXT)
+#endif /* defined(VK_EXT_device_memory_report) */
+#if defined(VK_NV_device_diagnostics_config)
+MAKE_TYPE_FACTORY(VkDeviceDiagnosticsConfigCreateInfoNV, VkDeviceDiagnosticsConfigCreateInfoNV)
+#endif /* defined(VK_NV_device_diagnostics_config) */
+#if defined(VK_EXT_display_control)
+MAKE_TYPE_FACTORY(VkDeviceEventInfoEXT, VkDeviceEventInfoEXT)
+#endif /* defined(VK_EXT_display_control) */
+#if defined(VK_EXT_device_fault)
+MAKE_TYPE_FACTORY(VkDeviceFaultAddressInfoEXT, VkDeviceFaultAddressInfoEXT)
+MAKE_TYPE_FACTORY(VkDeviceFaultCountsEXT, VkDeviceFaultCountsEXT)
+MAKE_TYPE_FACTORY(VkDeviceFaultVendorInfoEXT, VkDeviceFaultVendorInfoEXT)
+MAKE_TYPE_FACTORY(VkDeviceFaultInfoEXT, VkDeviceFaultInfoEXT)
+MAKE_TYPE_FACTORY(VkDeviceFaultVendorBinaryHeaderVersionOneEXT, VkDeviceFaultVendorBinaryHeaderVersionOneEXT)
+#endif /* defined(VK_EXT_device_fault) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkDeviceGroupBindSparseInfo, VkDeviceGroupBindSparseInfo)
+MAKE_TYPE_FACTORY(VkDeviceGroupCommandBufferBeginInfo, VkDeviceGroupCommandBufferBeginInfo)
+MAKE_TYPE_FACTORY(VkDeviceGroupDeviceCreateInfo, VkDeviceGroupDeviceCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
+MAKE_TYPE_FACTORY(VkDeviceGroupPresentCapabilitiesKHR, VkDeviceGroupPresentCapabilitiesKHR)
+#endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_surface)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
+#if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
+MAKE_TYPE_FACTORY(VkDeviceGroupPresentInfoKHR, VkDeviceGroupPresentInfoKHR)
+#endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkDeviceGroupRenderPassBeginInfo, VkDeviceGroupRenderPassBeginInfo)
+MAKE_TYPE_FACTORY(VkDeviceGroupSubmitInfo, VkDeviceGroupSubmitInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
+MAKE_TYPE_FACTORY(VkDeviceGroupSwapchainCreateInfoKHR, VkDeviceGroupSwapchainCreateInfoKHR)
+#endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageCreateInfo, VkImageCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkDeviceImageMemoryRequirements, VkDeviceImageMemoryRequirements)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkImageSubresource2, VkImageSubresource2)
+MAKE_TYPE_FACTORY(VkDeviceImageSubresourceInfo, VkDeviceImageSubresourceInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkDeviceMemoryOpaqueCaptureAddressInfo, VkDeviceMemoryOpaqueCaptureAddressInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_AMD_memory_overallocation_behavior)
+MAKE_TYPE_FACTORY(VkDeviceMemoryOverallocationCreateInfoAMD, VkDeviceMemoryOverallocationCreateInfoAMD)
+#endif /* defined(VK_AMD_memory_overallocation_behavior) */
+#if defined(VK_EXT_device_memory_report)
+MAKE_TYPE_FACTORY(VkDeviceMemoryReportCallbackDataEXT, VkDeviceMemoryReportCallbackDataEXT)
+#endif /* defined(VK_EXT_device_memory_report) */
+#if defined(VK_AMDX_shader_enqueue)
+MAKE_TYPE_FACTORY(VkDeviceOrHostAddressConstAMDX, VkDeviceOrHostAddressConstAMDX)
+#endif /* defined(VK_AMDX_shader_enqueue) */
+#if defined(VK_KHR_pipeline_binary)
+MAKE_TYPE_FACTORY(VkDevicePipelineBinaryInternalCacheControlKHR, VkDevicePipelineBinaryInternalCacheControlKHR)
+#endif /* defined(VK_KHR_pipeline_binary) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkDevicePrivateDataCreateInfo, VkDevicePrivateDataCreateInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkDeviceQueueGlobalPriorityCreateInfo, VkDeviceQueueGlobalPriorityCreateInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkDeviceQueueInfo2, VkDeviceQueueInfo2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_ARM_scheduling_controls)
+MAKE_TYPE_FACTORY(VkDeviceQueueShaderCoreControlCreateInfoARM, VkDeviceQueueShaderCoreControlCreateInfoARM)
+#endif /* defined(VK_ARM_scheduling_controls) */
+#if defined(VK_LUNARG_direct_driver_loading)
+MAKE_TYPE_FACTORY(VkDirectDriverLoadingInfoLUNARG, VkDirectDriverLoadingInfoLUNARG)
+MAKE_TYPE_FACTORY(VkDirectDriverLoadingListLUNARG, VkDirectDriverLoadingListLUNARG)
+#endif /* defined(VK_LUNARG_direct_driver_loading) */
+#if defined(VK_EXT_directfb_surface)
+MAKE_TYPE_FACTORY(VkDirectFBSurfaceCreateInfoEXT, VkDirectFBSurfaceCreateInfoEXT)
+#endif /* defined(VK_EXT_directfb_surface) */
+#if defined(VK_AMDX_shader_enqueue)
+MAKE_TYPE_FACTORY(VkDispatchGraphCountInfoAMDX, VkDispatchGraphCountInfoAMDX)
+MAKE_TYPE_FACTORY(VkDispatchGraphInfoAMDX, VkDispatchGraphInfoAMDX)
+#endif /* defined(VK_AMDX_shader_enqueue) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDispatchIndirectCommand, VkDispatchIndirectCommand)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_display_control)
+MAKE_TYPE_FACTORY(VkDisplayEventInfoEXT, VkDisplayEventInfoEXT)
+#endif /* defined(VK_EXT_display_control) */
+#if defined(VK_KHR_display)
+MAKE_TYPE_FACTORY(VkDisplayModeParametersKHR, VkDisplayModeParametersKHR)
+MAKE_TYPE_FACTORY(VkDisplayModeCreateInfoKHR, VkDisplayModeCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkDisplayModePropertiesKHR, VkDisplayModePropertiesKHR)
+#endif /* defined(VK_KHR_display) */
+#if defined(VK_KHR_get_display_properties2)
+MAKE_TYPE_FACTORY(VkDisplayModeProperties2KHR, VkDisplayModeProperties2KHR)
+#endif /* defined(VK_KHR_get_display_properties2) */
+#if defined(VK_NV_display_stereo)
+MAKE_TYPE_FACTORY(VkDisplayModeStereoPropertiesNV, VkDisplayModeStereoPropertiesNV)
+#endif /* defined(VK_NV_display_stereo) */
+#if defined(VK_AMD_display_native_hdr)
+MAKE_TYPE_FACTORY(VkDisplayNativeHdrSurfaceCapabilitiesAMD, VkDisplayNativeHdrSurfaceCapabilitiesAMD)
+#endif /* defined(VK_AMD_display_native_hdr) */
+#if defined(VK_KHR_display)
+MAKE_TYPE_FACTORY(VkDisplayPlaneCapabilitiesKHR, VkDisplayPlaneCapabilitiesKHR)
+#endif /* defined(VK_KHR_display) */
+#if defined(VK_KHR_get_display_properties2)
+MAKE_TYPE_FACTORY(VkDisplayPlaneCapabilities2KHR, VkDisplayPlaneCapabilities2KHR)
+MAKE_TYPE_FACTORY(VkDisplayPlaneInfo2KHR, VkDisplayPlaneInfo2KHR)
+#endif /* defined(VK_KHR_get_display_properties2) */
+#if defined(VK_KHR_display)
+MAKE_TYPE_FACTORY(VkDisplayPlanePropertiesKHR, VkDisplayPlanePropertiesKHR)
+#endif /* defined(VK_KHR_display) */
+#if defined(VK_KHR_get_display_properties2)
+MAKE_TYPE_FACTORY(VkDisplayPlaneProperties2KHR, VkDisplayPlaneProperties2KHR)
+#endif /* defined(VK_KHR_get_display_properties2) */
+#if defined(VK_EXT_display_control)
+MAKE_TYPE_FACTORY(VkDisplayPowerInfoEXT, VkDisplayPowerInfoEXT)
+#endif /* defined(VK_EXT_display_control) */
+#if defined(VK_KHR_display_swapchain)
+MAKE_TYPE_FACTORY(VkDisplayPresentInfoKHR, VkDisplayPresentInfoKHR)
+#endif /* defined(VK_KHR_display_swapchain) */
+#if defined(VK_KHR_display)
+MAKE_TYPE_FACTORY(VkDisplayPropertiesKHR, VkDisplayPropertiesKHR)
+#endif /* defined(VK_KHR_display) */
+#if defined(VK_KHR_get_display_properties2)
+MAKE_TYPE_FACTORY(VkDisplayProperties2KHR, VkDisplayProperties2KHR)
+#endif /* defined(VK_KHR_get_display_properties2) */
+#if defined(VK_KHR_display)
+MAKE_TYPE_FACTORY(VkDisplaySurfaceCreateInfoKHR, VkDisplaySurfaceCreateInfoKHR)
+#endif /* defined(VK_KHR_display) */
+#if defined(VK_NV_display_stereo)
+MAKE_TYPE_FACTORY(VkDisplaySurfaceStereoCreateInfoNV, VkDisplaySurfaceStereoCreateInfoNV)
+#endif /* defined(VK_NV_display_stereo) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkDrawIndexedIndirectCommand, VkDrawIndexedIndirectCommand)
+MAKE_TYPE_FACTORY(VkDrawIndirectCommand, VkDrawIndirectCommand)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkDrawIndirectCountIndirectCommandEXT, VkDrawIndirectCountIndirectCommandEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_EXT_mesh_shader)
+MAKE_TYPE_FACTORY(VkDrawMeshTasksIndirectCommandEXT, VkDrawMeshTasksIndirectCommandEXT)
+#endif /* defined(VK_EXT_mesh_shader) */
+#if defined(VK_NV_mesh_shader)
+MAKE_TYPE_FACTORY(VkDrawMeshTasksIndirectCommandNV, VkDrawMeshTasksIndirectCommandNV)
+#endif /* defined(VK_NV_mesh_shader) */
+#if defined(VK_EXT_image_drm_format_modifier) && (defined(VK_KHR_format_feature_flags2) || defined(VK_VERSION_1_3))
+MAKE_TYPE_FACTORY(VkDrmFormatModifierProperties2EXT, VkDrmFormatModifierProperties2EXT)
+#endif /* defined(VK_EXT_image_drm_format_modifier) && (defined(VK_KHR_format_feature_flags2) || defined(VK_VERSION_1_3)) */
+#if defined(VK_EXT_image_drm_format_modifier)
+MAKE_TYPE_FACTORY(VkDrmFormatModifierPropertiesEXT, VkDrmFormatModifierPropertiesEXT)
+#endif /* defined(VK_EXT_image_drm_format_modifier) */
+#if defined(VK_EXT_image_drm_format_modifier) && (defined(VK_KHR_format_feature_flags2) || defined(VK_VERSION_1_3))
+MAKE_TYPE_FACTORY(VkDrmFormatModifierPropertiesList2EXT, VkDrmFormatModifierPropertiesList2EXT)
+#endif /* defined(VK_EXT_image_drm_format_modifier) && (defined(VK_KHR_format_feature_flags2) || defined(VK_VERSION_1_3)) */
+#if defined(VK_EXT_image_drm_format_modifier)
+MAKE_TYPE_FACTORY(VkDrmFormatModifierPropertiesListEXT, VkDrmFormatModifierPropertiesListEXT)
+#endif /* defined(VK_EXT_image_drm_format_modifier) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkEventCreateInfo, VkEventCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_KHR_pipeline_library)
+MAKE_TYPE_FACTORY(VkPipelineLibraryCreateInfoKHR, VkPipelineLibraryCreateInfoKHR)
+#endif /* defined(VK_KHR_pipeline_library) */
+#if defined(VK_AMDX_shader_enqueue)
+MAKE_TYPE_FACTORY(VkExecutionGraphPipelineCreateInfoAMDX, VkExecutionGraphPipelineCreateInfoAMDX)
+MAKE_TYPE_FACTORY(VkExecutionGraphPipelineScratchSizeAMDX, VkExecutionGraphPipelineScratchSizeAMDX)
+#endif /* defined(VK_AMDX_shader_enqueue) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkExportFenceCreateInfo, VkExportFenceCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_KHR_external_fence_win32)
+MAKE_TYPE_FACTORY(VkExportFenceWin32HandleInfoKHR, VkExportFenceWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_fence_win32) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkExportMemoryAllocateInfo, VkExportMemoryAllocateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_NV_external_memory)
+MAKE_TYPE_FACTORY(VkExportMemoryAllocateInfoNV, VkExportMemoryAllocateInfoNV)
+#endif /* defined(VK_NV_external_memory) */
+#if defined(VK_KHR_external_memory_win32)
+MAKE_TYPE_FACTORY(VkExportMemoryWin32HandleInfoKHR, VkExportMemoryWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_memory_win32) */
+#if defined(VK_NV_external_memory_win32)
+MAKE_TYPE_FACTORY(VkExportMemoryWin32HandleInfoNV, VkExportMemoryWin32HandleInfoNV)
+#endif /* defined(VK_NV_external_memory_win32) */
+#if defined(VK_EXT_metal_objects)
+MAKE_TYPE_FACTORY(VkExportMetalBufferInfoEXT, VkExportMetalBufferInfoEXT)
+MAKE_TYPE_FACTORY(VkExportMetalCommandQueueInfoEXT, VkExportMetalCommandQueueInfoEXT)
+MAKE_TYPE_FACTORY(VkExportMetalDeviceInfoEXT, VkExportMetalDeviceInfoEXT)
+MAKE_TYPE_FACTORY(VkExportMetalIOSurfaceInfoEXT, VkExportMetalIOSurfaceInfoEXT)
+MAKE_TYPE_FACTORY(VkExportMetalObjectCreateInfoEXT, VkExportMetalObjectCreateInfoEXT)
+MAKE_TYPE_FACTORY(VkExportMetalObjectsInfoEXT, VkExportMetalObjectsInfoEXT)
+MAKE_TYPE_FACTORY(VkExportMetalSharedEventInfoEXT, VkExportMetalSharedEventInfoEXT)
+MAKE_TYPE_FACTORY(VkExportMetalTextureInfoEXT, VkExportMetalTextureInfoEXT)
+#endif /* defined(VK_EXT_metal_objects) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkExportSemaphoreCreateInfo, VkExportSemaphoreCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_KHR_external_semaphore_win32)
+MAKE_TYPE_FACTORY(VkExportSemaphoreWin32HandleInfoKHR, VkExportSemaphoreWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_semaphore_win32) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkExtensionProperties, VkExtensionProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkExternalMemoryProperties, VkExternalMemoryProperties)
+MAKE_TYPE_FACTORY(VkExternalBufferProperties, VkExternalBufferProperties)
+MAKE_TYPE_FACTORY(VkExternalFenceProperties, VkExternalFenceProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_ANDROID_external_memory_android_hardware_buffer)
+MAKE_TYPE_FACTORY(VkExternalFormatANDROID, VkExternalFormatANDROID)
+#endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
+#if defined(VK_QNX_external_memory_screen_buffer)
+MAKE_TYPE_FACTORY(VkExternalFormatQNX, VkExternalFormatQNX)
+#endif /* defined(VK_QNX_external_memory_screen_buffer) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkExternalImageFormatProperties, VkExternalImageFormatProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageFormatProperties, VkImageFormatProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NV_external_memory_capabilities)
+MAKE_TYPE_FACTORY(VkExternalImageFormatPropertiesNV, VkExternalImageFormatPropertiesNV)
+#endif /* defined(VK_NV_external_memory_capabilities) */
+#if defined(VK_EXT_external_memory_acquire_unmodified)
+MAKE_TYPE_FACTORY(VkExternalMemoryAcquireUnmodifiedEXT, VkExternalMemoryAcquireUnmodifiedEXT)
+#endif /* defined(VK_EXT_external_memory_acquire_unmodified) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkExternalMemoryBufferCreateInfo, VkExternalMemoryBufferCreateInfo)
+MAKE_TYPE_FACTORY(VkExternalMemoryImageCreateInfo, VkExternalMemoryImageCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_NV_external_memory)
+MAKE_TYPE_FACTORY(VkExternalMemoryImageCreateInfoNV, VkExternalMemoryImageCreateInfoNV)
+#endif /* defined(VK_NV_external_memory) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkExternalSemaphoreProperties, VkExternalSemaphoreProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkFenceCreateInfo, VkFenceCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_KHR_external_fence_fd)
+MAKE_TYPE_FACTORY(VkFenceGetFdInfoKHR, VkFenceGetFdInfoKHR)
+#endif /* defined(VK_KHR_external_fence_fd) */
+#if defined(VK_KHR_external_fence_win32)
+MAKE_TYPE_FACTORY(VkFenceGetWin32HandleInfoKHR, VkFenceGetWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_fence_win32) */
+#if defined(VK_EXT_filter_cubic)
+MAKE_TYPE_FACTORY(VkFilterCubicImageViewImageFormatPropertiesEXT, VkFilterCubicImageViewImageFormatPropertiesEXT)
+#endif /* defined(VK_EXT_filter_cubic) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkFormatProperties, VkFormatProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkFormatProperties2, VkFormatProperties2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkFormatProperties3, VkFormatProperties3)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_KHR_fragment_shading_rate)
+MAKE_TYPE_FACTORY(VkFragmentShadingRateAttachmentInfoKHR, VkFragmentShadingRateAttachmentInfoKHR)
+#endif /* defined(VK_KHR_fragment_shading_rate) */
+#if defined(VK_EXT_frame_boundary)
+MAKE_TYPE_FACTORY(VkFrameBoundaryEXT, VkFrameBoundaryEXT)
+#endif /* defined(VK_EXT_frame_boundary) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkFramebufferAttachmentImageInfo, VkFramebufferAttachmentImageInfo)
+MAKE_TYPE_FACTORY(VkFramebufferAttachmentsCreateInfo, VkFramebufferAttachmentsCreateInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkFramebufferCreateInfo, VkFramebufferCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NV_coverage_reduction_mode)
+MAKE_TYPE_FACTORY(VkFramebufferMixedSamplesCombinationNV, VkFramebufferMixedSamplesCombinationNV)
+#endif /* defined(VK_NV_coverage_reduction_mode) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkGeneratedCommandsInfoEXT, VkGeneratedCommandsInfoEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkIndirectCommandsStreamNV, VkIndirectCommandsStreamNV)
+MAKE_TYPE_FACTORY(VkGeneratedCommandsInfoNV, VkGeneratedCommandsInfoNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkGeneratedCommandsMemoryRequirementsInfoEXT, VkGeneratedCommandsMemoryRequirementsInfoEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkGeneratedCommandsMemoryRequirementsInfoNV, VkGeneratedCommandsMemoryRequirementsInfoNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkGeneratedCommandsPipelineInfoEXT, VkGeneratedCommandsPipelineInfoEXT)
+MAKE_TYPE_FACTORY(VkGeneratedCommandsShaderInfoEXT, VkGeneratedCommandsShaderInfoEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_low_latency2)
+MAKE_TYPE_FACTORY(VkLatencyTimingsFrameReportNV, VkLatencyTimingsFrameReportNV)
+MAKE_TYPE_FACTORY(VkGetLatencyMarkerInfoNV, VkGetLatencyMarkerInfoNV)
+#endif /* defined(VK_NV_low_latency2) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkPipelineTessellationStateCreateInfo, VkPipelineTessellationStateCreateInfo)
+MAKE_TYPE_FACTORY(VkVertexInputAttributeDescription, VkVertexInputAttributeDescription)
+MAKE_TYPE_FACTORY(VkVertexInputBindingDescription, VkVertexInputBindingDescription)
+MAKE_TYPE_FACTORY(VkPipelineVertexInputStateCreateInfo, VkPipelineVertexInputStateCreateInfo)
+MAKE_TYPE_FACTORY(VkPipelineColorBlendAttachmentState, VkPipelineColorBlendAttachmentState)
+MAKE_TYPE_FACTORY(VkPipelineColorBlendStateCreateInfo, VkPipelineColorBlendStateCreateInfo)
+MAKE_TYPE_FACTORY(VkStencilOpState, VkStencilOpState)
+MAKE_TYPE_FACTORY(VkPipelineDepthStencilStateCreateInfo, VkPipelineDepthStencilStateCreateInfo)
+MAKE_TYPE_FACTORY(VkPipelineDynamicStateCreateInfo, VkPipelineDynamicStateCreateInfo)
+MAKE_TYPE_FACTORY(VkPipelineInputAssemblyStateCreateInfo, VkPipelineInputAssemblyStateCreateInfo)
+MAKE_TYPE_FACTORY(VkPipelineMultisampleStateCreateInfo, VkPipelineMultisampleStateCreateInfo)
+MAKE_TYPE_FACTORY(VkPipelineRasterizationStateCreateInfo, VkPipelineRasterizationStateCreateInfo)
+MAKE_TYPE_FACTORY(VkPipelineViewportStateCreateInfo, VkPipelineViewportStateCreateInfo)
+MAKE_TYPE_FACTORY(VkGraphicsPipelineCreateInfo, VkGraphicsPipelineCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_graphics_pipeline_library)
+MAKE_TYPE_FACTORY(VkGraphicsPipelineLibraryCreateInfoEXT, VkGraphicsPipelineLibraryCreateInfoEXT)
+#endif /* defined(VK_EXT_graphics_pipeline_library) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkGraphicsShaderGroupCreateInfoNV, VkGraphicsShaderGroupCreateInfoNV)
+MAKE_TYPE_FACTORY(VkGraphicsPipelineShaderGroupsCreateInfoNV, VkGraphicsPipelineShaderGroupsCreateInfoNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_EXT_hdr_metadata)
+MAKE_TYPE_FACTORY(VkXYColorEXT, VkXYColorEXT)
+MAKE_TYPE_FACTORY(VkHdrMetadataEXT, VkHdrMetadataEXT)
+#endif /* defined(VK_EXT_hdr_metadata) */
+#if defined(VK_HUAWEI_hdr_vivid)
+MAKE_TYPE_FACTORY(VkHdrVividDynamicMetadataHUAWEI, VkHdrVividDynamicMetadataHUAWEI)
+#endif /* defined(VK_HUAWEI_hdr_vivid) */
+#if defined(VK_EXT_headless_surface)
+MAKE_TYPE_FACTORY(VkHeadlessSurfaceCreateInfoEXT, VkHeadlessSurfaceCreateInfoEXT)
+#endif /* defined(VK_EXT_headless_surface) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkHostImageCopyDevicePerformanceQuery, VkHostImageCopyDevicePerformanceQuery)
+MAKE_TYPE_FACTORY(VkHostImageLayoutTransitionInfo, VkHostImageLayoutTransitionInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_MVK_ios_surface)
+MAKE_TYPE_FACTORY(VkIOSSurfaceCreateInfoMVK, VkIOSSurfaceCreateInfoMVK)
+#endif /* defined(VK_MVK_ios_surface) */
+#if defined(VK_MESA_image_alignment_control)
+MAKE_TYPE_FACTORY(VkImageAlignmentControlCreateInfoMESA, VkImageAlignmentControlCreateInfoMESA)
+#endif /* defined(VK_MESA_image_alignment_control) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageBlit, VkImageBlit)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkImageCaptureDescriptorDataInfoEXT, VkImageCaptureDescriptorDataInfoEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_EXT_image_compression_control)
+MAKE_TYPE_FACTORY(VkImageCompressionControlEXT, VkImageCompressionControlEXT)
+MAKE_TYPE_FACTORY(VkImageCompressionPropertiesEXT, VkImageCompressionPropertiesEXT)
+#endif /* defined(VK_EXT_image_compression_control) */
+#if defined(VK_FUCHSIA_buffer_collection)
+MAKE_TYPE_FACTORY(VkImageFormatConstraintsInfoFUCHSIA, VkImageFormatConstraintsInfoFUCHSIA)
+MAKE_TYPE_FACTORY(VkImageConstraintsInfoFUCHSIA, VkImageConstraintsInfoFUCHSIA)
+#endif /* defined(VK_FUCHSIA_buffer_collection) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageCopy, VkImageCopy)
+MAKE_TYPE_FACTORY(VkSubresourceLayout, VkSubresourceLayout)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_image_drm_format_modifier)
+MAKE_TYPE_FACTORY(VkImageDrmFormatModifierExplicitCreateInfoEXT, VkImageDrmFormatModifierExplicitCreateInfoEXT)
+MAKE_TYPE_FACTORY(VkImageDrmFormatModifierListCreateInfoEXT, VkImageDrmFormatModifierListCreateInfoEXT)
+MAKE_TYPE_FACTORY(VkImageDrmFormatModifierPropertiesEXT, VkImageDrmFormatModifierPropertiesEXT)
+#endif /* defined(VK_EXT_image_drm_format_modifier) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkImageFormatListCreateInfo, VkImageFormatListCreateInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkImageFormatProperties2, VkImageFormatProperties2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageMemoryBarrier, VkImageMemoryBarrier)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkImageMemoryRequirementsInfo2, VkImageMemoryRequirementsInfo2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_FUCHSIA_imagepipe_surface)
+MAKE_TYPE_FACTORY(VkImagePipeSurfaceCreateInfoFUCHSIA, VkImagePipeSurfaceCreateInfoFUCHSIA)
+#endif /* defined(VK_FUCHSIA_imagepipe_surface) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkImagePlaneMemoryRequirementsInfo, VkImagePlaneMemoryRequirementsInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageResolve, VkImageResolve)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkImageResolve2, VkImageResolve2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkImageSparseMemoryRequirementsInfo2, VkImageSparseMemoryRequirementsInfo2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkImageStencilUsageCreateInfo, VkImageStencilUsageCreateInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1))
+MAKE_TYPE_FACTORY(VkImageSwapchainCreateInfoKHR, VkImageSwapchainCreateInfoKHR)
+#endif /* (defined(VK_KHR_device_group) && defined(VK_KHR_swapchain)) || (defined(VK_KHR_swapchain) && defined(VK_VERSION_1_1)) */
+#if defined(VK_EXT_astc_decode_mode)
+MAKE_TYPE_FACTORY(VkImageViewASTCDecodeModeEXT, VkImageViewASTCDecodeModeEXT)
+#endif /* defined(VK_EXT_astc_decode_mode) */
+#if defined(VK_NVX_image_view_handle)
+MAKE_TYPE_FACTORY(VkImageViewAddressPropertiesNVX, VkImageViewAddressPropertiesNVX)
+#endif /* defined(VK_NVX_image_view_handle) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkImageViewCaptureDescriptorDataInfoEXT, VkImageViewCaptureDescriptorDataInfoEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkImageViewCreateInfo, VkImageViewCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NVX_image_view_handle)
+MAKE_TYPE_FACTORY(VkImageViewHandleInfoNVX, VkImageViewHandleInfoNVX)
+#endif /* defined(VK_NVX_image_view_handle) */
+#if defined(VK_EXT_image_view_min_lod)
+MAKE_TYPE_FACTORY(VkImageViewMinLodCreateInfoEXT, VkImageViewMinLodCreateInfoEXT)
+#endif /* defined(VK_EXT_image_view_min_lod) */
+#if defined(VK_QCOM_image_processing)
+MAKE_TYPE_FACTORY(VkImageViewSampleWeightCreateInfoQCOM, VkImageViewSampleWeightCreateInfoQCOM)
+#endif /* defined(VK_QCOM_image_processing) */
+#if defined(VK_EXT_image_sliced_view_of_3d)
+MAKE_TYPE_FACTORY(VkImageViewSlicedCreateInfoEXT, VkImageViewSlicedCreateInfoEXT)
+#endif /* defined(VK_EXT_image_sliced_view_of_3d) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkImageViewUsageCreateInfo, VkImageViewUsageCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_ANDROID_external_memory_android_hardware_buffer)
+MAKE_TYPE_FACTORY(VkImportAndroidHardwareBufferInfoANDROID, VkImportAndroidHardwareBufferInfoANDROID)
+#endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
+#if defined(VK_KHR_external_fence_fd)
+MAKE_TYPE_FACTORY(VkImportFenceFdInfoKHR, VkImportFenceFdInfoKHR)
+#endif /* defined(VK_KHR_external_fence_fd) */
+#if defined(VK_KHR_external_fence_win32)
+MAKE_TYPE_FACTORY(VkImportFenceWin32HandleInfoKHR, VkImportFenceWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_fence_win32) */
+#if defined(VK_FUCHSIA_buffer_collection)
+MAKE_TYPE_FACTORY(VkImportMemoryBufferCollectionFUCHSIA, VkImportMemoryBufferCollectionFUCHSIA)
+#endif /* defined(VK_FUCHSIA_buffer_collection) */
+#if defined(VK_KHR_external_memory_fd)
+MAKE_TYPE_FACTORY(VkImportMemoryFdInfoKHR, VkImportMemoryFdInfoKHR)
+#endif /* defined(VK_KHR_external_memory_fd) */
+#if defined(VK_EXT_external_memory_host)
+MAKE_TYPE_FACTORY(VkImportMemoryHostPointerInfoEXT, VkImportMemoryHostPointerInfoEXT)
+#endif /* defined(VK_EXT_external_memory_host) */
+#if defined(VK_KHR_external_memory_win32)
+MAKE_TYPE_FACTORY(VkImportMemoryWin32HandleInfoKHR, VkImportMemoryWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_memory_win32) */
+#if defined(VK_NV_external_memory_win32)
+MAKE_TYPE_FACTORY(VkImportMemoryWin32HandleInfoNV, VkImportMemoryWin32HandleInfoNV)
+#endif /* defined(VK_NV_external_memory_win32) */
+#if defined(VK_FUCHSIA_external_memory)
+MAKE_TYPE_FACTORY(VkImportMemoryZirconHandleInfoFUCHSIA, VkImportMemoryZirconHandleInfoFUCHSIA)
+#endif /* defined(VK_FUCHSIA_external_memory) */
+#if defined(VK_EXT_metal_objects)
+MAKE_TYPE_FACTORY(VkImportMetalBufferInfoEXT, VkImportMetalBufferInfoEXT)
+MAKE_TYPE_FACTORY(VkImportMetalIOSurfaceInfoEXT, VkImportMetalIOSurfaceInfoEXT)
+MAKE_TYPE_FACTORY(VkImportMetalSharedEventInfoEXT, VkImportMetalSharedEventInfoEXT)
+MAKE_TYPE_FACTORY(VkImportMetalTextureInfoEXT, VkImportMetalTextureInfoEXT)
+#endif /* defined(VK_EXT_metal_objects) */
+#if defined(VK_QNX_external_memory_screen_buffer)
+MAKE_TYPE_FACTORY(VkImportScreenBufferInfoQNX, VkImportScreenBufferInfoQNX)
+#endif /* defined(VK_QNX_external_memory_screen_buffer) */
+#if defined(VK_KHR_external_semaphore_fd)
+MAKE_TYPE_FACTORY(VkImportSemaphoreFdInfoKHR, VkImportSemaphoreFdInfoKHR)
+#endif /* defined(VK_KHR_external_semaphore_fd) */
+#if defined(VK_KHR_external_semaphore_win32)
+MAKE_TYPE_FACTORY(VkImportSemaphoreWin32HandleInfoKHR, VkImportSemaphoreWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_semaphore_win32) */
+#if defined(VK_FUCHSIA_external_semaphore)
+MAKE_TYPE_FACTORY(VkImportSemaphoreZirconHandleInfoFUCHSIA, VkImportSemaphoreZirconHandleInfoFUCHSIA)
+#endif /* defined(VK_FUCHSIA_external_semaphore) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkIndirectCommandsExecutionSetTokenEXT, VkIndirectCommandsExecutionSetTokenEXT)
+MAKE_TYPE_FACTORY(VkIndirectCommandsIndexBufferTokenEXT, VkIndirectCommandsIndexBufferTokenEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkPushConstantRange, VkPushConstantRange)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkIndirectCommandsPushConstantTokenEXT, VkIndirectCommandsPushConstantTokenEXT)
+MAKE_TYPE_FACTORY(VkIndirectCommandsVertexBufferTokenEXT, VkIndirectCommandsVertexBufferTokenEXT)
+MAKE_TYPE_FACTORY(VkIndirectCommandsTokenDataEXT, VkIndirectCommandsTokenDataEXT)
+MAKE_TYPE_FACTORY(VkIndirectCommandsLayoutTokenEXT, VkIndirectCommandsLayoutTokenEXT)
+MAKE_TYPE_FACTORY(VkIndirectCommandsLayoutCreateInfoEXT, VkIndirectCommandsLayoutCreateInfoEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkIndirectCommandsLayoutTokenNV, VkIndirectCommandsLayoutTokenNV)
+MAKE_TYPE_FACTORY(VkIndirectCommandsLayoutCreateInfoNV, VkIndirectCommandsLayoutCreateInfoNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkIndirectExecutionSetPipelineInfoEXT, VkIndirectExecutionSetPipelineInfoEXT)
+MAKE_TYPE_FACTORY(VkIndirectExecutionSetShaderLayoutInfoEXT, VkIndirectExecutionSetShaderLayoutInfoEXT)
+MAKE_TYPE_FACTORY(VkIndirectExecutionSetShaderInfoEXT, VkIndirectExecutionSetShaderInfoEXT)
+MAKE_TYPE_FACTORY(VkIndirectExecutionSetInfoEXT, VkIndirectExecutionSetInfoEXT)
+MAKE_TYPE_FACTORY(VkIndirectExecutionSetCreateInfoEXT, VkIndirectExecutionSetCreateInfoEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_INTEL_performance_query)
+MAKE_TYPE_FACTORY(VkInitializePerformanceApiInfoINTEL, VkInitializePerformanceApiInfoINTEL)
+#endif /* defined(VK_INTEL_performance_query) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkInputAttachmentAspectReference, VkInputAttachmentAspectReference)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkInstanceCreateInfo, VkInstanceCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_NV_low_latency2)
+MAKE_TYPE_FACTORY(VkLatencySleepInfoNV, VkLatencySleepInfoNV)
+MAKE_TYPE_FACTORY(VkLatencySleepModeInfoNV, VkLatencySleepModeInfoNV)
+MAKE_TYPE_FACTORY(VkLatencySubmissionPresentIdNV, VkLatencySubmissionPresentIdNV)
+MAKE_TYPE_FACTORY(VkLatencySurfaceCapabilitiesNV, VkLatencySurfaceCapabilitiesNV)
+#endif /* defined(VK_NV_low_latency2) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkLayerProperties, VkLayerProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_layer_settings)
+MAKE_TYPE_FACTORY(VkLayerSettingEXT, VkLayerSettingEXT)
+MAKE_TYPE_FACTORY(VkLayerSettingsCreateInfoEXT, VkLayerSettingsCreateInfoEXT)
+#endif /* defined(VK_EXT_layer_settings) */
+#if defined(VK_MVK_macos_surface)
+MAKE_TYPE_FACTORY(VkMacOSSurfaceCreateInfoMVK, VkMacOSSurfaceCreateInfoMVK)
+#endif /* defined(VK_MVK_macos_surface) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkMappedMemoryRange, VkMappedMemoryRange)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkMemoryAllocateFlagsInfo, VkMemoryAllocateFlagsInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkMemoryAllocateInfo, VkMemoryAllocateInfo)
+MAKE_TYPE_FACTORY(VkMemoryBarrier, VkMemoryBarrier)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkMemoryDedicatedAllocateInfo, VkMemoryDedicatedAllocateInfo)
+MAKE_TYPE_FACTORY(VkMemoryDedicatedRequirements, VkMemoryDedicatedRequirements)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_KHR_external_memory_fd)
+MAKE_TYPE_FACTORY(VkMemoryFdPropertiesKHR, VkMemoryFdPropertiesKHR)
+#endif /* defined(VK_KHR_external_memory_fd) */
+#if defined(VK_ANDROID_external_memory_android_hardware_buffer)
+MAKE_TYPE_FACTORY(VkMemoryGetAndroidHardwareBufferInfoANDROID, VkMemoryGetAndroidHardwareBufferInfoANDROID)
+#endif /* defined(VK_ANDROID_external_memory_android_hardware_buffer) */
+#if defined(VK_KHR_external_memory_fd)
+MAKE_TYPE_FACTORY(VkMemoryGetFdInfoKHR, VkMemoryGetFdInfoKHR)
+#endif /* defined(VK_KHR_external_memory_fd) */
+#if defined(VK_NV_external_memory_rdma)
+MAKE_TYPE_FACTORY(VkMemoryGetRemoteAddressInfoNV, VkMemoryGetRemoteAddressInfoNV)
+#endif /* defined(VK_NV_external_memory_rdma) */
+#if defined(VK_KHR_external_memory_win32)
+MAKE_TYPE_FACTORY(VkMemoryGetWin32HandleInfoKHR, VkMemoryGetWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_memory_win32) */
+#if defined(VK_FUCHSIA_external_memory)
+MAKE_TYPE_FACTORY(VkMemoryGetZirconHandleInfoFUCHSIA, VkMemoryGetZirconHandleInfoFUCHSIA)
+#endif /* defined(VK_FUCHSIA_external_memory) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkMemoryHeap, VkMemoryHeap)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_external_memory_host)
+MAKE_TYPE_FACTORY(VkMemoryHostPointerPropertiesEXT, VkMemoryHostPointerPropertiesEXT)
+#endif /* defined(VK_EXT_external_memory_host) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkMemoryMapInfo, VkMemoryMapInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_map_memory_placed)
+MAKE_TYPE_FACTORY(VkMemoryMapPlacedInfoEXT, VkMemoryMapPlacedInfoEXT)
+#endif /* defined(VK_EXT_map_memory_placed) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkMemoryOpaqueCaptureAddressAllocateInfo, VkMemoryOpaqueCaptureAddressAllocateInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_EXT_memory_priority)
+MAKE_TYPE_FACTORY(VkMemoryPriorityAllocateInfoEXT, VkMemoryPriorityAllocateInfoEXT)
+#endif /* defined(VK_EXT_memory_priority) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkMemoryRequirements, VkMemoryRequirements)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkMemoryRequirements2, VkMemoryRequirements2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkMemoryType, VkMemoryType)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkMemoryUnmapInfo, VkMemoryUnmapInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_KHR_external_memory_win32)
+MAKE_TYPE_FACTORY(VkMemoryWin32HandlePropertiesKHR, VkMemoryWin32HandlePropertiesKHR)
+#endif /* defined(VK_KHR_external_memory_win32) */
+#if defined(VK_FUCHSIA_external_memory)
+MAKE_TYPE_FACTORY(VkMemoryZirconHandlePropertiesFUCHSIA, VkMemoryZirconHandlePropertiesFUCHSIA)
+#endif /* defined(VK_FUCHSIA_external_memory) */
+#if defined(VK_EXT_metal_surface)
+MAKE_TYPE_FACTORY(VkMetalSurfaceCreateInfoEXT, VkMetalSurfaceCreateInfoEXT)
+#endif /* defined(VK_EXT_metal_surface) */
+#if defined(VK_EXT_opacity_micromap)
+MAKE_TYPE_FACTORY(VkMicromapBuildInfoEXT, VkMicromapBuildInfoEXT)
+MAKE_TYPE_FACTORY(VkMicromapBuildSizesInfoEXT, VkMicromapBuildSizesInfoEXT)
+MAKE_TYPE_FACTORY(VkMicromapCreateInfoEXT, VkMicromapCreateInfoEXT)
+MAKE_TYPE_FACTORY(VkMicromapTriangleEXT, VkMicromapTriangleEXT)
+MAKE_TYPE_FACTORY(VkMicromapVersionInfoEXT, VkMicromapVersionInfoEXT)
+#endif /* defined(VK_EXT_opacity_micromap) */
+#if defined(VK_EXT_multi_draw)
+MAKE_TYPE_FACTORY(VkMultiDrawIndexedInfoEXT, VkMultiDrawIndexedInfoEXT)
+MAKE_TYPE_FACTORY(VkMultiDrawInfoEXT, VkMultiDrawInfoEXT)
+#endif /* defined(VK_EXT_multi_draw) */
+#if defined(VK_EXT_sample_locations)
+MAKE_TYPE_FACTORY(VkMultisamplePropertiesEXT, VkMultisamplePropertiesEXT)
+#endif /* defined(VK_EXT_sample_locations) */
+#if defined(VK_EXT_multisampled_render_to_single_sampled)
+MAKE_TYPE_FACTORY(VkMultisampledRenderToSingleSampledInfoEXT, VkMultisampledRenderToSingleSampledInfoEXT)
+#endif /* defined(VK_EXT_multisampled_render_to_single_sampled) */
+#if defined(VK_NVX_multiview_per_view_attributes) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering))
+MAKE_TYPE_FACTORY(VkMultiviewPerViewAttributesInfoNVX, VkMultiviewPerViewAttributesInfoNVX)
+#endif /* defined(VK_NVX_multiview_per_view_attributes) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering)) */
+#if defined(VK_QCOM_multiview_per_view_render_areas)
+MAKE_TYPE_FACTORY(VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM, VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM)
+#endif /* defined(VK_QCOM_multiview_per_view_render_areas) */
+#if defined(VK_EXT_mutable_descriptor_type)
+MAKE_TYPE_FACTORY(VkMutableDescriptorTypeListEXT, VkMutableDescriptorTypeListEXT)
+MAKE_TYPE_FACTORY(VkMutableDescriptorTypeCreateInfoEXT, VkMutableDescriptorTypeCreateInfoEXT)
+#endif /* defined(VK_EXT_mutable_descriptor_type) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkOpaqueCaptureDescriptorDataCreateInfoEXT, VkOpaqueCaptureDescriptorDataCreateInfoEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_NV_optical_flow)
+MAKE_TYPE_FACTORY(VkOpticalFlowExecuteInfoNV, VkOpticalFlowExecuteInfoNV)
+MAKE_TYPE_FACTORY(VkOpticalFlowImageFormatInfoNV, VkOpticalFlowImageFormatInfoNV)
+MAKE_TYPE_FACTORY(VkOpticalFlowImageFormatPropertiesNV, VkOpticalFlowImageFormatPropertiesNV)
+MAKE_TYPE_FACTORY(VkOpticalFlowSessionCreateInfoNV, VkOpticalFlowSessionCreateInfoNV)
+MAKE_TYPE_FACTORY(VkOpticalFlowSessionCreatePrivateDataInfoNV, VkOpticalFlowSessionCreatePrivateDataInfoNV)
+#endif /* defined(VK_NV_optical_flow) */
+#if defined(VK_NV_low_latency2)
+MAKE_TYPE_FACTORY(VkOutOfBandQueueTypeInfoNV, VkOutOfBandQueueTypeInfoNV)
+#endif /* defined(VK_NV_low_latency2) */
+#if defined(VK_GOOGLE_display_timing)
+MAKE_TYPE_FACTORY(VkPastPresentationTimingGOOGLE, VkPastPresentationTimingGOOGLE)
+#endif /* defined(VK_GOOGLE_display_timing) */
+#if defined(VK_INTEL_performance_query)
+MAKE_TYPE_FACTORY(VkPerformanceConfigurationAcquireInfoINTEL, VkPerformanceConfigurationAcquireInfoINTEL)
+#endif /* defined(VK_INTEL_performance_query) */
+#if defined(VK_KHR_performance_query)
+MAKE_TYPE_FACTORY(VkPerformanceCounterDescriptionKHR, VkPerformanceCounterDescriptionKHR)
+MAKE_TYPE_FACTORY(VkPerformanceCounterKHR, VkPerformanceCounterKHR)
+MAKE_TYPE_FACTORY(VkPerformanceCounterResultKHR, VkPerformanceCounterResultKHR)
+#endif /* defined(VK_KHR_performance_query) */
+#if defined(VK_INTEL_performance_query)
+MAKE_TYPE_FACTORY(VkPerformanceMarkerInfoINTEL, VkPerformanceMarkerInfoINTEL)
+MAKE_TYPE_FACTORY(VkPerformanceOverrideInfoINTEL, VkPerformanceOverrideInfoINTEL)
+#endif /* defined(VK_INTEL_performance_query) */
+#if defined(VK_KHR_performance_query) && defined(VKSC_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkPerformanceQueryReservationInfoKHR, VkPerformanceQueryReservationInfoKHR)
+#endif /* defined(VK_KHR_performance_query) && defined(VKSC_VERSION_1_0) */
+#if defined(VK_KHR_performance_query)
+MAKE_TYPE_FACTORY(VkPerformanceQuerySubmitInfoKHR, VkPerformanceQuerySubmitInfoKHR)
+#endif /* defined(VK_KHR_performance_query) */
+#if defined(VK_INTEL_performance_query)
+MAKE_TYPE_FACTORY(VkPerformanceStreamMarkerInfoINTEL, VkPerformanceStreamMarkerInfoINTEL)
+MAKE_TYPE_FACTORY(VkPerformanceValueDataINTEL, VkPerformanceValueDataINTEL)
+MAKE_TYPE_FACTORY(VkPerformanceValueINTEL, VkPerformanceValueINTEL)
+#endif /* defined(VK_INTEL_performance_query) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDevice16BitStorageFeatures, VkPhysicalDevice16BitStorageFeatures)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_4444_formats)
+MAKE_TYPE_FACTORY(VkPhysicalDevice4444FormatsFeaturesEXT, VkPhysicalDevice4444FormatsFeaturesEXT)
+#endif /* defined(VK_EXT_4444_formats) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDevice8BitStorageFeatures, VkPhysicalDevice8BitStorageFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_EXT_astc_decode_mode)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceASTCDecodeFeaturesEXT, VkPhysicalDeviceASTCDecodeFeaturesEXT)
+#endif /* defined(VK_EXT_astc_decode_mode) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceAccelerationStructureFeaturesKHR, VkPhysicalDeviceAccelerationStructureFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceAccelerationStructurePropertiesKHR, VkPhysicalDeviceAccelerationStructurePropertiesKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_EXT_device_address_binding_report)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceAddressBindingReportFeaturesEXT, VkPhysicalDeviceAddressBindingReportFeaturesEXT)
+#endif /* defined(VK_EXT_device_address_binding_report) */
+#if defined(VK_SEC_amigo_profiling)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceAmigoProfilingFeaturesSEC, VkPhysicalDeviceAmigoProfilingFeaturesSEC)
+#endif /* defined(VK_SEC_amigo_profiling) */
+#if defined(VK_AMD_anti_lag)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceAntiLagFeaturesAMD, VkPhysicalDeviceAntiLagFeaturesAMD)
+#endif /* defined(VK_AMD_anti_lag) */
+#if defined(VK_EXT_attachment_feedback_loop_dynamic_state)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT, VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT)
+#endif /* defined(VK_EXT_attachment_feedback_loop_dynamic_state) */
+#if defined(VK_EXT_attachment_feedback_loop_layout)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT, VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT)
+#endif /* defined(VK_EXT_attachment_feedback_loop_layout) */
+#if defined(VK_EXT_blend_operation_advanced)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT, VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT, VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT)
+#endif /* defined(VK_EXT_blend_operation_advanced) */
+#if defined(VK_EXT_border_color_swizzle)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceBorderColorSwizzleFeaturesEXT, VkPhysicalDeviceBorderColorSwizzleFeaturesEXT)
+#endif /* defined(VK_EXT_border_color_swizzle) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceBufferDeviceAddressFeatures, VkPhysicalDeviceBufferDeviceAddressFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_EXT_buffer_device_address)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT, VkPhysicalDeviceBufferDeviceAddressFeaturesEXT)
+#endif /* defined(VK_EXT_buffer_device_address) */
+#if defined(VK_HUAWEI_cluster_culling_shader)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI, VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI, VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI, VkPhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI)
+#endif /* defined(VK_HUAWEI_cluster_culling_shader) */
+#if defined(VK_AMD_device_coherent_memory)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCoherentMemoryFeaturesAMD, VkPhysicalDeviceCoherentMemoryFeaturesAMD)
+#endif /* defined(VK_AMD_device_coherent_memory) */
+#if defined(VK_EXT_color_write_enable)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceColorWriteEnableFeaturesEXT, VkPhysicalDeviceColorWriteEnableFeaturesEXT)
+#endif /* defined(VK_EXT_color_write_enable) */
+#if defined(VK_NV_command_buffer_inheritance)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCommandBufferInheritanceFeaturesNV, VkPhysicalDeviceCommandBufferInheritanceFeaturesNV)
+#endif /* defined(VK_NV_command_buffer_inheritance) */
+#if defined(VK_KHR_compute_shader_derivatives)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR, VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR, VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR)
+#endif /* defined(VK_KHR_compute_shader_derivatives) */
+#if defined(VK_EXT_conditional_rendering)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceConditionalRenderingFeaturesEXT, VkPhysicalDeviceConditionalRenderingFeaturesEXT)
+#endif /* defined(VK_EXT_conditional_rendering) */
+#if defined(VK_EXT_conservative_rasterization)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceConservativeRasterizationPropertiesEXT, VkPhysicalDeviceConservativeRasterizationPropertiesEXT)
+#endif /* defined(VK_EXT_conservative_rasterization) */
+#if defined(VK_NV_cooperative_matrix2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCooperativeMatrix2FeaturesNV, VkPhysicalDeviceCooperativeMatrix2FeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCooperativeMatrix2PropertiesNV, VkPhysicalDeviceCooperativeMatrix2PropertiesNV)
+#endif /* defined(VK_NV_cooperative_matrix2) */
+#if defined(VK_KHR_cooperative_matrix)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCooperativeMatrixFeaturesKHR, VkPhysicalDeviceCooperativeMatrixFeaturesKHR)
+#endif /* defined(VK_KHR_cooperative_matrix) */
+#if defined(VK_NV_cooperative_matrix)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCooperativeMatrixFeaturesNV, VkPhysicalDeviceCooperativeMatrixFeaturesNV)
+#endif /* defined(VK_NV_cooperative_matrix) */
+#if defined(VK_KHR_cooperative_matrix)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCooperativeMatrixPropertiesKHR, VkPhysicalDeviceCooperativeMatrixPropertiesKHR)
+#endif /* defined(VK_KHR_cooperative_matrix) */
+#if defined(VK_NV_cooperative_matrix)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCooperativeMatrixPropertiesNV, VkPhysicalDeviceCooperativeMatrixPropertiesNV)
+#endif /* defined(VK_NV_cooperative_matrix) */
+#if defined(VK_NV_copy_memory_indirect)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCopyMemoryIndirectFeaturesNV, VkPhysicalDeviceCopyMemoryIndirectFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCopyMemoryIndirectPropertiesNV, VkPhysicalDeviceCopyMemoryIndirectPropertiesNV)
+#endif /* defined(VK_NV_copy_memory_indirect) */
+#if defined(VK_NV_corner_sampled_image)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCornerSampledImageFeaturesNV, VkPhysicalDeviceCornerSampledImageFeaturesNV)
+#endif /* defined(VK_NV_corner_sampled_image) */
+#if defined(VK_NV_coverage_reduction_mode)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCoverageReductionModeFeaturesNV, VkPhysicalDeviceCoverageReductionModeFeaturesNV)
+#endif /* defined(VK_NV_coverage_reduction_mode) */
+#if defined(VK_QCOM_filter_cubic_clamp)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCubicClampFeaturesQCOM, VkPhysicalDeviceCubicClampFeaturesQCOM)
+#endif /* defined(VK_QCOM_filter_cubic_clamp) */
+#if defined(VK_QCOM_filter_cubic_weights)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCubicWeightsFeaturesQCOM, VkPhysicalDeviceCubicWeightsFeaturesQCOM)
+#endif /* defined(VK_QCOM_filter_cubic_weights) */
+#if defined(VK_NV_cuda_kernel_launch)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCudaKernelLaunchFeaturesNV, VkPhysicalDeviceCudaKernelLaunchFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCudaKernelLaunchPropertiesNV, VkPhysicalDeviceCudaKernelLaunchPropertiesNV)
+#endif /* defined(VK_NV_cuda_kernel_launch) */
+#if defined(VK_EXT_custom_border_color)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCustomBorderColorFeaturesEXT, VkPhysicalDeviceCustomBorderColorFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceCustomBorderColorPropertiesEXT, VkPhysicalDeviceCustomBorderColorPropertiesEXT)
+#endif /* defined(VK_EXT_custom_border_color) */
+#if defined(VK_NV_dedicated_allocation_image_aliasing)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV, VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV)
+#endif /* defined(VK_NV_dedicated_allocation_image_aliasing) */
+#if defined(VK_EXT_depth_bias_control)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDepthBiasControlFeaturesEXT, VkPhysicalDeviceDepthBiasControlFeaturesEXT)
+#endif /* defined(VK_EXT_depth_bias_control) */
+#if defined(VK_EXT_depth_clamp_control)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDepthClampControlFeaturesEXT, VkPhysicalDeviceDepthClampControlFeaturesEXT)
+#endif /* defined(VK_EXT_depth_clamp_control) */
+#if defined(VK_EXT_depth_clamp_zero_one)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDepthClampZeroOneFeaturesEXT, VkPhysicalDeviceDepthClampZeroOneFeaturesEXT)
+#endif /* defined(VK_EXT_depth_clamp_zero_one) */
+#if defined(VK_EXT_depth_clip_control)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDepthClipControlFeaturesEXT, VkPhysicalDeviceDepthClipControlFeaturesEXT)
+#endif /* defined(VK_EXT_depth_clip_control) */
+#if defined(VK_EXT_depth_clip_enable)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDepthClipEnableFeaturesEXT, VkPhysicalDeviceDepthClipEnableFeaturesEXT)
+#endif /* defined(VK_EXT_depth_clip_enable) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDepthStencilResolveProperties, VkPhysicalDeviceDepthStencilResolveProperties)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT, VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDescriptorBufferFeaturesEXT, VkPhysicalDeviceDescriptorBufferFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDescriptorBufferPropertiesEXT, VkPhysicalDeviceDescriptorBufferPropertiesEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDescriptorIndexingFeatures, VkPhysicalDeviceDescriptorIndexingFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDescriptorIndexingProperties, VkPhysicalDeviceDescriptorIndexingProperties)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_NV_descriptor_pool_overallocation)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV, VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV)
+#endif /* defined(VK_NV_descriptor_pool_overallocation) */
+#if defined(VK_VALVE_descriptor_set_host_mapping)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE, VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE)
+#endif /* defined(VK_VALVE_descriptor_set_host_mapping) */
+#if defined(VK_NV_device_generated_commands_compute)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV, VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV)
+#endif /* defined(VK_NV_device_generated_commands_compute) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT, VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV, VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV, VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_EXT_device_memory_report)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDeviceMemoryReportFeaturesEXT, VkPhysicalDeviceDeviceMemoryReportFeaturesEXT)
+#endif /* defined(VK_EXT_device_memory_report) */
+#if defined(VK_NV_device_diagnostics_config)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDiagnosticsConfigFeaturesNV, VkPhysicalDeviceDiagnosticsConfigFeaturesNV)
+#endif /* defined(VK_NV_device_diagnostics_config) */
+#if defined(VK_EXT_discard_rectangles)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDiscardRectanglePropertiesEXT, VkPhysicalDeviceDiscardRectanglePropertiesEXT)
+#endif /* defined(VK_EXT_discard_rectangles) */
+#if defined(VK_NV_displacement_micromap)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDisplacementMicromapFeaturesNV, VkPhysicalDeviceDisplacementMicromapFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDisplacementMicromapPropertiesNV, VkPhysicalDeviceDisplacementMicromapPropertiesNV)
+#endif /* defined(VK_NV_displacement_micromap) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDriverProperties, VkPhysicalDeviceDriverProperties)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_EXT_physical_device_drm)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDrmPropertiesEXT, VkPhysicalDeviceDrmPropertiesEXT)
+#endif /* defined(VK_EXT_physical_device_drm) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDynamicRenderingFeatures, VkPhysicalDeviceDynamicRenderingFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDynamicRenderingLocalReadFeatures, VkPhysicalDeviceDynamicRenderingLocalReadFeatures)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_dynamic_rendering_unused_attachments)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT, VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT)
+#endif /* defined(VK_EXT_dynamic_rendering_unused_attachments) */
+#if defined(VK_NV_scissor_exclusive)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExclusiveScissorFeaturesNV, VkPhysicalDeviceExclusiveScissorFeaturesNV)
+#endif /* defined(VK_NV_scissor_exclusive) */
+#if defined(VK_EXT_extended_dynamic_state2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExtendedDynamicState2FeaturesEXT, VkPhysicalDeviceExtendedDynamicState2FeaturesEXT)
+#endif /* defined(VK_EXT_extended_dynamic_state2) */
+#if defined(VK_EXT_extended_dynamic_state3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExtendedDynamicState3FeaturesEXT, VkPhysicalDeviceExtendedDynamicState3FeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExtendedDynamicState3PropertiesEXT, VkPhysicalDeviceExtendedDynamicState3PropertiesEXT)
+#endif /* defined(VK_EXT_extended_dynamic_state3) */
+#if defined(VK_EXT_extended_dynamic_state)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExtendedDynamicStateFeaturesEXT, VkPhysicalDeviceExtendedDynamicStateFeaturesEXT)
+#endif /* defined(VK_EXT_extended_dynamic_state) */
+#if defined(VK_NV_extended_sparse_address_space)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV, VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV, VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV)
+#endif /* defined(VK_NV_extended_sparse_address_space) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalBufferInfo, VkPhysicalDeviceExternalBufferInfo)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalFenceInfo, VkPhysicalDeviceExternalFenceInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_ANDROID_external_format_resolve)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalFormatResolveFeaturesANDROID, VkPhysicalDeviceExternalFormatResolveFeaturesANDROID)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalFormatResolvePropertiesANDROID, VkPhysicalDeviceExternalFormatResolvePropertiesANDROID)
+#endif /* defined(VK_ANDROID_external_format_resolve) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalImageFormatInfo, VkPhysicalDeviceExternalImageFormatInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_external_memory_host)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalMemoryHostPropertiesEXT, VkPhysicalDeviceExternalMemoryHostPropertiesEXT)
+#endif /* defined(VK_EXT_external_memory_host) */
+#if defined(VK_NV_external_memory_rdma)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalMemoryRDMAFeaturesNV, VkPhysicalDeviceExternalMemoryRDMAFeaturesNV)
+#endif /* defined(VK_NV_external_memory_rdma) */
+#if defined(VK_QNX_external_memory_screen_buffer)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX, VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX)
+#endif /* defined(VK_QNX_external_memory_screen_buffer) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceExternalSemaphoreInfo, VkPhysicalDeviceExternalSemaphoreInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_device_fault)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFaultFeaturesEXT, VkPhysicalDeviceFaultFeaturesEXT)
+#endif /* defined(VK_EXT_device_fault) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFeatures2, VkPhysicalDeviceFeatures2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFloatControlsProperties, VkPhysicalDeviceFloatControlsProperties)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_EXT_fragment_density_map2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentDensityMap2FeaturesEXT, VkPhysicalDeviceFragmentDensityMap2FeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentDensityMap2PropertiesEXT, VkPhysicalDeviceFragmentDensityMap2PropertiesEXT)
+#endif /* defined(VK_EXT_fragment_density_map2) */
+#if defined(VK_EXT_fragment_density_map)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentDensityMapFeaturesEXT, VkPhysicalDeviceFragmentDensityMapFeaturesEXT)
+#endif /* defined(VK_EXT_fragment_density_map) */
+#if defined(VK_QCOM_fragment_density_map_offset)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM, VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM, VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM)
+#endif /* defined(VK_QCOM_fragment_density_map_offset) */
+#if defined(VK_EXT_fragment_density_map)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentDensityMapPropertiesEXT, VkPhysicalDeviceFragmentDensityMapPropertiesEXT)
+#endif /* defined(VK_EXT_fragment_density_map) */
+#if defined(VK_KHR_fragment_shader_barycentric)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR, VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR, VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR)
+#endif /* defined(VK_KHR_fragment_shader_barycentric) */
+#if defined(VK_EXT_fragment_shader_interlock)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT, VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT)
+#endif /* defined(VK_EXT_fragment_shader_interlock) */
+#if defined(VK_NV_fragment_shading_rate_enums)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV, VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV, VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV)
+#endif /* defined(VK_NV_fragment_shading_rate_enums) */
+#if defined(VK_KHR_fragment_shading_rate)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShadingRateFeaturesKHR, VkPhysicalDeviceFragmentShadingRateFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShadingRateKHR, VkPhysicalDeviceFragmentShadingRateKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFragmentShadingRatePropertiesKHR, VkPhysicalDeviceFragmentShadingRatePropertiesKHR)
+#endif /* defined(VK_KHR_fragment_shading_rate) */
+#if defined(VK_EXT_frame_boundary)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceFrameBoundaryFeaturesEXT, VkPhysicalDeviceFrameBoundaryFeaturesEXT)
+#endif /* defined(VK_EXT_frame_boundary) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceGlobalPriorityQueryFeatures, VkPhysicalDeviceGlobalPriorityQueryFeatures)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_graphics_pipeline_library)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT, VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT, VkPhysicalDeviceGraphicsPipelineLibraryPropertiesEXT)
+#endif /* defined(VK_EXT_graphics_pipeline_library) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceGroupProperties, VkPhysicalDeviceGroupProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_HUAWEI_hdr_vivid)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceHdrVividFeaturesHUAWEI, VkPhysicalDeviceHdrVividFeaturesHUAWEI)
+#endif /* defined(VK_HUAWEI_hdr_vivid) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceHostImageCopyFeatures, VkPhysicalDeviceHostImageCopyFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceHostImageCopyProperties, VkPhysicalDeviceHostImageCopyProperties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceHostQueryResetFeatures, VkPhysicalDeviceHostQueryResetFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceIDProperties, VkPhysicalDeviceIDProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_image_2d_view_of_3d)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImage2DViewOf3DFeaturesEXT, VkPhysicalDeviceImage2DViewOf3DFeaturesEXT)
+#endif /* defined(VK_EXT_image_2d_view_of_3d) */
+#if defined(VK_MESA_image_alignment_control)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageAlignmentControlFeaturesMESA, VkPhysicalDeviceImageAlignmentControlFeaturesMESA)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageAlignmentControlPropertiesMESA, VkPhysicalDeviceImageAlignmentControlPropertiesMESA)
+#endif /* defined(VK_MESA_image_alignment_control) */
+#if defined(VK_EXT_image_compression_control)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageCompressionControlFeaturesEXT, VkPhysicalDeviceImageCompressionControlFeaturesEXT)
+#endif /* defined(VK_EXT_image_compression_control) */
+#if defined(VK_EXT_image_compression_control_swapchain)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT, VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT)
+#endif /* defined(VK_EXT_image_compression_control_swapchain) */
+#if defined(VK_EXT_image_drm_format_modifier)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageDrmFormatModifierInfoEXT, VkPhysicalDeviceImageDrmFormatModifierInfoEXT)
+#endif /* defined(VK_EXT_image_drm_format_modifier) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageFormatInfo2, VkPhysicalDeviceImageFormatInfo2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_QCOM_image_processing2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageProcessing2FeaturesQCOM, VkPhysicalDeviceImageProcessing2FeaturesQCOM)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageProcessing2PropertiesQCOM, VkPhysicalDeviceImageProcessing2PropertiesQCOM)
+#endif /* defined(VK_QCOM_image_processing2) */
+#if defined(VK_QCOM_image_processing)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageProcessingFeaturesQCOM, VkPhysicalDeviceImageProcessingFeaturesQCOM)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageProcessingPropertiesQCOM, VkPhysicalDeviceImageProcessingPropertiesQCOM)
+#endif /* defined(VK_QCOM_image_processing) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageRobustnessFeatures, VkPhysicalDeviceImageRobustnessFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_image_sliced_view_of_3d)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT, VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT)
+#endif /* defined(VK_EXT_image_sliced_view_of_3d) */
+#if defined(VK_EXT_filter_cubic)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageViewImageFormatInfoEXT, VkPhysicalDeviceImageViewImageFormatInfoEXT)
+#endif /* defined(VK_EXT_filter_cubic) */
+#if defined(VK_EXT_image_view_min_lod)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImageViewMinLodFeaturesEXT, VkPhysicalDeviceImageViewMinLodFeaturesEXT)
+#endif /* defined(VK_EXT_image_view_min_lod) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceImagelessFramebufferFeatures, VkPhysicalDeviceImagelessFramebufferFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceIndexTypeUint8Features, VkPhysicalDeviceIndexTypeUint8Features)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_NV_inherited_viewport_scissor)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceInheritedViewportScissorFeaturesNV, VkPhysicalDeviceInheritedViewportScissorFeaturesNV)
+#endif /* defined(VK_NV_inherited_viewport_scissor) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceInlineUniformBlockFeatures, VkPhysicalDeviceInlineUniformBlockFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceInlineUniformBlockProperties, VkPhysicalDeviceInlineUniformBlockProperties)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_HUAWEI_invocation_mask)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceInvocationMaskFeaturesHUAWEI, VkPhysicalDeviceInvocationMaskFeaturesHUAWEI)
+#endif /* defined(VK_HUAWEI_invocation_mask) */
+#if defined(VK_KHR_maintenance7)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLayeredApiPropertiesKHR, VkPhysicalDeviceLayeredApiPropertiesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLayeredApiPropertiesListKHR, VkPhysicalDeviceLayeredApiPropertiesListKHR)
+#endif /* defined(VK_KHR_maintenance7) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLimits, VkPhysicalDeviceLimits)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSparseProperties, VkPhysicalDeviceSparseProperties)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceProperties, VkPhysicalDeviceProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceProperties2, VkPhysicalDeviceProperties2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_KHR_maintenance7)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLayeredApiVulkanPropertiesKHR, VkPhysicalDeviceLayeredApiVulkanPropertiesKHR)
+#endif /* defined(VK_KHR_maintenance7) */
+#if defined(VK_MSFT_layered_driver)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLayeredDriverPropertiesMSFT, VkPhysicalDeviceLayeredDriverPropertiesMSFT)
+#endif /* defined(VK_MSFT_layered_driver) */
+#if defined(VK_EXT_legacy_dithering)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLegacyDitheringFeaturesEXT, VkPhysicalDeviceLegacyDitheringFeaturesEXT)
+#endif /* defined(VK_EXT_legacy_dithering) */
+#if defined(VK_EXT_legacy_vertex_attributes)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT, VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT, VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT)
+#endif /* defined(VK_EXT_legacy_vertex_attributes) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLineRasterizationFeatures, VkPhysicalDeviceLineRasterizationFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLineRasterizationProperties, VkPhysicalDeviceLineRasterizationProperties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_NV_linear_color_attachment)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceLinearColorAttachmentFeaturesNV, VkPhysicalDeviceLinearColorAttachmentFeaturesNV)
+#endif /* defined(VK_NV_linear_color_attachment) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance3Properties, VkPhysicalDeviceMaintenance3Properties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance4Features, VkPhysicalDeviceMaintenance4Features)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance4Properties, VkPhysicalDeviceMaintenance4Properties)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance5Features, VkPhysicalDeviceMaintenance5Features)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance5Properties, VkPhysicalDeviceMaintenance5Properties)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance6Features, VkPhysicalDeviceMaintenance6Features)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance6Properties, VkPhysicalDeviceMaintenance6Properties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_KHR_maintenance7)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance7FeaturesKHR, VkPhysicalDeviceMaintenance7FeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMaintenance7PropertiesKHR, VkPhysicalDeviceMaintenance7PropertiesKHR)
+#endif /* defined(VK_KHR_maintenance7) */
+#if defined(VK_EXT_map_memory_placed)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMapMemoryPlacedFeaturesEXT, VkPhysicalDeviceMapMemoryPlacedFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMapMemoryPlacedPropertiesEXT, VkPhysicalDeviceMapMemoryPlacedPropertiesEXT)
+#endif /* defined(VK_EXT_map_memory_placed) */
+#if defined(VK_EXT_memory_budget)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMemoryBudgetPropertiesEXT, VkPhysicalDeviceMemoryBudgetPropertiesEXT)
+#endif /* defined(VK_EXT_memory_budget) */
+#if defined(VK_NV_memory_decompression)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMemoryDecompressionFeaturesNV, VkPhysicalDeviceMemoryDecompressionFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMemoryDecompressionPropertiesNV, VkPhysicalDeviceMemoryDecompressionPropertiesNV)
+#endif /* defined(VK_NV_memory_decompression) */
+#if defined(VK_EXT_memory_priority)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMemoryPriorityFeaturesEXT, VkPhysicalDeviceMemoryPriorityFeaturesEXT)
+#endif /* defined(VK_EXT_memory_priority) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMemoryProperties, VkPhysicalDeviceMemoryProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMemoryProperties2, VkPhysicalDeviceMemoryProperties2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_mesh_shader)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMeshShaderFeaturesEXT, VkPhysicalDeviceMeshShaderFeaturesEXT)
+#endif /* defined(VK_EXT_mesh_shader) */
+#if defined(VK_NV_mesh_shader)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMeshShaderFeaturesNV, VkPhysicalDeviceMeshShaderFeaturesNV)
+#endif /* defined(VK_NV_mesh_shader) */
+#if defined(VK_EXT_mesh_shader)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMeshShaderPropertiesEXT, VkPhysicalDeviceMeshShaderPropertiesEXT)
+#endif /* defined(VK_EXT_mesh_shader) */
+#if defined(VK_NV_mesh_shader)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMeshShaderPropertiesNV, VkPhysicalDeviceMeshShaderPropertiesNV)
+#endif /* defined(VK_NV_mesh_shader) */
+#if defined(VK_EXT_multi_draw)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultiDrawFeaturesEXT, VkPhysicalDeviceMultiDrawFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultiDrawPropertiesEXT, VkPhysicalDeviceMultiDrawPropertiesEXT)
+#endif /* defined(VK_EXT_multi_draw) */
+#if defined(VK_EXT_multisampled_render_to_single_sampled)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT, VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT)
+#endif /* defined(VK_EXT_multisampled_render_to_single_sampled) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultiviewFeatures, VkPhysicalDeviceMultiviewFeatures)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_NVX_multiview_per_view_attributes)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX, VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX)
+#endif /* defined(VK_NVX_multiview_per_view_attributes) */
+#if defined(VK_QCOM_multiview_per_view_render_areas)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM, VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM)
+#endif /* defined(VK_QCOM_multiview_per_view_render_areas) */
+#if defined(VK_QCOM_multiview_per_view_viewports)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM, VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM)
+#endif /* defined(VK_QCOM_multiview_per_view_viewports) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMultiviewProperties, VkPhysicalDeviceMultiviewProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_mutable_descriptor_type)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT, VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT)
+#endif /* defined(VK_EXT_mutable_descriptor_type) */
+#if defined(VK_EXT_nested_command_buffer)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceNestedCommandBufferFeaturesEXT, VkPhysicalDeviceNestedCommandBufferFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceNestedCommandBufferPropertiesEXT, VkPhysicalDeviceNestedCommandBufferPropertiesEXT)
+#endif /* defined(VK_EXT_nested_command_buffer) */
+#if defined(VK_EXT_non_seamless_cube_map)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT, VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT)
+#endif /* defined(VK_EXT_non_seamless_cube_map) */
+#if defined(VK_EXT_opacity_micromap)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceOpacityMicromapFeaturesEXT, VkPhysicalDeviceOpacityMicromapFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceOpacityMicromapPropertiesEXT, VkPhysicalDeviceOpacityMicromapPropertiesEXT)
+#endif /* defined(VK_EXT_opacity_micromap) */
+#if defined(VK_NV_optical_flow)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceOpticalFlowFeaturesNV, VkPhysicalDeviceOpticalFlowFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceOpticalFlowPropertiesNV, VkPhysicalDeviceOpticalFlowPropertiesNV)
+#endif /* defined(VK_NV_optical_flow) */
+#if defined(VK_EXT_pci_bus_info)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePCIBusInfoPropertiesEXT, VkPhysicalDevicePCIBusInfoPropertiesEXT)
+#endif /* defined(VK_EXT_pci_bus_info) */
+#if defined(VK_EXT_pageable_device_local_memory)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT, VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT)
+#endif /* defined(VK_EXT_pageable_device_local_memory) */
+#if defined(VK_NV_per_stage_descriptor_set)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePerStageDescriptorSetFeaturesNV, VkPhysicalDevicePerStageDescriptorSetFeaturesNV)
+#endif /* defined(VK_NV_per_stage_descriptor_set) */
+#if defined(VK_KHR_performance_query)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePerformanceQueryFeaturesKHR, VkPhysicalDevicePerformanceQueryFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePerformanceQueryPropertiesKHR, VkPhysicalDevicePerformanceQueryPropertiesKHR)
+#endif /* defined(VK_KHR_performance_query) */
+#if defined(VK_KHR_pipeline_binary)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineBinaryFeaturesKHR, VkPhysicalDevicePipelineBinaryFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineBinaryPropertiesKHR, VkPhysicalDevicePipelineBinaryPropertiesKHR)
+#endif /* defined(VK_KHR_pipeline_binary) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineCreationCacheControlFeatures, VkPhysicalDevicePipelineCreationCacheControlFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_KHR_pipeline_executable_properties)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR, VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR)
+#endif /* defined(VK_KHR_pipeline_executable_properties) */
+#if defined(VK_EXT_pipeline_library_group_handles)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT, VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT)
+#endif /* defined(VK_EXT_pipeline_library_group_handles) */
+#if defined(VK_EXT_pipeline_properties)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelinePropertiesFeaturesEXT, VkPhysicalDevicePipelinePropertiesFeaturesEXT)
+#endif /* defined(VK_EXT_pipeline_properties) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineProtectedAccessFeatures, VkPhysicalDevicePipelineProtectedAccessFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineRobustnessFeatures, VkPhysicalDevicePipelineRobustnessFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePipelineRobustnessProperties, VkPhysicalDevicePipelineRobustnessProperties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePointClippingProperties, VkPhysicalDevicePointClippingProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_KHR_portability_subset)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePortabilitySubsetFeaturesKHR, VkPhysicalDevicePortabilitySubsetFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePortabilitySubsetPropertiesKHR, VkPhysicalDevicePortabilitySubsetPropertiesKHR)
+#endif /* defined(VK_KHR_portability_subset) */
+#if defined(VK_NV_present_barrier)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePresentBarrierFeaturesNV, VkPhysicalDevicePresentBarrierFeaturesNV)
+#endif /* defined(VK_NV_present_barrier) */
+#if defined(VK_KHR_present_id)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePresentIdFeaturesKHR, VkPhysicalDevicePresentIdFeaturesKHR)
+#endif /* defined(VK_KHR_present_id) */
+#if defined(VK_EXT_present_mode_fifo_latest_ready)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT, VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT)
+#endif /* defined(VK_EXT_present_mode_fifo_latest_ready) */
+#if defined(VK_KHR_present_wait)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePresentWaitFeaturesKHR, VkPhysicalDevicePresentWaitFeaturesKHR)
+#endif /* defined(VK_KHR_present_wait) */
+#if defined(VK_EXT_primitive_topology_list_restart)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT, VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT)
+#endif /* defined(VK_EXT_primitive_topology_list_restart) */
+#if defined(VK_EXT_primitives_generated_query)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT, VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT)
+#endif /* defined(VK_EXT_primitives_generated_query) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePrivateDataFeatures, VkPhysicalDevicePrivateDataFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceProtectedMemoryFeatures, VkPhysicalDeviceProtectedMemoryFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceProtectedMemoryProperties, VkPhysicalDeviceProtectedMemoryProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_provoking_vertex)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceProvokingVertexFeaturesEXT, VkPhysicalDeviceProvokingVertexFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceProvokingVertexPropertiesEXT, VkPhysicalDeviceProvokingVertexPropertiesEXT)
+#endif /* defined(VK_EXT_provoking_vertex) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDevicePushDescriptorProperties, VkPhysicalDevicePushDescriptorProperties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_rgba10x6_formats)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT, VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT)
+#endif /* defined(VK_EXT_rgba10x6_formats) */
+#if defined(VK_EXT_rasterization_order_attachment_access)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT, VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT)
+#endif /* defined(VK_EXT_rasterization_order_attachment_access) */
+#if defined(VK_NV_raw_access_chains)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRawAccessChainsFeaturesNV, VkPhysicalDeviceRawAccessChainsFeaturesNV)
+#endif /* defined(VK_NV_raw_access_chains) */
+#if defined(VK_KHR_ray_query)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayQueryFeaturesKHR, VkPhysicalDeviceRayQueryFeaturesKHR)
+#endif /* defined(VK_KHR_ray_query) */
+#if defined(VK_NV_ray_tracing_invocation_reorder)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV, VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV, VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV)
+#endif /* defined(VK_NV_ray_tracing_invocation_reorder) */
+#if defined(VK_KHR_ray_tracing_maintenance1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR, VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR)
+#endif /* defined(VK_KHR_ray_tracing_maintenance1) */
+#if defined(VK_NV_ray_tracing_motion_blur)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingMotionBlurFeaturesNV, VkPhysicalDeviceRayTracingMotionBlurFeaturesNV)
+#endif /* defined(VK_NV_ray_tracing_motion_blur) */
+#if defined(VK_KHR_ray_tracing_pipeline)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingPipelineFeaturesKHR, VkPhysicalDeviceRayTracingPipelineFeaturesKHR)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingPipelinePropertiesKHR, VkPhysicalDeviceRayTracingPipelinePropertiesKHR)
+#endif /* defined(VK_KHR_ray_tracing_pipeline) */
+#if defined(VK_KHR_ray_tracing_position_fetch)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR, VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR)
+#endif /* defined(VK_KHR_ray_tracing_position_fetch) */
+#if defined(VK_NV_ray_tracing)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingPropertiesNV, VkPhysicalDeviceRayTracingPropertiesNV)
+#endif /* defined(VK_NV_ray_tracing) */
+#if defined(VK_NV_ray_tracing_validation)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRayTracingValidationFeaturesNV, VkPhysicalDeviceRayTracingValidationFeaturesNV)
+#endif /* defined(VK_NV_ray_tracing_validation) */
+#if defined(VK_IMG_relaxed_line_rasterization)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG, VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG)
+#endif /* defined(VK_IMG_relaxed_line_rasterization) */
+#if defined(VK_ARM_render_pass_striped)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRenderPassStripedFeaturesARM, VkPhysicalDeviceRenderPassStripedFeaturesARM)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRenderPassStripedPropertiesARM, VkPhysicalDeviceRenderPassStripedPropertiesARM)
+#endif /* defined(VK_ARM_render_pass_striped) */
+#if defined(VK_NV_representative_fragment_test)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV, VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV)
+#endif /* defined(VK_NV_representative_fragment_test) */
+#if defined(VK_EXT_robustness2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRobustness2FeaturesEXT, VkPhysicalDeviceRobustness2FeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceRobustness2PropertiesEXT, VkPhysicalDeviceRobustness2PropertiesEXT)
+#endif /* defined(VK_EXT_robustness2) */
+#if defined(VK_EXT_sample_locations)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSampleLocationsPropertiesEXT, VkPhysicalDeviceSampleLocationsPropertiesEXT)
+#endif /* defined(VK_EXT_sample_locations) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSamplerFilterMinmaxProperties, VkPhysicalDeviceSamplerFilterMinmaxProperties)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSamplerYcbcrConversionFeatures, VkPhysicalDeviceSamplerYcbcrConversionFeatures)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceScalarBlockLayoutFeatures, VkPhysicalDeviceScalarBlockLayoutFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_ARM_scheduling_controls)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSchedulingControlsFeaturesARM, VkPhysicalDeviceSchedulingControlsFeaturesARM)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSchedulingControlsPropertiesARM, VkPhysicalDeviceSchedulingControlsPropertiesARM)
+#endif /* defined(VK_ARM_scheduling_controls) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures, VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_NV_shader_atomic_float16_vector)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV, VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV)
+#endif /* defined(VK_NV_shader_atomic_float16_vector) */
+#if defined(VK_EXT_shader_atomic_float2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT, VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT)
+#endif /* defined(VK_EXT_shader_atomic_float2) */
+#if defined(VK_EXT_shader_atomic_float)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderAtomicFloatFeaturesEXT, VkPhysicalDeviceShaderAtomicFloatFeaturesEXT)
+#endif /* defined(VK_EXT_shader_atomic_float) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderAtomicInt64Features, VkPhysicalDeviceShaderAtomicInt64Features)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_KHR_shader_clock)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderClockFeaturesKHR, VkPhysicalDeviceShaderClockFeaturesKHR)
+#endif /* defined(VK_KHR_shader_clock) */
+#if defined(VK_ARM_shader_core_builtins)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM, VkPhysicalDeviceShaderCoreBuiltinsFeaturesARM)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM, VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM)
+#endif /* defined(VK_ARM_shader_core_builtins) */
+#if defined(VK_AMD_shader_core_properties2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderCoreProperties2AMD, VkPhysicalDeviceShaderCoreProperties2AMD)
+#endif /* defined(VK_AMD_shader_core_properties2) */
+#if defined(VK_AMD_shader_core_properties)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderCorePropertiesAMD, VkPhysicalDeviceShaderCorePropertiesAMD)
+#endif /* defined(VK_AMD_shader_core_properties) */
+#if defined(VK_ARM_shader_core_properties)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderCorePropertiesARM, VkPhysicalDeviceShaderCorePropertiesARM)
+#endif /* defined(VK_ARM_shader_core_properties) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures, VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderDrawParametersFeatures, VkPhysicalDeviceShaderDrawParametersFeatures)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_AMD_shader_early_and_late_fragment_tests)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD, VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD)
+#endif /* defined(VK_AMD_shader_early_and_late_fragment_tests) */
+#if defined(VK_AMDX_shader_enqueue)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderEnqueueFeaturesAMDX, VkPhysicalDeviceShaderEnqueueFeaturesAMDX)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderEnqueuePropertiesAMDX, VkPhysicalDeviceShaderEnqueuePropertiesAMDX)
+#endif /* defined(VK_AMDX_shader_enqueue) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderExpectAssumeFeatures, VkPhysicalDeviceShaderExpectAssumeFeatures)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderFloat16Int8Features, VkPhysicalDeviceShaderFloat16Int8Features)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderFloatControls2Features, VkPhysicalDeviceShaderFloatControls2Features)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_shader_image_atomic_int64)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT, VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT)
+#endif /* defined(VK_EXT_shader_image_atomic_int64) */
+#if defined(VK_NV_shader_image_footprint)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderImageFootprintFeaturesNV, VkPhysicalDeviceShaderImageFootprintFeaturesNV)
+#endif /* defined(VK_NV_shader_image_footprint) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderIntegerDotProductFeatures, VkPhysicalDeviceShaderIntegerDotProductFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderIntegerDotProductProperties, VkPhysicalDeviceShaderIntegerDotProductProperties)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_INTEL_shader_integer_functions2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL, VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL)
+#endif /* defined(VK_INTEL_shader_integer_functions2) */
+#if defined(VK_KHR_shader_maximal_reconvergence)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR, VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR)
+#endif /* defined(VK_KHR_shader_maximal_reconvergence) */
+#if defined(VK_EXT_shader_module_identifier)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT, VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT, VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT)
+#endif /* defined(VK_EXT_shader_module_identifier) */
+#if defined(VK_EXT_shader_object)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderObjectFeaturesEXT, VkPhysicalDeviceShaderObjectFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderObjectPropertiesEXT, VkPhysicalDeviceShaderObjectPropertiesEXT)
+#endif /* defined(VK_EXT_shader_object) */
+#if defined(VK_KHR_shader_quad_control)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderQuadControlFeaturesKHR, VkPhysicalDeviceShaderQuadControlFeaturesKHR)
+#endif /* defined(VK_KHR_shader_quad_control) */
+#if defined(VK_KHR_shader_relaxed_extended_instruction)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR, VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR)
+#endif /* defined(VK_KHR_shader_relaxed_extended_instruction) */
+#if defined(VK_EXT_shader_replicated_composites)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT, VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT)
+#endif /* defined(VK_EXT_shader_replicated_composites) */
+#if defined(VK_NV_shader_sm_builtins)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderSMBuiltinsFeaturesNV, VkPhysicalDeviceShaderSMBuiltinsFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderSMBuiltinsPropertiesNV, VkPhysicalDeviceShaderSMBuiltinsPropertiesNV)
+#endif /* defined(VK_NV_shader_sm_builtins) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures, VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderSubgroupRotateFeatures, VkPhysicalDeviceShaderSubgroupRotateFeatures)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_KHR_shader_subgroup_uniform_control_flow)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR, VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR)
+#endif /* defined(VK_KHR_shader_subgroup_uniform_control_flow) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderTerminateInvocationFeatures, VkPhysicalDeviceShaderTerminateInvocationFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_shader_tile_image)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderTileImageFeaturesEXT, VkPhysicalDeviceShaderTileImageFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShaderTileImagePropertiesEXT, VkPhysicalDeviceShaderTileImagePropertiesEXT)
+#endif /* defined(VK_EXT_shader_tile_image) */
+#if defined(VK_NV_shading_rate_image)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShadingRateImageFeaturesNV, VkPhysicalDeviceShadingRateImageFeaturesNV)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceShadingRateImagePropertiesNV, VkPhysicalDeviceShadingRateImagePropertiesNV)
+#endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSparseImageFormatInfo2, VkPhysicalDeviceSparseImageFormatInfo2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSubgroupProperties, VkPhysicalDeviceSubgroupProperties)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSubgroupSizeControlFeatures, VkPhysicalDeviceSubgroupSizeControlFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSubgroupSizeControlProperties, VkPhysicalDeviceSubgroupSizeControlProperties)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_subpass_merge_feedback)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT, VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT)
+#endif /* defined(VK_EXT_subpass_merge_feedback) */
+#if defined(VK_HUAWEI_subpass_shading)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSubpassShadingFeaturesHUAWEI, VkPhysicalDeviceSubpassShadingFeaturesHUAWEI)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSubpassShadingPropertiesHUAWEI, VkPhysicalDeviceSubpassShadingPropertiesHUAWEI)
+#endif /* defined(VK_HUAWEI_subpass_shading) */
+#if defined(VK_KHR_get_surface_capabilities2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSurfaceInfo2KHR, VkPhysicalDeviceSurfaceInfo2KHR)
+#endif /* defined(VK_KHR_get_surface_capabilities2) */
+#if defined(VK_EXT_swapchain_maintenance1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT, VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT)
+#endif /* defined(VK_EXT_swapchain_maintenance1) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceSynchronization2Features, VkPhysicalDeviceSynchronization2Features)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_texel_buffer_alignment)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT, VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT)
+#endif /* defined(VK_EXT_texel_buffer_alignment) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTexelBufferAlignmentProperties, VkPhysicalDeviceTexelBufferAlignmentProperties)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTextureCompressionASTCHDRFeatures, VkPhysicalDeviceTextureCompressionASTCHDRFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_QCOM_tile_properties)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTilePropertiesFeaturesQCOM, VkPhysicalDeviceTilePropertiesFeaturesQCOM)
+#endif /* defined(VK_QCOM_tile_properties) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTimelineSemaphoreFeatures, VkPhysicalDeviceTimelineSemaphoreFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTimelineSemaphoreProperties, VkPhysicalDeviceTimelineSemaphoreProperties)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceToolProperties, VkPhysicalDeviceToolProperties)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_transform_feedback)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTransformFeedbackFeaturesEXT, VkPhysicalDeviceTransformFeedbackFeaturesEXT)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceTransformFeedbackPropertiesEXT, VkPhysicalDeviceTransformFeedbackPropertiesEXT)
+#endif /* defined(VK_EXT_transform_feedback) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceUniformBufferStandardLayoutFeatures, VkPhysicalDeviceUniformBufferStandardLayoutFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVariablePointersFeatures, VkPhysicalDeviceVariablePointersFeatures)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVertexAttributeDivisorFeatures, VkPhysicalDeviceVertexAttributeDivisorFeatures)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVertexAttributeDivisorProperties, VkPhysicalDeviceVertexAttributeDivisorProperties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_vertex_attribute_divisor)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT, VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT)
+#endif /* defined(VK_EXT_vertex_attribute_divisor) */
+#if defined(VK_EXT_vertex_attribute_robustness)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT, VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT)
+#endif /* defined(VK_EXT_vertex_attribute_robustness) */
+#if defined(VK_EXT_vertex_input_dynamic_state)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT, VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT)
+#endif /* defined(VK_EXT_vertex_input_dynamic_state) */
+#if defined(VK_KHR_video_encode_av1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVideoEncodeAV1FeaturesKHR, VkPhysicalDeviceVideoEncodeAV1FeaturesKHR)
+#endif /* defined(VK_KHR_video_encode_av1) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkVideoProfileInfoKHR, VkVideoProfileInfoKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_KHR_video_encode_queue)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR, VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR)
+#endif /* defined(VK_KHR_video_encode_queue) */
+#if defined(VK_KHR_video_encode_quantization_map)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR, VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVideoFormatInfoKHR, VkPhysicalDeviceVideoFormatInfoKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_KHR_video_maintenance1)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVideoMaintenance1FeaturesKHR, VkPhysicalDeviceVideoMaintenance1FeaturesKHR)
+#endif /* defined(VK_KHR_video_maintenance1) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan11Features, VkPhysicalDeviceVulkan11Features)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan11Properties, VkPhysicalDeviceVulkan11Properties)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan12Features, VkPhysicalDeviceVulkan12Features)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan12Properties, VkPhysicalDeviceVulkan12Properties)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan13Features, VkPhysicalDeviceVulkan13Features)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan13Properties, VkPhysicalDeviceVulkan13Properties)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan14Features, VkPhysicalDeviceVulkan14Features)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkan14Properties, VkPhysicalDeviceVulkan14Properties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceVulkanMemoryModelFeatures, VkPhysicalDeviceVulkanMemoryModelFeatures)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_KHR_workgroup_memory_explicit_layout)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR, VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR)
+#endif /* defined(VK_KHR_workgroup_memory_explicit_layout) */
+#if defined(VK_EXT_ycbcr_2plane_444_formats)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT, VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT)
+#endif /* defined(VK_EXT_ycbcr_2plane_444_formats) */
+#if defined(VK_QCOM_ycbcr_degamma)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceYcbcrDegammaFeaturesQCOM, VkPhysicalDeviceYcbcrDegammaFeaturesQCOM)
+#endif /* defined(VK_QCOM_ycbcr_degamma) */
+#if defined(VK_EXT_ycbcr_image_arrays)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceYcbcrImageArraysFeaturesEXT, VkPhysicalDeviceYcbcrImageArraysFeaturesEXT)
+#endif /* defined(VK_EXT_ycbcr_image_arrays) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures, VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_KHR_pipeline_binary)
+MAKE_TYPE_FACTORY(VkPipelineBinaryDataKHR, VkPipelineBinaryDataKHR)
+MAKE_TYPE_FACTORY(VkPipelineBinaryKeyKHR, VkPipelineBinaryKeyKHR)
+MAKE_TYPE_FACTORY(VkPipelineBinaryKeysAndDataKHR, VkPipelineBinaryKeysAndDataKHR)
+MAKE_TYPE_FACTORY(VkPipelineCreateInfoKHR, VkPipelineCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkPipelineBinaryCreateInfoKHR, VkPipelineBinaryCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkPipelineBinaryDataInfoKHR, VkPipelineBinaryDataInfoKHR)
+MAKE_TYPE_FACTORY(VkPipelineBinaryHandlesInfoKHR, VkPipelineBinaryHandlesInfoKHR)
+MAKE_TYPE_FACTORY(VkPipelineBinaryInfoKHR, VkPipelineBinaryInfoKHR)
+#endif /* defined(VK_KHR_pipeline_binary) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkPipelineCacheCreateInfo, VkPipelineCacheCreateInfo)
+MAKE_TYPE_FACTORY(VkPipelineCacheHeaderVersionOne, VkPipelineCacheHeaderVersionOne)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_blend_operation_advanced)
+MAKE_TYPE_FACTORY(VkPipelineColorBlendAdvancedStateCreateInfoEXT, VkPipelineColorBlendAdvancedStateCreateInfoEXT)
+#endif /* defined(VK_EXT_blend_operation_advanced) */
+#if defined(VK_EXT_color_write_enable)
+MAKE_TYPE_FACTORY(VkPipelineColorWriteCreateInfoEXT, VkPipelineColorWriteCreateInfoEXT)
+#endif /* defined(VK_EXT_color_write_enable) */
+#if defined(VK_AMD_pipeline_compiler_control)
+MAKE_TYPE_FACTORY(VkPipelineCompilerControlCreateInfoAMD, VkPipelineCompilerControlCreateInfoAMD)
+#endif /* defined(VK_AMD_pipeline_compiler_control) */
+#if defined(VK_NV_framebuffer_mixed_samples)
+MAKE_TYPE_FACTORY(VkPipelineCoverageModulationStateCreateInfoNV, VkPipelineCoverageModulationStateCreateInfoNV)
+#endif /* defined(VK_NV_framebuffer_mixed_samples) */
+#if defined(VK_NV_coverage_reduction_mode)
+MAKE_TYPE_FACTORY(VkPipelineCoverageReductionStateCreateInfoNV, VkPipelineCoverageReductionStateCreateInfoNV)
+#endif /* defined(VK_NV_coverage_reduction_mode) */
+#if defined(VK_NV_fragment_coverage_to_color)
+MAKE_TYPE_FACTORY(VkPipelineCoverageToColorStateCreateInfoNV, VkPipelineCoverageToColorStateCreateInfoNV)
+#endif /* defined(VK_NV_fragment_coverage_to_color) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPipelineCreateFlags2CreateInfo, VkPipelineCreateFlags2CreateInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPipelineCreationFeedback, VkPipelineCreationFeedback)
+MAKE_TYPE_FACTORY(VkPipelineCreationFeedbackCreateInfo, VkPipelineCreationFeedbackCreateInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_discard_rectangles)
+MAKE_TYPE_FACTORY(VkPipelineDiscardRectangleStateCreateInfoEXT, VkPipelineDiscardRectangleStateCreateInfoEXT)
+#endif /* defined(VK_EXT_discard_rectangles) */
+#if defined(VK_KHR_pipeline_executable_properties)
+MAKE_TYPE_FACTORY(VkPipelineExecutableInfoKHR, VkPipelineExecutableInfoKHR)
+MAKE_TYPE_FACTORY(VkPipelineExecutableInternalRepresentationKHR, VkPipelineExecutableInternalRepresentationKHR)
+MAKE_TYPE_FACTORY(VkPipelineExecutablePropertiesKHR, VkPipelineExecutablePropertiesKHR)
+MAKE_TYPE_FACTORY(VkPipelineExecutableStatisticValueKHR, VkPipelineExecutableStatisticValueKHR)
+MAKE_TYPE_FACTORY(VkPipelineExecutableStatisticKHR, VkPipelineExecutableStatisticKHR)
+#endif /* defined(VK_KHR_pipeline_executable_properties) */
+#if defined(VK_NV_fragment_shading_rate_enums)
+MAKE_TYPE_FACTORY(VkPipelineFragmentShadingRateEnumStateCreateInfoNV, VkPipelineFragmentShadingRateEnumStateCreateInfoNV)
+#endif /* defined(VK_NV_fragment_shading_rate_enums) */
+#if defined(VK_KHR_fragment_shading_rate)
+MAKE_TYPE_FACTORY(VkPipelineFragmentShadingRateStateCreateInfoKHR, VkPipelineFragmentShadingRateStateCreateInfoKHR)
+#endif /* defined(VK_KHR_fragment_shading_rate) */
+#if defined(VK_NV_device_generated_commands_compute)
+MAKE_TYPE_FACTORY(VkPipelineIndirectDeviceAddressInfoNV, VkPipelineIndirectDeviceAddressInfoNV)
+#endif /* defined(VK_NV_device_generated_commands_compute) */
+#if defined(VK_KHR_pipeline_executable_properties)
+MAKE_TYPE_FACTORY(VkPipelineInfoKHR, VkPipelineInfoKHR)
+#endif /* defined(VK_KHR_pipeline_executable_properties) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkPipelineLayoutCreateInfo, VkPipelineLayoutCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_pipeline_properties)
+MAKE_TYPE_FACTORY(VkPipelinePropertiesIdentifierEXT, VkPipelinePropertiesIdentifierEXT)
+#endif /* defined(VK_EXT_pipeline_properties) */
+#if defined(VK_EXT_conservative_rasterization)
+MAKE_TYPE_FACTORY(VkPipelineRasterizationConservativeStateCreateInfoEXT, VkPipelineRasterizationConservativeStateCreateInfoEXT)
+#endif /* defined(VK_EXT_conservative_rasterization) */
+#if defined(VK_EXT_depth_clip_enable)
+MAKE_TYPE_FACTORY(VkPipelineRasterizationDepthClipStateCreateInfoEXT, VkPipelineRasterizationDepthClipStateCreateInfoEXT)
+#endif /* defined(VK_EXT_depth_clip_enable) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPipelineRasterizationLineStateCreateInfo, VkPipelineRasterizationLineStateCreateInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_provoking_vertex)
+MAKE_TYPE_FACTORY(VkPipelineRasterizationProvokingVertexStateCreateInfoEXT, VkPipelineRasterizationProvokingVertexStateCreateInfoEXT)
+#endif /* defined(VK_EXT_provoking_vertex) */
+#if defined(VK_AMD_rasterization_order)
+MAKE_TYPE_FACTORY(VkPipelineRasterizationStateRasterizationOrderAMD, VkPipelineRasterizationStateRasterizationOrderAMD)
+#endif /* defined(VK_AMD_rasterization_order) */
+#if defined(VK_EXT_transform_feedback)
+MAKE_TYPE_FACTORY(VkPipelineRasterizationStateStreamCreateInfoEXT, VkPipelineRasterizationStateStreamCreateInfoEXT)
+#endif /* defined(VK_EXT_transform_feedback) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPipelineRenderingCreateInfo, VkPipelineRenderingCreateInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_NV_representative_fragment_test)
+MAKE_TYPE_FACTORY(VkPipelineRepresentativeFragmentTestStateCreateInfoNV, VkPipelineRepresentativeFragmentTestStateCreateInfoNV)
+#endif /* defined(VK_NV_representative_fragment_test) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPipelineRobustnessCreateInfo, VkPipelineRobustnessCreateInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_sample_locations)
+MAKE_TYPE_FACTORY(VkPipelineSampleLocationsStateCreateInfoEXT, VkPipelineSampleLocationsStateCreateInfoEXT)
+#endif /* defined(VK_EXT_sample_locations) */
+#if defined(VK_EXT_shader_module_identifier)
+MAKE_TYPE_FACTORY(VkPipelineShaderStageModuleIdentifierCreateInfoEXT, VkPipelineShaderStageModuleIdentifierCreateInfoEXT)
+#endif /* defined(VK_EXT_shader_module_identifier) */
+#if defined(VK_AMDX_shader_enqueue)
+MAKE_TYPE_FACTORY(VkPipelineShaderStageNodeCreateInfoAMDX, VkPipelineShaderStageNodeCreateInfoAMDX)
+#endif /* defined(VK_AMDX_shader_enqueue) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPipelineShaderStageRequiredSubgroupSizeCreateInfo, VkPipelineShaderStageRequiredSubgroupSizeCreateInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkPipelineTessellationDomainOriginStateCreateInfo, VkPipelineTessellationDomainOriginStateCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkVertexInputBindingDivisorDescription, VkVertexInputBindingDivisorDescription)
+MAKE_TYPE_FACTORY(VkPipelineVertexInputDivisorStateCreateInfo, VkPipelineVertexInputDivisorStateCreateInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_NV_shading_rate_image)
+MAKE_TYPE_FACTORY(VkPipelineViewportCoarseSampleOrderStateCreateInfoNV, VkPipelineViewportCoarseSampleOrderStateCreateInfoNV)
+#endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_EXT_depth_clamp_control)
+MAKE_TYPE_FACTORY(VkPipelineViewportDepthClampControlCreateInfoEXT, VkPipelineViewportDepthClampControlCreateInfoEXT)
+#endif /* defined(VK_EXT_depth_clamp_control) */
+#if defined(VK_EXT_depth_clip_control)
+MAKE_TYPE_FACTORY(VkPipelineViewportDepthClipControlCreateInfoEXT, VkPipelineViewportDepthClipControlCreateInfoEXT)
+#endif /* defined(VK_EXT_depth_clip_control) */
+#if defined(VK_NV_scissor_exclusive)
+MAKE_TYPE_FACTORY(VkPipelineViewportExclusiveScissorStateCreateInfoNV, VkPipelineViewportExclusiveScissorStateCreateInfoNV)
+#endif /* defined(VK_NV_scissor_exclusive) */
+#if defined(VK_NV_shading_rate_image)
+MAKE_TYPE_FACTORY(VkShadingRatePaletteNV, VkShadingRatePaletteNV)
+MAKE_TYPE_FACTORY(VkPipelineViewportShadingRateImageStateCreateInfoNV, VkPipelineViewportShadingRateImageStateCreateInfoNV)
+#endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_NV_viewport_swizzle)
+MAKE_TYPE_FACTORY(VkViewportSwizzleNV, VkViewportSwizzleNV)
+MAKE_TYPE_FACTORY(VkPipelineViewportSwizzleStateCreateInfoNV, VkPipelineViewportSwizzleStateCreateInfoNV)
+#endif /* defined(VK_NV_viewport_swizzle) */
+#if defined(VK_NV_clip_space_w_scaling)
+MAKE_TYPE_FACTORY(VkViewportWScalingNV, VkViewportWScalingNV)
+MAKE_TYPE_FACTORY(VkPipelineViewportWScalingStateCreateInfoNV, VkPipelineViewportWScalingStateCreateInfoNV)
+#endif /* defined(VK_NV_clip_space_w_scaling) */
+#if defined(VK_GGP_frame_token)
+MAKE_TYPE_FACTORY(VkPresentFrameTokenGGP, VkPresentFrameTokenGGP)
+#endif /* defined(VK_GGP_frame_token) */
+#if defined(VK_KHR_present_id)
+MAKE_TYPE_FACTORY(VkPresentIdKHR, VkPresentIdKHR)
+#endif /* defined(VK_KHR_present_id) */
+#if defined(VK_KHR_swapchain)
+MAKE_TYPE_FACTORY(VkPresentInfoKHR, VkPresentInfoKHR)
+#endif /* defined(VK_KHR_swapchain) */
+#if defined(VK_KHR_incremental_present)
+MAKE_TYPE_FACTORY(VkRectLayerKHR, VkRectLayerKHR)
+MAKE_TYPE_FACTORY(VkPresentRegionKHR, VkPresentRegionKHR)
+MAKE_TYPE_FACTORY(VkPresentRegionsKHR, VkPresentRegionsKHR)
+#endif /* defined(VK_KHR_incremental_present) */
+#if defined(VK_GOOGLE_display_timing)
+MAKE_TYPE_FACTORY(VkPresentTimeGOOGLE, VkPresentTimeGOOGLE)
+MAKE_TYPE_FACTORY(VkPresentTimesInfoGOOGLE, VkPresentTimesInfoGOOGLE)
+#endif /* defined(VK_GOOGLE_display_timing) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkPrivateDataSlotCreateInfo, VkPrivateDataSlotCreateInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkProtectedSubmitInfo, VkProtectedSubmitInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPushConstantsInfo, VkPushConstantsInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkWriteDescriptorSet, VkWriteDescriptorSet)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkPushDescriptorSetInfo, VkPushDescriptorSetInfo)
+MAKE_TYPE_FACTORY(VkPushDescriptorSetWithTemplateInfo, VkPushDescriptorSetWithTemplateInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_NV_low_latency)
+MAKE_TYPE_FACTORY(VkQueryLowLatencySupportNV, VkQueryLowLatencySupportNV)
+#endif /* defined(VK_NV_low_latency) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkQueryPoolCreateInfo, VkQueryPoolCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_KHR_performance_query)
+MAKE_TYPE_FACTORY(VkQueryPoolPerformanceCreateInfoKHR, VkQueryPoolPerformanceCreateInfoKHR)
+#endif /* defined(VK_KHR_performance_query) */
+#if defined(VK_INTEL_performance_query)
+MAKE_TYPE_FACTORY(VkQueryPoolPerformanceQueryCreateInfoINTEL, VkQueryPoolPerformanceQueryCreateInfoINTEL)
+#endif /* defined(VK_INTEL_performance_query) */
+#if defined(VK_KHR_video_encode_queue)
+MAKE_TYPE_FACTORY(VkQueryPoolVideoEncodeFeedbackCreateInfoKHR, VkQueryPoolVideoEncodeFeedbackCreateInfoKHR)
+#endif /* defined(VK_KHR_video_encode_queue) */
+#if defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2))
+MAKE_TYPE_FACTORY(VkQueueFamilyCheckpointProperties2NV, VkQueueFamilyCheckpointProperties2NV)
+#endif /* defined(VK_NV_device_diagnostic_checkpoints) && (defined(VK_VERSION_1_3) || defined(VK_KHR_synchronization2)) */
+#if defined(VK_NV_device_diagnostic_checkpoints)
+MAKE_TYPE_FACTORY(VkQueueFamilyCheckpointPropertiesNV, VkQueueFamilyCheckpointPropertiesNV)
+#endif /* defined(VK_NV_device_diagnostic_checkpoints) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkQueueFamilyGlobalPriorityProperties, VkQueueFamilyGlobalPriorityProperties)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkQueueFamilyProperties, VkQueueFamilyProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkQueueFamilyProperties2, VkQueueFamilyProperties2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkQueueFamilyQueryResultStatusPropertiesKHR, VkQueueFamilyQueryResultStatusPropertiesKHR)
+MAKE_TYPE_FACTORY(VkQueueFamilyVideoPropertiesKHR, VkQueueFamilyVideoPropertiesKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_KHR_ray_tracing_pipeline)
+MAKE_TYPE_FACTORY(VkRayTracingPipelineInterfaceCreateInfoKHR, VkRayTracingPipelineInterfaceCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkRayTracingShaderGroupCreateInfoKHR, VkRayTracingShaderGroupCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkRayTracingPipelineCreateInfoKHR, VkRayTracingPipelineCreateInfoKHR)
+#endif /* defined(VK_KHR_ray_tracing_pipeline) */
+#if defined(VK_NV_ray_tracing)
+MAKE_TYPE_FACTORY(VkRayTracingShaderGroupCreateInfoNV, VkRayTracingShaderGroupCreateInfoNV)
+MAKE_TYPE_FACTORY(VkRayTracingPipelineCreateInfoNV, VkRayTracingPipelineCreateInfoNV)
+#endif /* defined(VK_NV_ray_tracing) */
+#if defined(VK_GOOGLE_display_timing)
+MAKE_TYPE_FACTORY(VkRefreshCycleDurationGOOGLE, VkRefreshCycleDurationGOOGLE)
+#endif /* defined(VK_GOOGLE_display_timing) */
+#if defined(VK_KHR_pipeline_binary)
+MAKE_TYPE_FACTORY(VkReleaseCapturedPipelineDataInfoKHR, VkReleaseCapturedPipelineDataInfoKHR)
+#endif /* defined(VK_KHR_pipeline_binary) */
+#if defined(VK_EXT_swapchain_maintenance1)
+MAKE_TYPE_FACTORY(VkReleaseSwapchainImagesInfoEXT, VkReleaseSwapchainImagesInfoEXT)
+#endif /* defined(VK_EXT_swapchain_maintenance1) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkRenderPassAttachmentBeginInfo, VkRenderPassAttachmentBeginInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkRenderPassBeginInfo, VkRenderPassBeginInfo)
+MAKE_TYPE_FACTORY(VkSubpassDependency, VkSubpassDependency)
+MAKE_TYPE_FACTORY(VkSubpassDescription, VkSubpassDescription)
+MAKE_TYPE_FACTORY(VkRenderPassCreateInfo, VkRenderPassCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkSubpassDependency2, VkSubpassDependency2)
+MAKE_TYPE_FACTORY(VkSubpassDescription2, VkSubpassDescription2)
+MAKE_TYPE_FACTORY(VkRenderPassCreateInfo2, VkRenderPassCreateInfo2)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_EXT_subpass_merge_feedback)
+MAKE_TYPE_FACTORY(VkRenderPassCreationControlEXT, VkRenderPassCreationControlEXT)
+MAKE_TYPE_FACTORY(VkRenderPassCreationFeedbackInfoEXT, VkRenderPassCreationFeedbackInfoEXT)
+MAKE_TYPE_FACTORY(VkRenderPassCreationFeedbackCreateInfoEXT, VkRenderPassCreationFeedbackCreateInfoEXT)
+#endif /* defined(VK_EXT_subpass_merge_feedback) */
+#if defined(VK_EXT_fragment_density_map)
+MAKE_TYPE_FACTORY(VkRenderPassFragmentDensityMapCreateInfoEXT, VkRenderPassFragmentDensityMapCreateInfoEXT)
+#endif /* defined(VK_EXT_fragment_density_map) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkRenderPassInputAttachmentAspectCreateInfo, VkRenderPassInputAttachmentAspectCreateInfo)
+MAKE_TYPE_FACTORY(VkRenderPassMultiviewCreateInfo, VkRenderPassMultiviewCreateInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_EXT_sample_locations)
+MAKE_TYPE_FACTORY(VkSubpassSampleLocationsEXT, VkSubpassSampleLocationsEXT)
+MAKE_TYPE_FACTORY(VkRenderPassSampleLocationsBeginInfoEXT, VkRenderPassSampleLocationsBeginInfoEXT)
+#endif /* defined(VK_EXT_sample_locations) */
+#if defined(VK_ARM_render_pass_striped)
+MAKE_TYPE_FACTORY(VkRenderPassStripeInfoARM, VkRenderPassStripeInfoARM)
+MAKE_TYPE_FACTORY(VkRenderPassStripeBeginInfoARM, VkRenderPassStripeBeginInfoARM)
+#endif /* defined(VK_ARM_render_pass_striped) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkSemaphoreSubmitInfo, VkSemaphoreSubmitInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_ARM_render_pass_striped)
+MAKE_TYPE_FACTORY(VkRenderPassStripeSubmitInfoARM, VkRenderPassStripeSubmitInfoARM)
+#endif /* defined(VK_ARM_render_pass_striped) */
+#if defined(VK_EXT_subpass_merge_feedback)
+MAKE_TYPE_FACTORY(VkRenderPassSubpassFeedbackInfoEXT, VkRenderPassSubpassFeedbackInfoEXT)
+MAKE_TYPE_FACTORY(VkRenderPassSubpassFeedbackCreateInfoEXT, VkRenderPassSubpassFeedbackCreateInfoEXT)
+#endif /* defined(VK_EXT_subpass_merge_feedback) */
+#if defined(VK_QCOM_render_pass_transform)
+MAKE_TYPE_FACTORY(VkRenderPassTransformBeginInfoQCOM, VkRenderPassTransformBeginInfoQCOM)
+#endif /* defined(VK_QCOM_render_pass_transform) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkRenderingAreaInfo, VkRenderingAreaInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkRenderingAttachmentInfo, VkRenderingAttachmentInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkRenderingAttachmentLocationInfo, VkRenderingAttachmentLocationInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_fragment_density_map) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering))
+MAKE_TYPE_FACTORY(VkRenderingFragmentDensityMapAttachmentInfoEXT, VkRenderingFragmentDensityMapAttachmentInfoEXT)
+#endif /* defined(VK_EXT_fragment_density_map) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering)) */
+#if defined(VK_KHR_fragment_shading_rate) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering))
+MAKE_TYPE_FACTORY(VkRenderingFragmentShadingRateAttachmentInfoKHR, VkRenderingFragmentShadingRateAttachmentInfoKHR)
+#endif /* defined(VK_KHR_fragment_shading_rate) && (defined(VK_VERSION_1_3) || defined(VK_KHR_dynamic_rendering)) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkRenderingInfo, VkRenderingInfo)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkRenderingInputAttachmentIndexInfo, VkRenderingInputAttachmentIndexInfo)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkResolveImageInfo2, VkResolveImageInfo2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_NV_ray_tracing_motion_blur)
+MAKE_TYPE_FACTORY(VkSRTDataNV, VkSRTDataNV)
+#endif /* defined(VK_NV_ray_tracing_motion_blur) */
+#if defined(VK_QCOM_image_processing2)
+MAKE_TYPE_FACTORY(VkSamplerBlockMatchWindowCreateInfoQCOM, VkSamplerBlockMatchWindowCreateInfoQCOM)
+#endif /* defined(VK_QCOM_image_processing2) */
+#if defined(VK_EXT_border_color_swizzle)
+MAKE_TYPE_FACTORY(VkSamplerBorderColorComponentMappingCreateInfoEXT, VkSamplerBorderColorComponentMappingCreateInfoEXT)
+#endif /* defined(VK_EXT_border_color_swizzle) */
+#if defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkSamplerCaptureDescriptorDataInfoEXT, VkSamplerCaptureDescriptorDataInfoEXT)
+#endif /* defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkSamplerCreateInfo, VkSamplerCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_QCOM_filter_cubic_weights)
+MAKE_TYPE_FACTORY(VkSamplerCubicWeightsCreateInfoQCOM, VkSamplerCubicWeightsCreateInfoQCOM)
+#endif /* defined(VK_QCOM_filter_cubic_weights) */
+#if defined(VK_EXT_custom_border_color)
+MAKE_TYPE_FACTORY(VkSamplerCustomBorderColorCreateInfoEXT, VkSamplerCustomBorderColorCreateInfoEXT)
+#endif /* defined(VK_EXT_custom_border_color) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkSamplerReductionModeCreateInfo, VkSamplerReductionModeCreateInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkSamplerYcbcrConversionCreateInfo, VkSamplerYcbcrConversionCreateInfo)
+MAKE_TYPE_FACTORY(VkSamplerYcbcrConversionImageFormatProperties, VkSamplerYcbcrConversionImageFormatProperties)
+MAKE_TYPE_FACTORY(VkSamplerYcbcrConversionInfo, VkSamplerYcbcrConversionInfo)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_QCOM_ycbcr_degamma)
+MAKE_TYPE_FACTORY(VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM, VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM)
+#endif /* defined(VK_QCOM_ycbcr_degamma) */
+#if defined(VK_QNX_external_memory_screen_buffer)
+MAKE_TYPE_FACTORY(VkScreenBufferFormatPropertiesQNX, VkScreenBufferFormatPropertiesQNX)
+MAKE_TYPE_FACTORY(VkScreenBufferPropertiesQNX, VkScreenBufferPropertiesQNX)
+#endif /* defined(VK_QNX_external_memory_screen_buffer) */
+#if defined(VK_QNX_screen_surface)
+MAKE_TYPE_FACTORY(VkScreenSurfaceCreateInfoQNX, VkScreenSurfaceCreateInfoQNX)
+#endif /* defined(VK_QNX_screen_surface) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkSemaphoreCreateInfo, VkSemaphoreCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_KHR_external_semaphore_fd)
+MAKE_TYPE_FACTORY(VkSemaphoreGetFdInfoKHR, VkSemaphoreGetFdInfoKHR)
+#endif /* defined(VK_KHR_external_semaphore_fd) */
+#if defined(VK_KHR_external_semaphore_win32)
+MAKE_TYPE_FACTORY(VkSemaphoreGetWin32HandleInfoKHR, VkSemaphoreGetWin32HandleInfoKHR)
+#endif /* defined(VK_KHR_external_semaphore_win32) */
+#if defined(VK_FUCHSIA_external_semaphore)
+MAKE_TYPE_FACTORY(VkSemaphoreGetZirconHandleInfoFUCHSIA, VkSemaphoreGetZirconHandleInfoFUCHSIA)
+#endif /* defined(VK_FUCHSIA_external_semaphore) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkSemaphoreSignalInfo, VkSemaphoreSignalInfo)
+MAKE_TYPE_FACTORY(VkSemaphoreTypeCreateInfo, VkSemaphoreTypeCreateInfo)
+MAKE_TYPE_FACTORY(VkSemaphoreWaitInfo, VkSemaphoreWaitInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_KHR_maintenance6) && defined(VK_EXT_descriptor_buffer)
+MAKE_TYPE_FACTORY(VkSetDescriptorBufferOffsetsInfoEXT, VkSetDescriptorBufferOffsetsInfoEXT)
+#endif /* defined(VK_KHR_maintenance6) && defined(VK_EXT_descriptor_buffer) */
+#if defined(VK_NV_low_latency2)
+MAKE_TYPE_FACTORY(VkSetLatencyMarkerInfoNV, VkSetLatencyMarkerInfoNV)
+#endif /* defined(VK_NV_low_latency2) */
+#if defined(VK_NV_device_generated_commands)
+MAKE_TYPE_FACTORY(VkSetStateFlagsIndirectCommandNV, VkSetStateFlagsIndirectCommandNV)
+#endif /* defined(VK_NV_device_generated_commands) */
+#if defined(VK_EXT_shader_object)
+MAKE_TYPE_FACTORY(VkShaderCreateInfoEXT, VkShaderCreateInfoEXT)
+#endif /* defined(VK_EXT_shader_object) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkShaderModuleCreateInfo, VkShaderModuleCreateInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_EXT_shader_module_identifier)
+MAKE_TYPE_FACTORY(VkShaderModuleIdentifierEXT, VkShaderModuleIdentifierEXT)
+#endif /* defined(VK_EXT_shader_module_identifier) */
+#if defined(VK_EXT_validation_cache)
+MAKE_TYPE_FACTORY(VkShaderModuleValidationCacheCreateInfoEXT, VkShaderModuleValidationCacheCreateInfoEXT)
+#endif /* defined(VK_EXT_validation_cache) */
+#if defined(VK_AMD_shader_info)
+MAKE_TYPE_FACTORY(VkShaderResourceUsageAMD, VkShaderResourceUsageAMD)
+MAKE_TYPE_FACTORY(VkShaderStatisticsInfoAMD, VkShaderStatisticsInfoAMD)
+#endif /* defined(VK_AMD_shader_info) */
+#if defined(VK_KHR_shared_presentable_image)
+MAKE_TYPE_FACTORY(VkSharedPresentSurfaceCapabilitiesKHR, VkSharedPresentSurfaceCapabilitiesKHR)
+#endif /* defined(VK_KHR_shared_presentable_image) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkSparseImageFormatProperties, VkSparseImageFormatProperties)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkSparseImageFormatProperties2, VkSparseImageFormatProperties2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkSparseImageMemoryRequirements, VkSparseImageMemoryRequirements)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_1)
+MAKE_TYPE_FACTORY(VkSparseImageMemoryRequirements2, VkSparseImageMemoryRequirements2)
+#endif /* defined(VK_VERSION_1_1) */
+#if defined(VK_GGP_stream_descriptor_surface)
+MAKE_TYPE_FACTORY(VkStreamDescriptorSurfaceCreateInfoGGP, VkStreamDescriptorSurfaceCreateInfoGGP)
+#endif /* defined(VK_GGP_stream_descriptor_surface) */
+#if defined(VK_KHR_ray_tracing_pipeline)
+MAKE_TYPE_FACTORY(VkStridedDeviceAddressRegionKHR, VkStridedDeviceAddressRegionKHR)
+#endif /* defined(VK_KHR_ray_tracing_pipeline) */
+#if defined(VK_VERSION_1_0)
+MAKE_TYPE_FACTORY(VkSubmitInfo, VkSubmitInfo)
+#endif /* defined(VK_VERSION_1_0) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkSubmitInfo2, VkSubmitInfo2)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkSubpassBeginInfo, VkSubpassBeginInfo)
+MAKE_TYPE_FACTORY(VkSubpassDescriptionDepthStencilResolve, VkSubpassDescriptionDepthStencilResolve)
+MAKE_TYPE_FACTORY(VkSubpassEndInfo, VkSubpassEndInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_QCOM_fragment_density_map_offset)
+MAKE_TYPE_FACTORY(VkSubpassFragmentDensityMapOffsetEndInfoQCOM, VkSubpassFragmentDensityMapOffsetEndInfoQCOM)
+#endif /* defined(VK_QCOM_fragment_density_map_offset) */
+#if defined(VK_EXT_multisampled_render_to_single_sampled)
+MAKE_TYPE_FACTORY(VkSubpassResolvePerformanceQueryEXT, VkSubpassResolvePerformanceQueryEXT)
+#endif /* defined(VK_EXT_multisampled_render_to_single_sampled) */
+#if defined(VK_HUAWEI_subpass_shading)
+MAKE_TYPE_FACTORY(VkSubpassShadingPipelineCreateInfoHUAWEI, VkSubpassShadingPipelineCreateInfoHUAWEI)
+#endif /* defined(VK_HUAWEI_subpass_shading) */
+#if defined(VK_VERSION_1_4)
+MAKE_TYPE_FACTORY(VkSubresourceHostMemcpySize, VkSubresourceHostMemcpySize)
+MAKE_TYPE_FACTORY(VkSubresourceLayout2, VkSubresourceLayout2)
+#endif /* defined(VK_VERSION_1_4) */
+#if defined(VK_EXT_display_surface_counter)
+MAKE_TYPE_FACTORY(VkSurfaceCapabilities2EXT, VkSurfaceCapabilities2EXT)
+#endif /* defined(VK_EXT_display_surface_counter) */
+#if defined(VK_KHR_surface)
+MAKE_TYPE_FACTORY(VkSurfaceCapabilitiesKHR, VkSurfaceCapabilitiesKHR)
+#endif /* defined(VK_KHR_surface) */
+#if defined(VK_KHR_get_surface_capabilities2)
+MAKE_TYPE_FACTORY(VkSurfaceCapabilities2KHR, VkSurfaceCapabilities2KHR)
+#endif /* defined(VK_KHR_get_surface_capabilities2) */
+#if defined(VK_EXT_full_screen_exclusive)
+MAKE_TYPE_FACTORY(VkSurfaceCapabilitiesFullScreenExclusiveEXT, VkSurfaceCapabilitiesFullScreenExclusiveEXT)
+#endif /* defined(VK_EXT_full_screen_exclusive) */
+#if defined(VK_NV_present_barrier)
+MAKE_TYPE_FACTORY(VkSurfaceCapabilitiesPresentBarrierNV, VkSurfaceCapabilitiesPresentBarrierNV)
+#endif /* defined(VK_NV_present_barrier) */
+#if defined(VK_KHR_surface)
+MAKE_TYPE_FACTORY(VkSurfaceFormatKHR, VkSurfaceFormatKHR)
+#endif /* defined(VK_KHR_surface) */
+#if defined(VK_KHR_get_surface_capabilities2)
+MAKE_TYPE_FACTORY(VkSurfaceFormat2KHR, VkSurfaceFormat2KHR)
+#endif /* defined(VK_KHR_get_surface_capabilities2) */
+#if defined(VK_EXT_full_screen_exclusive)
+MAKE_TYPE_FACTORY(VkSurfaceFullScreenExclusiveInfoEXT, VkSurfaceFullScreenExclusiveInfoEXT)
+#endif /* defined(VK_EXT_full_screen_exclusive) */
+#if defined(VK_EXT_full_screen_exclusive) && defined(VK_KHR_win32_surface)
+MAKE_TYPE_FACTORY(VkSurfaceFullScreenExclusiveWin32InfoEXT, VkSurfaceFullScreenExclusiveWin32InfoEXT)
+#endif /* defined(VK_EXT_full_screen_exclusive) && defined(VK_KHR_win32_surface) */
+#if defined(VK_EXT_surface_maintenance1)
+MAKE_TYPE_FACTORY(VkSurfacePresentModeCompatibilityEXT, VkSurfacePresentModeCompatibilityEXT)
+MAKE_TYPE_FACTORY(VkSurfacePresentModeEXT, VkSurfacePresentModeEXT)
+MAKE_TYPE_FACTORY(VkSurfacePresentScalingCapabilitiesEXT, VkSurfacePresentScalingCapabilitiesEXT)
+#endif /* defined(VK_EXT_surface_maintenance1) */
+#if defined(VK_KHR_surface_protected_capabilities)
+MAKE_TYPE_FACTORY(VkSurfaceProtectedCapabilitiesKHR, VkSurfaceProtectedCapabilitiesKHR)
+#endif /* defined(VK_KHR_surface_protected_capabilities) */
+#if defined(VK_EXT_display_control)
+MAKE_TYPE_FACTORY(VkSwapchainCounterCreateInfoEXT, VkSwapchainCounterCreateInfoEXT)
+#endif /* defined(VK_EXT_display_control) */
+#if defined(VK_KHR_swapchain)
+MAKE_TYPE_FACTORY(VkSwapchainCreateInfoKHR, VkSwapchainCreateInfoKHR)
+#endif /* defined(VK_KHR_swapchain) */
+#if defined(VK_AMD_display_native_hdr)
+MAKE_TYPE_FACTORY(VkSwapchainDisplayNativeHdrCreateInfoAMD, VkSwapchainDisplayNativeHdrCreateInfoAMD)
+#endif /* defined(VK_AMD_display_native_hdr) */
+#if defined(VK_NV_low_latency2)
+MAKE_TYPE_FACTORY(VkSwapchainLatencyCreateInfoNV, VkSwapchainLatencyCreateInfoNV)
+#endif /* defined(VK_NV_low_latency2) */
+#if defined(VK_NV_present_barrier)
+MAKE_TYPE_FACTORY(VkSwapchainPresentBarrierCreateInfoNV, VkSwapchainPresentBarrierCreateInfoNV)
+#endif /* defined(VK_NV_present_barrier) */
+#if defined(VK_EXT_swapchain_maintenance1)
+MAKE_TYPE_FACTORY(VkSwapchainPresentFenceInfoEXT, VkSwapchainPresentFenceInfoEXT)
+MAKE_TYPE_FACTORY(VkSwapchainPresentModeInfoEXT, VkSwapchainPresentModeInfoEXT)
+MAKE_TYPE_FACTORY(VkSwapchainPresentModesCreateInfoEXT, VkSwapchainPresentModesCreateInfoEXT)
+MAKE_TYPE_FACTORY(VkSwapchainPresentScalingCreateInfoEXT, VkSwapchainPresentScalingCreateInfoEXT)
+#endif /* defined(VK_EXT_swapchain_maintenance1) */
+#if defined(VK_AMD_texture_gather_bias_lod)
+MAKE_TYPE_FACTORY(VkTextureLODGatherFormatPropertiesAMD, VkTextureLODGatherFormatPropertiesAMD)
+#endif /* defined(VK_AMD_texture_gather_bias_lod) */
+#if defined(VK_QCOM_tile_properties)
+MAKE_TYPE_FACTORY(VkTilePropertiesQCOM, VkTilePropertiesQCOM)
+#endif /* defined(VK_QCOM_tile_properties) */
+#if defined(VK_VERSION_1_2)
+MAKE_TYPE_FACTORY(VkTimelineSemaphoreSubmitInfo, VkTimelineSemaphoreSubmitInfo)
+#endif /* defined(VK_VERSION_1_2) */
+#if defined(VK_KHR_ray_tracing_maintenance1) && defined(VK_KHR_ray_tracing_pipeline)
+MAKE_TYPE_FACTORY(VkTraceRaysIndirectCommand2KHR, VkTraceRaysIndirectCommand2KHR)
+#endif /* defined(VK_KHR_ray_tracing_maintenance1) && defined(VK_KHR_ray_tracing_pipeline) */
+#if defined(VK_KHR_ray_tracing_pipeline)
+MAKE_TYPE_FACTORY(VkTraceRaysIndirectCommandKHR, VkTraceRaysIndirectCommandKHR)
+#endif /* defined(VK_KHR_ray_tracing_pipeline) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkTransformMatrixKHR, VkTransformMatrixKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_EXT_validation_cache)
+MAKE_TYPE_FACTORY(VkValidationCacheCreateInfoEXT, VkValidationCacheCreateInfoEXT)
+#endif /* defined(VK_EXT_validation_cache) */
+#if defined(VK_EXT_validation_features)
+MAKE_TYPE_FACTORY(VkValidationFeaturesEXT, VkValidationFeaturesEXT)
+#endif /* defined(VK_EXT_validation_features) */
+#if defined(VK_EXT_validation_flags)
+MAKE_TYPE_FACTORY(VkValidationFlagsEXT, VkValidationFlagsEXT)
+#endif /* defined(VK_EXT_validation_flags) */
+#if (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state))
+MAKE_TYPE_FACTORY(VkVertexInputAttributeDescription2EXT, VkVertexInputAttributeDescription2EXT)
+MAKE_TYPE_FACTORY(VkVertexInputBindingDescription2EXT, VkVertexInputBindingDescription2EXT)
+#endif /* (defined(VK_EXT_shader_object)) || (defined(VK_EXT_vertex_input_dynamic_state)) */
+#if defined(VK_NN_vi_surface)
+MAKE_TYPE_FACTORY(VkViSurfaceCreateInfoNN, VkViSurfaceCreateInfoNN)
+#endif /* defined(VK_NN_vi_surface) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkVideoPictureResourceInfoKHR, VkVideoPictureResourceInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoReferenceSlotInfoKHR, VkVideoReferenceSlotInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoBeginCodingInfoKHR, VkVideoBeginCodingInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoCapabilitiesKHR, VkVideoCapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoCodingControlInfoKHR, VkVideoCodingControlInfoKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_KHR_video_decode_av1)
+MAKE_TYPE_FACTORY(VkVideoDecodeAV1CapabilitiesKHR, VkVideoDecodeAV1CapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeAV1DpbSlotInfoKHR, VkVideoDecodeAV1DpbSlotInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeAV1PictureInfoKHR, VkVideoDecodeAV1PictureInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeAV1ProfileInfoKHR, VkVideoDecodeAV1ProfileInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeAV1SessionParametersCreateInfoKHR, VkVideoDecodeAV1SessionParametersCreateInfoKHR)
+#endif /* defined(VK_KHR_video_decode_av1) */
+#if defined(VK_KHR_video_decode_queue)
+MAKE_TYPE_FACTORY(VkVideoDecodeCapabilitiesKHR, VkVideoDecodeCapabilitiesKHR)
+#endif /* defined(VK_KHR_video_decode_queue) */
+#if defined(VK_KHR_video_decode_h264)
+MAKE_TYPE_FACTORY(VkVideoDecodeH264CapabilitiesKHR, VkVideoDecodeH264CapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH264DpbSlotInfoKHR, VkVideoDecodeH264DpbSlotInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH264PictureInfoKHR, VkVideoDecodeH264PictureInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH264ProfileInfoKHR, VkVideoDecodeH264ProfileInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH264SessionParametersAddInfoKHR, VkVideoDecodeH264SessionParametersAddInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH264SessionParametersCreateInfoKHR, VkVideoDecodeH264SessionParametersCreateInfoKHR)
+#endif /* defined(VK_KHR_video_decode_h264) */
+#if defined(VK_KHR_video_decode_h265)
+MAKE_TYPE_FACTORY(VkVideoDecodeH265CapabilitiesKHR, VkVideoDecodeH265CapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH265DpbSlotInfoKHR, VkVideoDecodeH265DpbSlotInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH265PictureInfoKHR, VkVideoDecodeH265PictureInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH265ProfileInfoKHR, VkVideoDecodeH265ProfileInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH265SessionParametersAddInfoKHR, VkVideoDecodeH265SessionParametersAddInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeH265SessionParametersCreateInfoKHR, VkVideoDecodeH265SessionParametersCreateInfoKHR)
+#endif /* defined(VK_KHR_video_decode_h265) */
+#if defined(VK_KHR_video_decode_queue)
+MAKE_TYPE_FACTORY(VkVideoDecodeInfoKHR, VkVideoDecodeInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoDecodeUsageInfoKHR, VkVideoDecodeUsageInfoKHR)
+#endif /* defined(VK_KHR_video_decode_queue) */
+#if defined(VK_KHR_video_encode_av1)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1CapabilitiesKHR, VkVideoEncodeAV1CapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1DpbSlotInfoKHR, VkVideoEncodeAV1DpbSlotInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1FrameSizeKHR, VkVideoEncodeAV1FrameSizeKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1GopRemainingFrameInfoKHR, VkVideoEncodeAV1GopRemainingFrameInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1PictureInfoKHR, VkVideoEncodeAV1PictureInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1ProfileInfoKHR, VkVideoEncodeAV1ProfileInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1QIndexKHR, VkVideoEncodeAV1QIndexKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1QualityLevelPropertiesKHR, VkVideoEncodeAV1QualityLevelPropertiesKHR)
+#endif /* defined(VK_KHR_video_encode_av1) */
+#if defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_av1)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1QuantizationMapCapabilitiesKHR, VkVideoEncodeAV1QuantizationMapCapabilitiesKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_av1) */
+#if defined(VK_KHR_video_encode_av1)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1RateControlInfoKHR, VkVideoEncodeAV1RateControlInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1RateControlLayerInfoKHR, VkVideoEncodeAV1RateControlLayerInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1SessionCreateInfoKHR, VkVideoEncodeAV1SessionCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeAV1SessionParametersCreateInfoKHR, VkVideoEncodeAV1SessionParametersCreateInfoKHR)
+#endif /* defined(VK_KHR_video_encode_av1) */
+#if defined(VK_KHR_video_encode_queue)
+MAKE_TYPE_FACTORY(VkVideoEncodeCapabilitiesKHR, VkVideoEncodeCapabilitiesKHR)
+#endif /* defined(VK_KHR_video_encode_queue) */
+#if defined(VK_KHR_video_encode_h264)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264CapabilitiesKHR, VkVideoEncodeH264CapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264DpbSlotInfoKHR, VkVideoEncodeH264DpbSlotInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264FrameSizeKHR, VkVideoEncodeH264FrameSizeKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264GopRemainingFrameInfoKHR, VkVideoEncodeH264GopRemainingFrameInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264NaluSliceInfoKHR, VkVideoEncodeH264NaluSliceInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264PictureInfoKHR, VkVideoEncodeH264PictureInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264ProfileInfoKHR, VkVideoEncodeH264ProfileInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264QpKHR, VkVideoEncodeH264QpKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264QualityLevelPropertiesKHR, VkVideoEncodeH264QualityLevelPropertiesKHR)
+#endif /* defined(VK_KHR_video_encode_h264) */
+#if defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_h264)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264QuantizationMapCapabilitiesKHR, VkVideoEncodeH264QuantizationMapCapabilitiesKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_h264) */
+#if defined(VK_KHR_video_encode_h264)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264RateControlInfoKHR, VkVideoEncodeH264RateControlInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264RateControlLayerInfoKHR, VkVideoEncodeH264RateControlLayerInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264SessionCreateInfoKHR, VkVideoEncodeH264SessionCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264SessionParametersAddInfoKHR, VkVideoEncodeH264SessionParametersAddInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264SessionParametersCreateInfoKHR, VkVideoEncodeH264SessionParametersCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264SessionParametersFeedbackInfoKHR, VkVideoEncodeH264SessionParametersFeedbackInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH264SessionParametersGetInfoKHR, VkVideoEncodeH264SessionParametersGetInfoKHR)
+#endif /* defined(VK_KHR_video_encode_h264) */
+#if defined(VK_KHR_video_encode_h265)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265CapabilitiesKHR, VkVideoEncodeH265CapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265DpbSlotInfoKHR, VkVideoEncodeH265DpbSlotInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265FrameSizeKHR, VkVideoEncodeH265FrameSizeKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265GopRemainingFrameInfoKHR, VkVideoEncodeH265GopRemainingFrameInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265NaluSliceSegmentInfoKHR, VkVideoEncodeH265NaluSliceSegmentInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265PictureInfoKHR, VkVideoEncodeH265PictureInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265ProfileInfoKHR, VkVideoEncodeH265ProfileInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265QpKHR, VkVideoEncodeH265QpKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265QualityLevelPropertiesKHR, VkVideoEncodeH265QualityLevelPropertiesKHR)
+#endif /* defined(VK_KHR_video_encode_h265) */
+#if defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_h265)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265QuantizationMapCapabilitiesKHR, VkVideoEncodeH265QuantizationMapCapabilitiesKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_h265) */
+#if defined(VK_KHR_video_encode_h265)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265RateControlInfoKHR, VkVideoEncodeH265RateControlInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265RateControlLayerInfoKHR, VkVideoEncodeH265RateControlLayerInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265SessionCreateInfoKHR, VkVideoEncodeH265SessionCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265SessionParametersAddInfoKHR, VkVideoEncodeH265SessionParametersAddInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265SessionParametersCreateInfoKHR, VkVideoEncodeH265SessionParametersCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265SessionParametersFeedbackInfoKHR, VkVideoEncodeH265SessionParametersFeedbackInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeH265SessionParametersGetInfoKHR, VkVideoEncodeH265SessionParametersGetInfoKHR)
+#endif /* defined(VK_KHR_video_encode_h265) */
+#if defined(VK_KHR_video_encode_queue)
+MAKE_TYPE_FACTORY(VkVideoEncodeInfoKHR, VkVideoEncodeInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeQualityLevelInfoKHR, VkVideoEncodeQualityLevelInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeQualityLevelPropertiesKHR, VkVideoEncodeQualityLevelPropertiesKHR)
+#endif /* defined(VK_KHR_video_encode_queue) */
+#if defined(VK_KHR_video_encode_quantization_map)
+MAKE_TYPE_FACTORY(VkVideoEncodeQuantizationMapCapabilitiesKHR, VkVideoEncodeQuantizationMapCapabilitiesKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeQuantizationMapInfoKHR, VkVideoEncodeQuantizationMapInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR, VkVideoEncodeQuantizationMapSessionParametersCreateInfoKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) */
+#if defined(VK_KHR_video_encode_queue)
+MAKE_TYPE_FACTORY(VkVideoEncodeRateControlLayerInfoKHR, VkVideoEncodeRateControlLayerInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeRateControlInfoKHR, VkVideoEncodeRateControlInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeSessionParametersFeedbackInfoKHR, VkVideoEncodeSessionParametersFeedbackInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeSessionParametersGetInfoKHR, VkVideoEncodeSessionParametersGetInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoEncodeUsageInfoKHR, VkVideoEncodeUsageInfoKHR)
+#endif /* defined(VK_KHR_video_encode_queue) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkVideoEndCodingInfoKHR, VkVideoEndCodingInfoKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_av1)
+MAKE_TYPE_FACTORY(VkVideoFormatAV1QuantizationMapPropertiesKHR, VkVideoFormatAV1QuantizationMapPropertiesKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_av1) */
+#if defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_h265)
+MAKE_TYPE_FACTORY(VkVideoFormatH265QuantizationMapPropertiesKHR, VkVideoFormatH265QuantizationMapPropertiesKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) && defined(VK_KHR_video_encode_h265) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkVideoFormatPropertiesKHR, VkVideoFormatPropertiesKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_KHR_video_encode_quantization_map)
+MAKE_TYPE_FACTORY(VkVideoFormatQuantizationMapPropertiesKHR, VkVideoFormatQuantizationMapPropertiesKHR)
+#endif /* defined(VK_KHR_video_encode_quantization_map) */
+#if defined(VK_KHR_video_maintenance1)
+MAKE_TYPE_FACTORY(VkVideoInlineQueryInfoKHR, VkVideoInlineQueryInfoKHR)
+#endif /* defined(VK_KHR_video_maintenance1) */
+#if defined(VK_KHR_video_queue)
+MAKE_TYPE_FACTORY(VkVideoProfileListInfoKHR, VkVideoProfileListInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoSessionCreateInfoKHR, VkVideoSessionCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoSessionMemoryRequirementsKHR, VkVideoSessionMemoryRequirementsKHR)
+MAKE_TYPE_FACTORY(VkVideoSessionParametersCreateInfoKHR, VkVideoSessionParametersCreateInfoKHR)
+MAKE_TYPE_FACTORY(VkVideoSessionParametersUpdateInfoKHR, VkVideoSessionParametersUpdateInfoKHR)
+#endif /* defined(VK_KHR_video_queue) */
+#if defined(VK_KHR_wayland_surface)
+MAKE_TYPE_FACTORY(VkWaylandSurfaceCreateInfoKHR, VkWaylandSurfaceCreateInfoKHR)
+#endif /* defined(VK_KHR_wayland_surface) */
+#if defined(VK_KHR_win32_keyed_mutex)
+MAKE_TYPE_FACTORY(VkWin32KeyedMutexAcquireReleaseInfoKHR, VkWin32KeyedMutexAcquireReleaseInfoKHR)
+#endif /* defined(VK_KHR_win32_keyed_mutex) */
+#if defined(VK_NV_win32_keyed_mutex)
+MAKE_TYPE_FACTORY(VkWin32KeyedMutexAcquireReleaseInfoNV, VkWin32KeyedMutexAcquireReleaseInfoNV)
+#endif /* defined(VK_NV_win32_keyed_mutex) */
+#if defined(VK_KHR_win32_surface)
+MAKE_TYPE_FACTORY(VkWin32SurfaceCreateInfoKHR, VkWin32SurfaceCreateInfoKHR)
+#endif /* defined(VK_KHR_win32_surface) */
+#if defined(VK_KHR_acceleration_structure)
+MAKE_TYPE_FACTORY(VkWriteDescriptorSetAccelerationStructureKHR, VkWriteDescriptorSetAccelerationStructureKHR)
+#endif /* defined(VK_KHR_acceleration_structure) */
+#if defined(VK_NV_ray_tracing)
+MAKE_TYPE_FACTORY(VkWriteDescriptorSetAccelerationStructureNV, VkWriteDescriptorSetAccelerationStructureNV)
+#endif /* defined(VK_NV_ray_tracing) */
+#if defined(VK_VERSION_1_3)
+MAKE_TYPE_FACTORY(VkWriteDescriptorSetInlineUniformBlock, VkWriteDescriptorSetInlineUniformBlock)
+#endif /* defined(VK_VERSION_1_3) */
+#if defined(VK_EXT_device_generated_commands)
+MAKE_TYPE_FACTORY(VkWriteIndirectExecutionSetPipelineEXT, VkWriteIndirectExecutionSetPipelineEXT)
+#endif /* defined(VK_EXT_device_generated_commands) */
+#if defined(VK_EXT_device_generated_commands) && defined(VK_EXT_shader_object)
+MAKE_TYPE_FACTORY(VkWriteIndirectExecutionSetShaderEXT, VkWriteIndirectExecutionSetShaderEXT)
+#endif /* defined(VK_EXT_device_generated_commands) && defined(VK_EXT_shader_object) */
+#if defined(VK_KHR_xcb_surface)
+MAKE_TYPE_FACTORY(VkXcbSurfaceCreateInfoKHR, VkXcbSurfaceCreateInfoKHR)
+#endif /* defined(VK_KHR_xcb_surface) */
+#if defined(VK_KHR_xlib_surface)
+MAKE_TYPE_FACTORY(VkXlibSurfaceCreateInfoKHR, VkXlibSurfaceCreateInfoKHR)
+#endif /* defined(VK_KHR_xlib_surface) */
+/* VOLK_GENERATE_TYPE_FACTORY */
+
+
+namespace das {
+
+class Module_dasVulkan : public Module
+{
+public:
+  Module_dasVulkan();
+  virtual ModuleAotType aotRequire(TextWriter &tw) const override;
+protected:
+  void bindAnnotations(ModuleLibrary &lib);
+  void bindEnums(ModuleLibrary &lib);
+  void bindFunctions(ModuleLibrary &lib);
+  void compileBuiltin();
+};
+
+} // namespace das
